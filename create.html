@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create</title>
+    <script type="text/javascript" src="common.js"></script>
+    <script type="text/javascript">
+
+function createUser(form) {
+    var myUser = new User(
+            form.mail.value,
+            form.firstname.value,
+            form.lastname.value,
+            form.userpassword.value,
+            form.phone.value,
+            form.fax.value,
+            form.room.value,
+            form.location.options[form.location.selectedIndex].value,
+            form.homeDirectory.value,
+            form.uidNumber.value,
+            form.gidNumber.value
+    );
+
+    if (myUser != null) {
+        var resource = getServletURL() + "/users/" + myUser.uid;
+        var result = create(myUser, resource);
+        document.getElementById("create-user-log").innerHTML = preWrap(result);
+    } else {
+        document.getElementById("create-user-log").innerHTML =
+                preWrap("Create failed");
+    }
+}
+
+function populateGroupList() {
+    var list = document.getElementById("groups");
+
+    // Sort groups by name, which is a string
+    var options = queryObjects("/groups", [])
+            .sort(function(a,b){ return a.name.toString()
+                    .localeCompare(b.name.toString()) });
+
+    if (options.length > 0) { empty(list); }
+
+    for (var i = 0; i < options.length; i++) {
+        var element = document.createElement("option");
+        element.textContent = options[i].name;
+        element.value = options[i].name;
+        list.appendChild(element);
+    }
+}
+
+function populateUserList() {
+    var list = document.getElementById("users");
+
+    // Sort users by fullname, which is an array.
+    var options = queryObjects("/users", [])
+            .sort(function(a,b){ return a.fullname[0].toString()
+                    .localeCompare(b.fullname[0].toString()) });
+
+    if (options.length > 0) { empty(list); }
+
+    for (var i = 0; i < options.length; i++) {
+        var element = document.createElement("option");
+        element.textContent = options[i].fullname[0];
+        element.value = options[i].uid;
+        list.appendChild(element);
+    }
+}
+
+function createGroup(form) {
+    var myGroup = { "name": "", "description": "", "members": new Array() };
+    if (form.groupName.value != null && form.groupName.value) {
+        myGroup.name = form.groupName.value;
+    } else {
+        document.getElementById("create-group-log").innerHTML =
+                preWrap("Create failed");
+        return;
+    }
+
+    if (form.description.value != null && form.description.value != "") {
+        myGroup.description = form.description.value;
+    }
+
+    var members = new Array();
+    for(var i = 0; i < form.users.options.length; i++) {
+        if (form.users.options[i].selected) {
+            members.push(form.users.options[i].value);
+        }
+    }
+    if (members.length > 0) {
+        myGroup.members = members;
+    }
+
+    if (myGroup != null) {
+        var resource = getServletURL() + "/groups/" + myGroup.name.replace(/ /g, '+');
+        var result = create(myGroup, resource);
+        document.getElementById("create-group-log").innerHTML = preWrap(result);
+    } else {
+        document.getElementById("create-group-log").innerHTML =
+                preWrap("Create failed");
+    }
+}
+    </script>
+</head>
+<body>
+<h1>Create</h1>
+
+<form id="create-user" action="#">
+    <h2>Create User</h2>
+
+    <label for="mail">Email: </label>
+    <input id="mail" type="email" name="mail" /> *
+    <br />
+
+    <label for="firstname">First Name: </label>
+    <input id="firstname" type="text" name="firstname" />
+    <br />
+
+    <label for="lastname">Last Name: </label>
+    <input id="lastname" type="text" name="lastname" />
+    <br />
+
+    <label for="userpassword">Password: </label>
+    <input id="userpassword" type="password" name="userpassword" />
+    <br />
+
+    <label for="phone">Phone: </label>
+    <input id="phone" type="tel" name="phone" />
+    <br />
+
+    <label for="fax">Fax: </label>
+    <input id="fax" type="tel" name="fax" />
+    <br />
+
+    <label for="room">Room Number: </label>
+    <input id="room" type="number" name="room" />
+    <br />
+
+    <label for="location">Location: </label>
+    <select id="location">
+        <option>Select Location</option>
+        <option value="Cupertino">Cupertino</option>
+        <option value="Paris">Paris</option>
+        <option value="Santa Clara">Santa Clara</option>
+        <option value="Sunnyvale">Sunnyvale</option>
+    </select>
+    <br />
+
+    <label for="homeDirectory">Home Directory:</label>
+    <input id="homeDirectory" type="text" name="homeDirectory">
+    <br />
+
+    <label for="uidNumber">UID Number: </label>
+    <input id="uidNumber" type="number" name="uidNumber" />
+    <br />
+
+    <label for="gidNumber">GID Number: </label>
+    <input id="gidNumber" type="number" name="gidNumber" />
+    <br />
+
+    <button type="button" onclick="createUser(this.form)">Create</button>
+</form>
+    <div id="create-user-log"></div>
+
+<form id="create-group">
+    <h2>Create Group</h2>
+
+    <label for="groupName">Name: </label>
+    <input id="groupName" type="text" name="groupName">*
+    <br />
+
+    <label for="description">Description: </label>
+    <input id="description" type="text" name="description" />
+    <br />
+
+    <label for="users">Members:</label>
+    <select id="users" type="text" name="users" multiple="multiple"
+            onfocus="populateUserList()"></select>
+    <br />
+
+    <button type="button" onclick="createGroup(this.form)">Create</button>
+</form>
+    <div id="create-group-log"></div>
+
+</body>
+</html>

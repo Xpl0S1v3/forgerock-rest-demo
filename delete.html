@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delete</title>
+    <script type="text/javascript" src="common.js"></script>
+    <script type="text/javascript">
+
+
+function listUsersByUid() {
+    // Sort users by uid, which is a string
+    var array = queryObjects("/users", [])
+            .sort(function(a,b){ return a.uid.toString()
+                    .localeCompare(b.uid.toString()) });
+    var list = "";
+    for (var i = 0; i < array.length; i++) {
+        list = list + array[i].uid + "\n";
+    }
+    document.getElementById("delete-user-log").innerHTML = preWrap(list);
+}
+
+function deleteUser(form) {
+    var resource = getServletURL() + "/users/" + form.uid.value;
+    var result = remove(resource);
+    document.getElementById("delete-user-log").innerHTML = preWrap(result);
+}
+
+function populateUserList() {
+    var list = document.getElementById("select-user");
+
+    // Sort users by fullname, which is an array.
+    var options = queryObjects("/users", [])
+            .sort(function(a,b){ return a.fullname[0].toString()
+                    .localeCompare(b.fullname[0].toString()) });
+
+    if (options.length > 0) { empty(list); }
+
+    for (var i = 0; i < options.length; i++) {
+        var element = document.createElement("option");
+        element.textContent = options[i].fullname[0];
+        element.value = options[i].uid;
+        list.appendChild(element);
+    }
+}
+
+function listGroupsByName() {
+    // Sort groups by name, which is a string
+    var array = queryObjects("/groups", [])
+            .sort(function(a,b){ return a.name.toString()
+                    .localeCompare(b.name.toString()) });
+    var list = "";
+    for (var i = 0; i < array.length; i++) {
+        list = list + array[i].name + "\n";
+    }
+    document.getElementById("delete-group-log").innerHTML = preWrap(list);
+}
+
+function deleteUserFromList() {
+    var list = document.getElementById("select-user");
+    var id = list.options[list.selectedIndex].value;
+    var resource = getServletURL() + "/users/" + id;
+    var result = remove(resource);
+    document.getElementById("delete-user-log").innerHTML = preWrap(result);
+}
+
+function deleteGroup(form) {
+    var resource = getServletURL() + "/groups/" + form.name.value;
+    var result = remove(resource);
+    document.getElementById("delete-group-log").innerHTML = preWrap(result);
+}
+
+function populateGroupList() {
+    var list = document.getElementById("select-group");
+
+    // Sort groups by name, which is a string
+    var options = queryObjects("/groups", [])
+            .sort(function(a,b){ return a.name.toString()
+                    .localeCompare(b.name.toString()) });
+
+    if (options.length > 0) { empty(list); }
+
+    for (var i = 0; i < options.length; i++) {
+        var element = document.createElement("option");
+        element.textContent = options[i].name;
+        element.value = options[i].name;
+        list.appendChild(element);
+    }
+}
+
+function deleteGroupFromList() {
+    var list = document.getElementById("select-group");
+    var id = list.options[list.selectedIndex].value;
+    var resource = getServletURL() + "/groups/" + id;
+    var result = remove(resource);
+    document.getElementById("delete-group-log").innerHTML = preWrap(result);
+}
+    </script>
+</head>
+<body>
+<h1>Delete</h1>
+
+<form id="delete-user-by-uid" action="#">
+    <h2>Delete User By ID</h2>
+
+    <label>Lookup user IDs:</label>
+    <button type="button" onclick="listUsersByUid()">List User IDs</button>
+    <button type="button"
+            onclick="document.getElementById('delete-user-log').innerHTML = ''"
+            >Clear List</button>
+    <br />
+    <label for="uid">Specify user ID:</label>
+    <input id="uid" type="text" name="uid" value=""/>
+    <button type="button" onclick="deleteUser(this.form)">Delete</button>
+</form>
+
+<form id="delete-user-from-list" action="#">
+    <h2>Delete User From List</h2>
+
+    <label for="select-user">User: </label>
+    <select id="select-user" onfocus="populateUserList()">
+        <option>Select User</option>
+    </select>
+    <button type="button" onclick="deleteUserFromList()">Delete</button>
+</form>
+
+<div id="delete-user-log"></div>
+
+<p>
+    Delete a group with one of the following forms.
+</p>
+<form id="delete-group-by-name" action="#">
+    <h2>Delete Group By ID</h2>
+
+    <label>Lookup group names:</label>
+    <button type="button" onclick="listGroupsByName()">List Groups</button>
+    <button type="button"
+            onclick="document.getElementById('delete-group-log').innerHTML = ''"
+            >Clear List</button>
+    <br />
+    <label for="name">Specify group name:</label>
+    <input id="name"  type="text" name="name" value="" />
+    <button type="button" onclick="deleteGroup(this.form)">Delete</button>
+</form>
+
+<form id="delete-group-from-list" action="#">
+    <h2>Delete Group From List</h2>
+
+    <label for="select-group">Group: </label>
+    <select id="select-group" onfocus="populateGroupList()">
+        <option>Select Group</option>
+    </select>
+    <button type="button" onclick="deleteGroupFromList()">Delete</button>
+</form>
+
+<div id="delete-group-log"></div>
+</body>
+</html>

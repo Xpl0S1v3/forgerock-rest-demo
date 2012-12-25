@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<!--
+/*
+ * The contents of this file are subject to the terms of the Common Development and
+ * Distribution License (the License). You may not use this file except in compliance with the
+ * License.
+ *
+ * You can obtain a copy of the License at legal/CDDLv1.0.txt. See the License for the
+ * specific language governing permission and limitations under the License.
+ *
+ * When distributing Covered Software, include this CDDL Header Notice in each file and include
+ * the License file at legal/CDDLv1.0.txt. If applicable, add the following below the CDDL
+ * Header, with the fields enclosed by brackets [] replaced by your own identifying
+ * information: "Portions Copyrighted [year] [name of copyright owner]".
+ *
+ * Copyright © 2012 ForgeRock AS. All rights reserved.
+ */
+-->
+<html>
+<head>
+    <title>ForgeRock Common REST Demo</title>
+    <link rel="shortcut icon" href="images/favicon.ico" />
+    <script type="text/javascript" src="common.js"></script>
+    <script type="text/javascript" src="provision.js"></script>
+</head>
+<body>
+<h1>ForgeRock Common REST Demo</h1>
+
+<div class="toc">
+    <p><a href="#about">About the ForgeRock Common REST API</a></p>
+
+    <p><a href="#prerequisites">Before You Start</a></p>
+
+    <p><a href="#create">Creating Users &amp; Groups</a></p>
+
+    <p><a href="#read">Reading Users &amp; Groups</a></p>
+
+    <p><a href="#update">Updating Users &amp; Groups</a></p>
+
+    <p><a href="#delete">Deleting Users &amp; Groups</a></p>
+
+    <p><a href="#patch">Patching Users &amp; Groups</a></p>
+
+    <p><a href="#action">Performing Actions</a></p>
+
+    <p><a href="#query">Querying Users &amp; Groups</a></p>
+</div>
+
+<div class="section">
+    <a name="about"></a>
+
+    <h2>About the ForgeRock Common REST API</h2>
+
+    <p>
+        The ForgeRock common REST API defines seven verbs:
+    </p>
+
+    <dl>
+        <dt>Create</dt>
+        <dd>Add a resource that does not yet exist</dd>
+
+        <dt>Read</dt>
+        <dd>Retrieve a single resource</dd>
+
+        <dt>Update</dt>
+        <dd>Replace an existing resource</dd>
+
+        <dt>Delete</dt>
+        <dd>Remove an existing resource</dd>
+
+        <dt>Patch</dt>
+        <dd>Modify part of an existing resource</dd>
+
+        <dt>Action</dt>
+        <dd>Perform a predefined action</dd>
+
+        <dt>Query</dt>
+        <dd>List a set of resources</dd>
+    </dl>
+
+    <p>
+        A resource store can use the ForgeRock
+        <a href="http://commons.forgerock.org/forgerock-rest/">REST
+            libraries</a>
+        to expose an API that defines these verbs in the common way.
+    </p>
+
+    <p>
+        A resource store defines collection endpoints for resources that it
+        serves. The default
+        <a href="http://commons.forgerock.org/forgerock-rest/json-resource-servlet/"
+                >JSON Resource Servlet</a> defines two collection endpoints,
+        <code>/users</code> and <code>/groups</code>.
+    </p>
+
+    <p>
+        A resource store may extend available actions and queries.
+    </p>
+
+    <ul>
+        <li>
+            <p>
+                A resource store may define additional actions that it allows.
+            </p>
+
+            <p>
+                By default, the only actions defined are those corresponding
+                to the other six basic verbs: create, read, update, delete,
+                patch, and query.
+            </p>
+
+            <p>
+                The default JSON Resource Servlet defines no additional
+                actions.
+            </p>
+        </li>
+        <li>
+            <p>
+                A resource store may further define queries that can be called
+                by their IDs.
+            </p>
+
+            <p>
+                The default JSON Resource Servlet defines no queries to be
+                called by ID.
+            </p>
+        </li>
+    </ul>
+</div>
+
+<div class="section">
+    <a name="prerequisites"></a>
+
+    <h2>Before You Start</h2>
+
+    <p>
+        This demo uses the REST API exposed by the JSON Resource Servlet.
+    </p>
+
+    <ol>
+        <li>
+            Download and deploy the JSON Resource Servlet .war under
+            <code>http://<i>host</i>:<i>port</i>/json</code>.
+        </li>
+
+        <li>
+            Deploy this demo as static pages alongside the JSON Resource
+            Servlet.
+        </li>
+    </ol>
+
+    <p>
+        This demo provides sample <a href="Users.json" target="_blank">users</a>
+        and <a href="Groups.json" target="_blank">groups</a> in JSON format.
+    </p>
+
+    <p>
+        Provision users and groups with the buttons below. When you click one
+        of the buttons, the latest response from the JSON Resource Servlet is
+        shown below the buttons.
+    </p>
+
+    <button type="button" onclick="provisionUsers()">Provision Users</button>
+    <button type="button" onclick="provisionGroups()">Provision Groups</button>
+    <button type="button"
+            onclick="document.getElementById('provisioning-log').innerHTML = ''"
+            >Clear Log</button>
+    <div id="provisioning-log"></div>
+</div>
+
+<div class="section">
+    <a name="create"></a>
+
+    <h2>Creating Users &amp; Groups</h2>
+    <!-- Create a single user -->
+    <!-- Create a single group -->
+    <p>See <a href="create.html">create.html</a>.</p>
+
+</div>
+
+<div class="section">
+    <a name="read"></a>
+
+    <h2>Reading Users &amp; Groups</h2>
+    <!-- Read a single user with optional _fields -->
+    <!-- Read a single group with member IDs converted to names -->
+    <p>See <a href="read.html">read.html</a>.</p>
+
+</div>
+
+<div class="section">
+    <a name="update"></a>
+
+    <h2>Updating Users &amp; Groups</h2>
+    <!-- Update a single user -->
+    <!-- Update a single group -->
+    <p>See <a href="update.html">update.html</a>.</p>
+
+</div>
+
+<div class="section">
+    <a name="delete"></a>
+
+    <h2>Deleting Users &amp; Groups</h2>
+    <!-- Delete a single user -->
+    <!-- Delete a single group -->
+    <p>See <a href="delete.html">delete.html</a>.</p>
+
+</div>
+
+<div class="section">
+    <a name="patch"></a>
+
+    <h2>Patching Users &amp; Groups</h2>
+
+    <p>TODO: Demonstrate when patch is finished. See <a href="https://bugster.forgerock.org/jira/browse/CREST-3">CREST-3</a>.</p>
+</div>
+
+<div class="section">
+    <a name="action"></a>
+
+    <h2>Performing Actions</h2>
+
+    <p>
+        The default JSON Resource Servlet implements only the actions
+        corresponding to the other six basic verbs: create, read, update,
+        delete, patch, and query.
+    </p>
+
+    <p>
+        In other words, you can call those verbs as actions with an HTTP POST.
+        For example, to create a user with an ID assigned by the resource store,
+        POST the JSON representation of the user to
+        <code>/users?_action=create</code>.
+    </p>
+</div>
+
+<div class="section">
+    <a name="query"></a>
+
+    <h2>Querying Users &amp; Groups</h2>
+
+    <!-- List all users in tables with optional _fields -->
+    <!-- http://localhost:8080/json/users?_queryId=all&_fields=mail,uid -->
+
+    <!-- List groups in tables with member IDs converted to names -->
+    <!-- http://localhost:8080/json/groups?_queryId=all&_fields=name,members,description -->
+
+    <p>See <a href="query.html">query.html</a>.</p>
+
+    <pre>
+        TODO:
+        // _filter=FILTER, where the filter is TBD
+        // _sortKeys=[+-]FIELD,..., where + is encoded as %2B
+        // _pagedResultsCookie=STRING
+        // _pageSize=INTEGER
+        // _queryId=ID to trigger a stored query, also takes arg1=value1 to argN=valueN
+    </pre>
+</div>
+</body>
+</html>

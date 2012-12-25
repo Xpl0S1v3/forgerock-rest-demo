@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Query</title>
+    <script type="text/javascript" src="common.js"></script>
+    <script type="text/javascript">
+function readUsers(form) {
+    var fields = new Array();
+    if (form.all.checked) {
+        // Leave query string empty.
+    } else {
+        if (form.mail.checked) { fields.push("mail"); }
+        if (form.fullname.checked) { fields.push("fullname"); }
+        if (form.phone.checked) { fields.push("phone"); }
+    }
+
+    document.getElementById("table").innerHTML =
+            getTable(queryObjects("/users", fields));
+}
+
+function readGroups(form) {
+    var fields = new Array();
+    if (form.groupName.checked) { fields.push("name"); }
+    if (form.members.checked) { fields.push("members"); }
+    if (form.description.checked) { fields.push("description"); }
+
+    var groups = queryObjects("/groups", fields);
+
+    for (var i = 0; i < groups.length; i++) {
+        var names = "";
+        if (groups[i].members.length > 0) {
+            names = getUserName(groups[i].members[0]);
+            for (var j = 1; j < groups[i].members.length; j++) {
+                names = names + "<br />" + getUserName(groups[i].members[j]);
+            }
+        }
+        groups[i].members = names;
+    }
+
+
+    document.getElementById("table").innerHTML = getTable(groups);
+}
+    </script>
+</head>
+<body>
+<h1>Query</h1>
+<form id="query-users">
+    Retrieve properties:
+    <input id="mail" type="checkbox" checked="checked" />
+    <label for="mail">Email</label>
+
+    <input id="fullname" type="checkbox" checked="checked" />
+    <label for="fullname">Full name</label>
+
+    <input id="phone" type="checkbox" />
+    <label for="phone">Phone number</label>
+
+    <input id="all" type="checkbox" />
+    <label for="all">Everything</label>
+    <br />
+
+    <button type="button" onclick="readUsers(this.form)">Query Users</button>
+</form>
+
+<form id="query-groups">
+    Retrieve properties:
+    <input id="groupName" type="checkbox" checked="checked" />
+    <label for="groupName">Name</label>
+
+    <input id="members" type="checkbox" checked="checked" />
+    <label for="members">Members</label>
+
+    <input id="description" type="checkbox" />
+    <label for="description">Description</label>
+    <br />
+
+    <button type="button" onclick="readGroups(this.form)">Query Groups</button>
+</form>
+
+<div id="table"></div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+{
+    "groups": [
+        {
+            "name": "Accounting Managers",
+            "description": "People who can manage accounting users",
+            "members": [
+                "scarter",
+                "tmorris"
+            ]
+        },
+        {
+            "name": "IT Administrators",
+            "description": "People who can manage IT resources",
+            "members": [
+                "kvaughan",
+                "rdaugherty",
+                "hmiller"
+            ]
+        },
+        {
+            "name": "HR Managers",
+            "description": "People who can manage HR users",
+            "members": [
+                "kvaughan",
+                "cschmith"
+            ]
+        },
+        {
+            "name": "PD Managers",
+            "description": "People who can manage engineering users",
+            "members": [
+                "kwinters",
+                "trigden"
+            ]
+        },
+        {
+            "name": "QA Managers",
+            "description": "People who can manage QA users",
+            "members": [
+                "abergin",
+                "jwalker"
+            ]
+        }
+    ]
+}

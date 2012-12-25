@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update</title>
+    <script type="text/javascript" src="common.js"></script>
+    <script type="text/javascript">
+
+function readUser(id) {
+    var resource = getServletURL() + "/users/" + id;
+    var result = read(resource);
+    return JSON.parse(result);
+}
+
+function populateUserList() {
+    var list = document.getElementById("select-user");
+
+    // Sort users by fullname, which is an array.
+    var options = queryObjects("/users", [])
+            .sort(function(a,b){ return a.fullname[0].toString()
+                    .localeCompare(b.fullname[0].toString()) });
+
+    if (options.length > 0) { empty(list); }
+
+    for (var i = 0; i < options.length; i++) {
+        var element = document.createElement("option");
+        element.textContent = options[i].fullname[0];
+        element.value = options[i].uid;
+        list.appendChild(element);
+    }
+}
+
+function getLocIndex(location) {
+    if (location == "Cupertino") { return 1; }
+    if (location == "Paris") { return 2; }
+    if (location == "Santa Clara") { return 3; }
+    if (location == "Sunnyvale") { return 4; }
+    return 0;
+}
+
+function selectUserFromList(form) {
+    var list = document.getElementById("select-user");
+    var id = list.options[list.selectedIndex].value;
+    var user = readUser(id);
+
+    // Populate form for updating.
+    form.userId.value = user._id;
+    form.userVersion.value = user._rev;
+
+    form.mail.value = user.mail;
+    form.firstname.value = user.firstname;
+    form.lastname.value = user.lastname;
+    form.userpassword.value = user.userpassword;
+    form.phone.value = user.phone;
+    form.fax.value = user.fax;
+    form.room.value = user.room;
+    form.location.options[getLocIndex(user.location)].selected = true;
+    form.homeDirectory.value = user.homeDirectory;
+    form.uidNumber.value = user.uidNumber;
+    form.gidNumber.value = user.gidNumber;
+}
+
+function clearUserForm(form) {
+    form.userId.value = "";
+    form.userVersion.value = "";
+
+    form.mail.value = "";
+    form.firstname.value = "";
+    form.lastname.value = "";
+    form.userpassword.value = "";
+    form.phone.value = "";
+    form.fax.value = "";
+    form.room.value = "";
+    form.location.options.selectedIndex = 0;
+    form.homeDirectory.value = "";
+    form.uidNumber.value = "";
+    form.gidNumber.value = "";
+}
+
+function updateUser(form) {
+    var myUser = new User(
+            form.mail.value,
+            form.firstname.value,
+            form.lastname.value,
+            form.userpassword.value,
+            form.phone.value,
+            form.fax.value,
+            form.room.value,
+            form.location.options[form.location.selectedIndex].value,
+            form.homeDirectory.value,
+            form.uidNumber.value,
+            form.gidNumber.value
+    );
+
+    if (myUser != null) {
+        var resource = getServletURL() + "/users/" + form.userId.value;
+        var result = update(myUser, form.userVersion.value, resource);
+        document.getElementById("update-user-log").innerHTML = preWrap(result);
+        clearUserForm(form);
+    } else {
+        document.getElementById("update-user-log").innerHTML =
+                preWrap("Update failed");
+    }
+}
+
+function readGroup(name) {
+    var resource = getServletURL() + "/groups/" + name.replace(/ /g, '+');
+    var result = read(resource);
+    return JSON.parse(result);
+}
+
+function populateGroupList() {
+    var list = document.getElementById("select-group");
+
+    // Sort groups by name, which is a string
+    var options = queryObjects("/groups", [])
+            .sort(function(a,b){ return a.name.toString()
+                    .localeCompare(b.name.toString()) });
+
+    if (options.length > 0) { empty(list); }
+
+    for (var i = 0; i < options.length; i++) {
+        var element = document.createElement("option");
+        element.textContent = options[i].name;
+        element.value = options[i].name;
+        list.appendChild(element);
+    }
+}
+
+function populateMemberList(members) {
+    var list = document.getElementById("members");
+
+    // Sort users by fullname, which is an array.
+    var options = queryObjects("/users", [])
+            .sort(function(a,b){ return a.fullname[0].toString()
+                    .localeCompare(b.fullname[0].toString()) });
+
+    if (options.length > 0) { empty(list); }
+
+    for (var i = 0; i < options.length; i++) {
+        var element = document.createElement("option");
+        element.textContent = options[i].fullname[0];
+        element.value = options[i].uid;
+        for(var j = 0; j < members.length; j++) {
+            if (element.value == members[j]) {
+                element.selected = "selected";
+            }
+        }
+        list.appendChild(element);
+    }
+}
+
+function selectGroupFromList(form) {
+    var list = document.getElementById("select-group");
+    var id = list.options[list.selectedIndex].value;
+    var group = readGroup(id.replace(/ /g, "%20"));
+
+    // Populate form for updating.
+    form.groupId.value = group._id;
+    form.groupVersion.value = group._rev;
+
+    form.groupName.value = group.name;
+    form.description.value = group.description;
+    populateMemberList(group.members);
+}
+
+function updateGroup(form) {
+    var myGroup = { "name": "", "description": "", "members": new Array() };
+
+    if (form.groupName.value != null && form.groupName.value) {
+        myGroup.name = form.groupName.value;
+    }
+
+    if (form.description.value != null && form.description.value != "") {
+        myGroup.description = form.description.value;
+    }
+
+    var members = new Array();
+    for(var i = 0; i < form.members.options.length; i++) {
+        if (form.members.options[i].selected) {
+            members.push(form.members.options[i].value);
+        }
+    }
+    if (members.length > 0) {
+        myGroup.members = members;
+    }
+
+    if (myGroup != null) {
+        var resource = getServletURL() + "/groups/" + form.groupId.value;
+        var result = update(myGroup, form.groupVersion.value, resource);
+        document.getElementById("update-group-log").innerHTML = preWrap(result);
+    } else {
+        document.getElementById("update-group-log").innerHTML =
+                preWrap("Update failed");
+    }
+}
+    </script>
+</head>
+<body>
+<h1>Update</h1>
+
+<form id="update-user">
+    <h2>Update User</h2>
+
+    <label for="select-user">User to update: </label>
+    <select id="select-user" onfocus="populateUserList()">
+        <option>Select User</option>
+    </select>
+    <br />
+
+    <button type="button" onclick="selectUserFromList(this.form)">Load</button>
+    <br />
+
+    <input id="userId" type="hidden" name="userId">
+    <input id="userVersion" type="hidden" name="userVersion">
+
+    <label for="mail">Email: </label>
+    <input id="mail" type="email" name="mail" readonly="readonly" />
+    <br />
+
+    <label for="firstname">First Name: </label>
+    <input id="firstname" type="text" name="firstname" />
+    <br />
+
+    <label for="lastname">Last Name: </label>
+    <input id="lastname" type="text" name="lastname" />
+    <br />
+
+    <label for="userpassword">Password: </label>
+    <input id="userpassword" type="password" name="userpassword" />
+    <br />
+
+    <label for="phone">Phone: </label>
+    <input id="phone" type="tel" name="phone" />
+    <br />
+
+    <label for="fax">Fax: </label>
+    <input id="fax" type="tel" name="fax" />
+    <br />
+
+    <label for="room">Room Number: </label>
+    <input id="room" type="number" name="room" />
+    <br />
+
+    <label for="location">Location: </label>
+    <select id="location">
+        <option>Select Location</option>
+        <option value="Cupertino">Cupertino</option>
+        <option value="Paris">Paris</option>
+        <option value="Santa Clara">Santa Clara</option>
+        <option value="Sunnyvale">Sunnyvale</option>
+    </select>
+    <br />
+
+    <label for="homeDirectory">Home Directory:</label>
+    <input id="homeDirectory" type="text" name="homeDirectory">
+    <br />
+
+    <label for="uidNumber">UID Number: </label>
+    <input id="uidNumber" type="number" name="uidNumber" />
+    <br />
+
+    <label for="gidNumber">GID Number: </label>
+    <input id="gidNumber" type="number" name="gidNumber" />
+    <br />
+
+    <button type="button" onclick="updateUser(this.form)">Update</button>
+</form>
+    <div id="update-user-log"></div>
+
+<form id="update-group">
+    <h2>Update Group</h2>
+
+    <label for="select-group">Group to update: </label>
+    <select id="select-group" onfocus="populateGroupList()">
+        <option>Select Group</option>
+    </select>
+    <br />
+
+    <button type="button" onclick="selectGroupFromList(this.form)">Load</button>
+    <br />
+
+    <input id="groupId" type="hidden" name="groupId">
+    <input id="groupVersion" type="hidden" name="groupVersion">
+
+    <label for="groupName">Name: </label>
+    <input id="groupName" type="text" name="groupName" readonly="readonly" />
+    <br />
+
+    <label for="description">Description: </label>
+    <input id="description" type="text" name="description" />
+    <br />
+
+    <label for="members">Members:</label>
+    <select id="members" type="text" name="members" multiple="multiple"></select>
+    <br />
+
+    <button type="button" onclick="updateGroup(this.form)">Update</button>
+</form>
+<div id="update-group-log"></div>
+
+</body>
+</html>

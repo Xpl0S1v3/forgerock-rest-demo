@@ -1,0 +1,2572 @@
+{
+    "users": [
+        {
+            "uid": "abarnes",
+            "userpassword": "chevron",
+            "fax": "+1 408 555 4661",
+            "firstname": "Anne-Louise",
+            "fullname": [
+                "Anne-Louise Barnes"
+            ],
+            "phone": "+1 408 555 9445",
+            "lastname": "Barnes",
+            "room": 2290,
+            "homeDirectory": "/home/abarnes",
+            "mail": "abarnes@example.com",
+            "location": "Santa Clara",
+            "uidNumber": 1119,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "abergin",
+            "userpassword": "inflict",
+            "fax": "+1 408 555 7472",
+            "firstname": "Andy",
+            "fullname": [
+                "Andy Bergin"
+            ],
+            "phone": "+1 408 555 8585",
+            "lastname": "Bergin",
+            "room": 3472,
+            "homeDirectory": "/home/abergin",
+            "mail": "abergin@example.com",
+            "location": "Cupertino",
+            "uidNumber": 1005,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "achassin",
+            "userpassword": "duopolist",
+            "fax": "+1 408 555 3372",
+            "firstname": "Ashley",
+            "fullname": [
+                "Ashley Chassin"
+            ],
+            "phone": "+1 408 555 9972",
+            "lastname": "Chassin",
+            "room": 466,
+            "homeDirectory": "/home/achassin",
+            "mail": "achassin@example.com",
+            "location": "Santa Clara",
+            "uidNumber": 1027,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "ahall",
+            "userpassword": "slater",
+            "fax": "+1 408 555 4774",
+            "firstname": "Andy",
+            "fullname": [
+                "Andy Hall"
+            ],
+            "phone": "+1 408 555 6169",
+            "lastname": "Hall",
+            "room": 3050,
+            "homeDirectory": "/home/ahall",
+            "mail": "ahall@example.com",
+            "location": "Santa Clara",
+            "uidNumber": 1103,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "ahel",
+            "userpassword": "sarsaparilla",
+            "fax": "+1 408 555 8721",
+            "firstname": "Andrew",
+            "fullname": [
+                "Andrew Hel"
+            ],
+            "phone": "+1 408 555 2666",
+            "lastname": "Hel",
+            "room": 572,
+            "homeDirectory": "/home/ahel",
+            "mail": "ahel@example.com",
+            "location": "Santa Clara",
+            "uidNumber": 1066,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "ahunter",
+            "userpassword": "egregious",
+            "fax": "+1 408 555 8473",
+            "firstname": "Allison",
+            "fullname": [
+                "Allison Hunter"
+            ],
+            "phone": "+1 408 555 7713",
+            "lastname": "Hunter",
+            "room": 1213,
+            "homeDirectory": "/home/ahunter",
+            "mail": "ahunter@example.com",
+            "location": "Sunnyvale",
+            "uidNumber": 1106,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "ajensen",
+            "userpassword": "coltsfoot",
+            "fax": "+1 408 555 0111",
+            "firstname": "Allison",
+            "fullname": [
+                "Allison Jensen"
+            ],
+            "phone": "+1 408 555 7892",
+            "lastname": "Jensen",
+            "room": 784,
+            "homeDirectory": "/home/ajensen",
+            "mail": "ajensen@example.com",
+            "location": "Santa Clara",
+            "uidNumber": 1095,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "aknutson",
+            "userpassword": "maltose",
+            "fax": "+1 408 555 4774",
+            "firstname": "Ashley",
+            "fullname": [
+                "Ashley Knutson"
+            ],
+            "phone": "+1 408 555 2169",
+            "lastname": "Knutson",
+            "room": 4736,
+            "homeDirectory": "/home/aknutson",
+            "mail": "aknutson@example.com",
+            "location": "Cupertino",
+            "uidNumber": 1112,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "alangdon",
+            "userpassword": "muzzle",
+            "fax": "+1 408 555 9332",
+            "firstname": "Andrew",
+            "fullname": [
+                "Andrew Langdon"
+            ],
+            "phone": "+1 408 555 8289",
+            "lastname": "Langdon",
+            "room": 2254,
+            "homeDirectory": "/home/alangdon",
+            "mail": "alangdon@example.com",
+            "location": "Santa Clara",
+            "uidNumber": 1133,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "alutz",
+            "userpassword": "northward",
+            "fax": "+1 408 555 4774",
+            "firstname": "Alexander",
+            "fullname": [
+                "Alexander Lutz"
+            ],
+            "phone": "+1 408 555 6505",
+            "lastname": "Lutz",
+            "room": 1327,
+            "homeDirectory": "/home/alutz",
+            "mail": "alutz@example.com",
+            "location": "Santa Clara",
+            "uidNumber": 1025,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "ashelton",
+            "userpassword": "appointe",
+            "fax": "+1 408 555 7472",
+            "firstname": "Alexander",
+            "fullname": [
+                "Alexander Shelton"
+            ],
+            "phone": "+1 408 555 1081",
+            "lastname": "Shelton",
+            "room": 1987,
+            "homeDirectory": "/home/ashelton",
+            "mail": "ashelton@example.com",
+            "location": "Santa Clara",
+            "uidNumber": 1060,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "awalker",
+            "userpassword": "detonable",
+            "fax": "+1 408 555 3372",
+            "firstname": "Andy",
+            "fullname": [
+                "Andy Walker"
+            ],
+            "phone": "+1 408 555 9199",
+            "lastname": "Walker",
+            "room": 61,
+            "homeDirectory": "/home/awalker",
+            "mail": "awalker@example.com",
+            "location": "Cupertino",
+            "uidNumber": 1136,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "awhite",
+            "userpassword": "placeholder",
+            "fax": "+1 408 555 8721",
+            "firstname": "Alan",
+            "fullname": [
+                "Alan White"
+            ],
+            "phone": "+1 408 555 3232",
+            "lastname": "White",
+            "room": 142,
+            "homeDirectory": "/home/awhite",
+            "mail": "awhite@example.com",
+            "location": "Sunnyvale",
+            "uidNumber": 1082,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "aworrell",
+            "userpassword": "gargoyle",
+            "fax": "+1 408 555 3825",
+            "firstname": "Alan",
+            "fullname": [
+                "Alan Worrell"
+            ],
+            "phone": "+1 408 555 1591",
+            "lastname": "Worrell",
+            "room": 3966,
+            "homeDirectory": "/home/aworrell",
+            "mail": "aworrell@example.com",
+            "location": "Cupertino",
+            "uidNumber": 1108,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "bfrancis",
+            "userpassword": "holystone",
+            "fax": "+1 408 555 9751",
+            "firstname": "Barbara",
+            "fullname": [
+                "Barbara Francis"
+            ],
+            "phone": "+1 408 555 9111",
+            "lastname": "Francis",
+            "room": 3743,
+            "homeDirectory": "/home/bfrancis",
+            "mail": "bfrancis@example.com",
+            "location": "Santa Clara",
+            "uidNumber": 1139,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "bfree",
+            "userpassword": "etiquette",
+            "fax": "+1 408 555 4774",
+            "firstname": "Bjorn",
+            "fullname": [
+                "Bjorn Free"
+            ],
+            "phone": "+1 408 555 8588",
+            "lastname": "Free",
+            "room": 3307,
+            "homeDirectory": "/home/bfree",
+            "mail": "bfree@example.com",
+            "location": "Santa Clara",
+            "uidNumber": 1056,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "bhal2",
+            "userpassword": "truths",
+            "fax": "+1 408 555 8473",
+            "firstname": "Barbara",
+            "fullname": [
+                "Barbara Hall"
+            ],
+            "phone": "+1 408 555 4491",
+            "lastname": "Hall",
+            "room": 2758,
+            "homeDirectory": "/home/bhal2",
+            "mail": "bhal2@example.com",
+            "location": "Sunnyvale",
+            "uidNumber": 1024,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "bhall",
+            "userpassword": "oranges",
+            "fax": "+1 408 555 0111",
+            "firstname": "Benjamin",
+            "fullname": [
+                "Benjamin Hall"
+            ],
+            "phone": "+1 408 555 6067",
+            "lastname": "Hall",
+            "room": 2511,
+            "homeDirectory": "/home/bhall",
+            "mail": "bhall@example.com",
+            "location": "Santa Clara",
+            "uidNumber": 1017,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "bjablons",
+            "userpassword": "strawberry",
+            "fax": "+1 408 555 4774",
+            "firstname": "Barbara",
+            "fullname": [
+                "Barbara Jablonski"
+            ],
+            "phone": "+1 408 555 8815",
+            "lastname": "Jablonski",
+            "room": 906,
+            "homeDirectory": "/home/bjablons",
+            "mail": "bjablons@example.com",
+            "location": "Sunnyvale",
+            "uidNumber": 1020,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "bjense2",
+            "userpassword": "mortgage",
+            "fax": "+1 408 555 4774",
+            "firstname": "Bjorn",
+            "fullname": [
+                "Bjorn Jensen"
+            ],
+            "phone": "+1 408 555 5655",
+            "lastname": "Jensen",
+            "room": 4294,
+            "homeDirectory": "/home/bjense2",
+            "mail": "bjense2@example.com",
+            "location": "Santa Clara",
+            "uidNumber": 1101,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "bjensen",
+            "userpassword": "hifalutin",
+            "fax": "+1 408 555 1992",
+            "firstname": "Barbara",
+            "fullname": [
+                "Barbara Jensen",
+                "Babs Jensen"
+            ],
+            "phone": "+1 408 555 1862",
+            "lastname": "Jensen",
+            "room": 209,
+            "homeDirectory": "/home/bjensen",
+            "mail": "bjensen@example.com",
+            "location": "Cupertino",
+            "uidNumber": 1076,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "bmaddox",
+            "userpassword": "feedback",
+            "fax": "+1 408 555 7472",
+            "firstname": "Barbara",
+            "fullname": [
+                "Barbara Maddox"
+            ],
+            "phone": "+1 408 555 7783",
+            "lastname": "Maddox",
+            "room": 2207,
+            "homeDirectory": "/home/bmaddox",
+            "mail": "bmaddox@example.com",
+            "location": "Santa Clara",
+            "uidNumber": 1083,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "bparker",
+            "userpassword": "lenticular",
+            "fax": "+1 408 555 9332",
+            "firstname": "Barry",
+            "fullname": [
+                "Barry Parker"
+            ],
+            "phone": "+1 408 555 4647",
+            "lastname": "Parker",
+            "room": 1148,
+            "homeDirectory": "/home/bparker",
+            "mail": "bparker@example.com",
+            "location": "Sunnyvale",
+            "uidNumber": 1146,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "bplante",
+            "userpassword": "tangerine",
+            "fax": "+1 408 555 3825",
+            "firstname": "Brian",
+            "fullname": [
+                "Brian Plante"
+            ],
+            "phone": "+1 408 555 3550",
+            "lastname": "Plante",
+            "room": 4654,
+            "homeDirectory": "/home/bplante",
+            "mail": "bplante@example.com",
+            "location": "Cupertino",
+            "uidNumber": 1044,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "brentz",
+            "userpassword": "diachronic",
+            "fax": "+1 408 555 1992",
+            "firstname": "Bertram",
+            "fullname": [
+                "Bertram Rentz"
+            ],
+            "phone": "+1 408 555 5526",
+            "lastname": "Rentz",
+            "room": 617,
+            "homeDirectory": "/home/brentz",
+            "mail": "brentz@example.com",
+            "location": "Sunnyvale",
+            "uidNumber": 1048,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "brigden",
+            "userpassword": "purple",
+            "fax": "+1 408 555 1992",
+            "firstname": "Bjorn",
+            "fullname": [
+                "Bjorn Rigden"
+            ],
+            "phone": "+1 408 555 5263",
+            "lastname": "Rigden",
+            "room": 1643,
+            "homeDirectory": "/home/brigden",
+            "mail": "brigden@example.com",
+            "location": "Sunnyvale",
+            "uidNumber": 1142,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "bschneid",
+            "userpassword": "biblical",
+            "fax": "+1 408 555 7472",
+            "firstname": "Benjamin",
+            "fullname": [
+                "Benjamin Schneider"
+            ],
+            "phone": "+1 408 555 1012",
+            "lastname": "Schneider",
+            "room": 4471,
+            "homeDirectory": "/home/bschneid",
+            "mail": "bschneid@example.com",
+            "location": "Santa Clara",
+            "uidNumber": 1046,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "btalbo2",
+            "userpassword": "corduroy",
+            "fax": "+1 408 555 9332",
+            "firstname": "Bjorn",
+            "fullname": [
+                "Bjorn Talbot"
+            ],
+            "phone": "+1 408 555 4234",
+            "lastname": "Talbot",
+            "room": 1205,
+            "homeDirectory": "/home/btalbo2",
+            "mail": "btalbo2@example.com",
+            "location": "Santa Clara",
+            "uidNumber": 1026,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "btalbot",
+            "userpassword": "trident",
+            "fax": "+1 408 555 8473",
+            "firstname": "Brad",
+            "fullname": [
+                "Brad Talbot"
+            ],
+            "phone": "+1 408 555 4992",
+            "lastname": "Talbot",
+            "room": 3532,
+            "homeDirectory": "/home/btalbot",
+            "mail": "btalbot@example.com",
+            "location": "Cupertino",
+            "uidNumber": 1018,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "bwalker",
+            "userpassword": "interruptible",
+            "fax": "+1 408 555 0111",
+            "firstname": "Brad",
+            "fullname": [
+                "Brad Walker"
+            ],
+            "phone": "+1 408 555 5476",
+            "lastname": "Walker",
+            "room": 3529,
+            "homeDirectory": "/home/bwalker",
+            "mail": "bwalker@example.com",
+            "location": "Santa Clara",
+            "uidNumber": 1038,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "calexand",
+            "userpassword": "dauphin",
+            "fax": "+1 408 555 3825",
+            "firstname": "Chris",
+            "fullname": [
+                "Chris Alexander"
+            ],
+            "phone": "+1 408 555 9438",
+            "lastname": "Alexander",
+            "room": 2884,
+            "homeDirectory": "/home/calexand",
+            "mail": "calexand@example.com",
+            "location": "Sunnyvale",
+            "uidNumber": 1070,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "charvey",
+            "userpassword": "journalese",
+            "fax": "+1 408 555 3825",
+            "firstname": "Cecil",
+            "fullname": [
+                "Cecil Harvey"
+            ],
+            "phone": "+1 408 555 1815",
+            "lastname": "Harvey",
+            "room": 4583,
+            "homeDirectory": "/home/charvey",
+            "mail": "charvey@example.com",
+            "location": "Santa Clara",
+            "uidNumber": 1131,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "cnewport",
+            "userpassword": "expertise",
+            "fax": "+1 408 555 9332",
+            "firstname": "Christoph",
+            "fullname": [
+                "Christoph Newport"
+            ],
+            "phone": "+1 408 555 0066",
+            "lastname": "Newport",
+            "room": 56,
+            "homeDirectory": "/home/cnewport",
+            "mail": "cnewport@example.com",
+            "location": "Sunnyvale",
+            "uidNumber": 1150,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "cschmith",
+            "userpassword": "hypotenuse",
+            "fax": "+1 408 555 4774",
+            "firstname": "Chris",
+            "fullname": [
+                "Chris Schmith"
+            ],
+            "phone": "+1 408 555 8011",
+            "lastname": "Schmith",
+            "room": 416,
+            "homeDirectory": "/home/cschmith",
+            "mail": "cschmith@example.com",
+            "location": "Santa Clara",
+            "uidNumber": 1010,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "cwallace",
+            "userpassword": "quintus",
+            "fax": "+1 408 555 8721",
+            "firstname": "Cecil",
+            "fullname": [
+                "Cecil Wallace"
+            ],
+            "phone": "+1 408 555 6438",
+            "lastname": "Wallace",
+            "room": 349,
+            "homeDirectory": "/home/cwallace",
+            "mail": "cwallace@example.com",
+            "location": "Cupertino",
+            "uidNumber": 1041,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "dakers",
+            "userpassword": "integument",
+            "fax": "+1 408 555 8721",
+            "firstname": "David",
+            "fullname": [
+                "David Akers"
+            ],
+            "phone": "+1 408 555 4812",
+            "lastname": "Akers",
+            "room": 4944,
+            "homeDirectory": "/home/dakers",
+            "mail": "dakers@example.com",
+            "location": "Cupertino",
+            "uidNumber": 1088,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "dcope",
+            "userpassword": "snifter",
+            "fax": "+1 408 555 8721",
+            "firstname": "Dan",
+            "fullname": [
+                "Dan Cope"
+            ],
+            "phone": "+1 408 555 9813",
+            "lastname": "Cope",
+            "room": 1737,
+            "homeDirectory": "/home/dcope",
+            "mail": "dcope@example.com",
+            "location": "Sunnyvale",
+            "uidNumber": 1126,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "dlangdon",
+            "userpassword": "botulin",
+            "fax": "+1 408 555 8473",
+            "firstname": "Dan",
+            "fullname": [
+                "Dan Langdon"
+            ],
+            "phone": "+1 408 555 7044",
+            "lastname": "Langdon",
+            "room": 3263,
+            "homeDirectory": "/home/dlangdon",
+            "mail": "dlangdon@example.com",
+            "location": "Santa Clara",
+            "uidNumber": 1111,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "dlanoway",
+            "userpassword": "manhattan",
+            "fax": "+1 408 555 8473",
+            "firstname": "Dan",
+            "fullname": [
+                "Dan Lanoway"
+            ],
+            "phone": "+1 408 555 2017",
+            "lastname": "Lanoway",
+            "room": 3540,
+            "homeDirectory": "/home/dlanoway",
+            "mail": "dlanoway@example.com",
+            "location": "Santa Clara",
+            "uidNumber": 1117,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "dmiller",
+            "userpassword": "gosling",
+            "fax": "+1 408 555 0111",
+            "firstname": "David",
+            "fullname": [
+                "David Miller"
+            ],
+            "phone": "+1 408 555 9423",
+            "lastname": "Miller",
+            "room": 4135,
+            "homeDirectory": "/home/dmiller",
+            "mail": "dmiller@example.com",
+            "location": "Sunnyvale",
+            "uidNumber": 1006,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "drose",
+            "userpassword": "gubernatorial",
+            "fax": "+1 408 555 0111",
+            "firstname": "David",
+            "fullname": [
+                "David Rose"
+            ],
+            "phone": "+1 408 555 3963",
+            "lastname": "Rose",
+            "room": 4012,
+            "homeDirectory": "/home/drose",
+            "mail": "drose@example.com",
+            "location": "Sunnyvale",
+            "uidNumber": 1134,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "dsmith",
+            "userpassword": "quantitative",
+            "fax": "+1 408 555 3372",
+            "firstname": "Daniel",
+            "fullname": [
+                "Daniel Smith"
+            ],
+            "phone": "+1 408 555 9519",
+            "lastname": "Smith",
+            "room": 368,
+            "homeDirectory": "/home/dsmith",
+            "mail": "dsmith@example.com",
+            "location": "Santa Clara",
+            "uidNumber": 1049,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "dswain",
+            "userpassword": "freedom",
+            "fax": "+1 408 555 1992",
+            "firstname": "Dietrich",
+            "fullname": [
+                "Dietrich Swain"
+            ],
+            "phone": "+1 408 555 9222",
+            "lastname": "Swain",
+            "room": 4396,
+            "homeDirectory": "/home/dswain",
+            "mail": "dswain@example.com",
+            "location": "Sunnyvale",
+            "uidNumber": 1102,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "dthorud",
+            "userpassword": "fulcrum",
+            "fax": "+1 408 555 7472",
+            "firstname": "David",
+            "fullname": [
+                "David Thorud"
+            ],
+            "phone": "+1 408 555 6185",
+            "lastname": "Thorud",
+            "room": 1128,
+            "homeDirectory": "/home/dthorud",
+            "mail": "dthorud@example.com",
+            "location": "Cupertino",
+            "uidNumber": 1051,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "dward",
+            "userpassword": "armload",
+            "fax": "+1 408 555 7472",
+            "firstname": "Daniel",
+            "fullname": [
+                "Daniel Ward"
+            ],
+            "phone": "+1 408 555 5322",
+            "lastname": "Ward",
+            "room": 3927,
+            "homeDirectory": "/home/dward",
+            "mail": "dward@example.com",
+            "location": "Sunnyvale",
+            "uidNumber": 1090,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "ealexand",
+            "userpassword": "galactose",
+            "fax": "+1 408 555 9751",
+            "firstname": "Erin",
+            "fullname": [
+                "Erin Alexander"
+            ],
+            "phone": "+1 408 555 5563",
+            "lastname": "Alexander",
+            "room": 2434,
+            "homeDirectory": "/home/ealexand",
+            "mail": "ealexand@example.com",
+            "location": "Santa Clara",
+            "uidNumber": 1147,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "ecruse",
+            "userpassword": "platelet",
+            "fax": "+1 408 555 9751",
+            "firstname": "Eric",
+            "fullname": [
+                "Eric Cruse"
+            ],
+            "phone": "+1 408 555 0648",
+            "lastname": "Cruse",
+            "room": 4233,
+            "homeDirectory": "/home/ecruse",
+            "mail": "ecruse@example.com",
+            "location": "Santa Clara",
+            "uidNumber": 1143,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "ejohnson",
+            "userpassword": "marketwise",
+            "fax": "+1 408 555 9332",
+            "firstname": "Emanuel",
+            "fullname": [
+                "Emanuel Johnson"
+            ],
+            "phone": "+1 408 555 3287",
+            "lastname": "Johnson",
+            "room": 3737,
+            "homeDirectory": "/home/ejohnson",
+            "mail": "ejohnson@example.com",
+            "location": "Santa Clara",
+            "uidNumber": 1036,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "ekohler",
+            "userpassword": "guildhall",
+            "fax": "+1 408 555 9332",
+            "firstname": "Elba",
+            "fullname": [
+                "Elba Kohler"
+            ],
+            "phone": "+1 408 555 1926",
+            "lastname": "Kohler",
+            "room": 2721,
+            "homeDirectory": "/home/ekohler",
+            "mail": "ekohler@example.com",
+            "location": "Sunnyvale",
+            "uidNumber": 1052,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "elott",
+            "userpassword": "holdout",
+            "fax": "+1 408 555 9751",
+            "firstname": "Emanuel",
+            "fullname": [
+                "Emanuel Lott"
+            ],
+            "phone": "+1 408 555 0932",
+            "lastname": "Lott",
+            "room": 3906,
+            "homeDirectory": "/home/elott",
+            "mail": "elott@example.com",
+            "location": "Santa Clara",
+            "uidNumber": 1149,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "ewalker",
+            "userpassword": "beguile",
+            "fax": "+1 408 555 8721",
+            "firstname": "Eric",
+            "fullname": [
+                "Eric Walker"
+            ],
+            "phone": "+1 408 555 6387",
+            "lastname": "Walker",
+            "room": 2295,
+            "homeDirectory": "/home/ewalker",
+            "mail": "ewalker@example.com",
+            "location": "Cupertino",
+            "uidNumber": 1140,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "eward",
+            "userpassword": "episcopal",
+            "fax": "+1 408 555 7472",
+            "firstname": "Eric",
+            "fullname": [
+                "Eric Ward"
+            ],
+            "phone": "+1 408 555 2320",
+            "lastname": "Ward",
+            "room": 4874,
+            "homeDirectory": "/home/eward",
+            "mail": "eward@example.com",
+            "location": "Santa Clara",
+            "uidNumber": 1129,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "falbers",
+            "userpassword": "degradation",
+            "fax": "+1 408 555 9751",
+            "firstname": "Frank",
+            "fullname": [
+                "Frank Albers"
+            ],
+            "phone": "+1 408 555 3094",
+            "lastname": "Albers",
+            "room": 1439,
+            "homeDirectory": "/home/falbers",
+            "mail": "falbers@example.com",
+            "location": "Sunnyvale",
+            "uidNumber": 1062,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "gfarmer",
+            "userpassword": "ruling",
+            "fax": "+1 408 555 8473",
+            "firstname": "Gern",
+            "fullname": [
+                "Gern Farmer"
+            ],
+            "phone": "+1 408 555 6201",
+            "lastname": "Farmer",
+            "room": 1269,
+            "homeDirectory": "/home/gfarmer",
+            "mail": "gfarmer@example.com",
+            "location": "Cupertino",
+            "uidNumber": 1007,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "gjensen",
+            "userpassword": "primitive",
+            "fax": "+1 408 555 9751",
+            "firstname": "Gern",
+            "fullname": [
+                "Gern Jensen"
+            ],
+            "phone": "+1 408 555 3299",
+            "lastname": "Jensen",
+            "room": 4609,
+            "homeDirectory": "/home/gjensen",
+            "mail": "gjensen@example.com",
+            "location": "Santa Clara",
+            "uidNumber": 1081,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "gtriplet",
+            "userpassword": "placeable",
+            "fax": "+1 408 555 3372",
+            "firstname": "Gern",
+            "fullname": [
+                "Gern Triplett"
+            ],
+            "phone": "+1 408 555 2582",
+            "lastname": "Triplett",
+            "room": 4023,
+            "homeDirectory": "/home/gtriplet",
+            "mail": "gtriplet@example.com",
+            "location": "Sunnyvale",
+            "uidNumber": 1033,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "gtyler",
+            "userpassword": "typology",
+            "fax": "+1 408 555 4774",
+            "firstname": "Gern",
+            "fullname": [
+                "Gern Tyler"
+            ],
+            "phone": "+1 408 555 1020",
+            "lastname": "Tyler",
+            "room": 312,
+            "homeDirectory": "/home/gtyler",
+            "mail": "gtyler@example.com",
+            "location": "Santa Clara",
+            "uidNumber": 1099,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "hmiller",
+            "userpassword": "hillock",
+            "fax": "+1 408 555 9332",
+            "firstname": "Harry",
+            "fullname": [
+                "Harry Miller"
+            ],
+            "phone": "+1 408 555 9804",
+            "lastname": "Miller",
+            "room": 4304,
+            "homeDirectory": "/home/hmiller",
+            "mail": "hmiller@example.com",
+            "location": "Santa Clara",
+            "uidNumber": 1028,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "jbourke",
+            "userpassword": "brainwash",
+            "fax": "+1 408 555 4774",
+            "firstname": "Jon",
+            "fullname": [
+                "Jon Bourke"
+            ],
+            "phone": "+1 408 555 8541",
+            "lastname": "Bourke",
+            "room": 34,
+            "homeDirectory": "/home/jbourke",
+            "mail": "jbourke@example.com",
+            "location": "Cupertino",
+            "uidNumber": 1116,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "jbrown",
+            "userpassword": "militiamen",
+            "fax": "+1 408 555 3825",
+            "firstname": "Judy",
+            "fullname": [
+                "Judy Brown"
+            ],
+            "phone": "+1 408 555 6885",
+            "lastname": "Brown",
+            "room": 4224,
+            "homeDirectory": "/home/jbrown",
+            "mail": "jbrown@example.com",
+            "location": "Santa Clara",
+            "uidNumber": 1085,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "jburrell",
+            "userpassword": "degrease",
+            "fax": "+1 408 555 4774",
+            "firstname": "James",
+            "fullname": [
+                "James Burrell"
+            ],
+            "phone": "+1 408 555 0751",
+            "lastname": "Burrell",
+            "room": 4926,
+            "homeDirectory": "/home/jburrell",
+            "mail": "jburrell@example.com",
+            "location": "Sunnyvale",
+            "uidNumber": 1067,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "jcampai2",
+            "userpassword": "nominee",
+            "fax": "+1 408 555 3372",
+            "firstname": "Jeffrey",
+            "fullname": [
+                "Jeffrey Campaigne"
+            ],
+            "phone": "+1 408 555 7393",
+            "lastname": "Campaigne",
+            "room": 1377,
+            "homeDirectory": "/home/jcampai2",
+            "mail": "jcampai2@example.com",
+            "location": "Santa Clara",
+            "uidNumber": 1029,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "jcampaig",
+            "userpassword": "grapevine",
+            "fax": "+1 408 555 9751",
+            "firstname": "Jody",
+            "fullname": [
+                "Jody Campaigne"
+            ],
+            "phone": "+1 408 555 1660",
+            "lastname": "Campaigne",
+            "room": 4385,
+            "homeDirectory": "/home/jcampaig",
+            "mail": "jcampaig@example.com",
+            "location": "Cupertino",
+            "uidNumber": 1023,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "jcruse",
+            "userpassword": "bridgework",
+            "fax": "+1 408 555 0111",
+            "firstname": "Jim",
+            "fullname": [
+                "Jim Cruse"
+            ],
+            "phone": "+1 408 555 9482",
+            "lastname": "Cruse",
+            "room": 83,
+            "homeDirectory": "/home/jcruse",
+            "mail": "jcruse@example.com",
+            "location": "Santa Clara",
+            "uidNumber": 1071,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "jfalena",
+            "userpassword": "nightly",
+            "fax": "+1 408 555 7472",
+            "firstname": "John",
+            "fullname": [
+                "John Falena"
+            ],
+            "phone": "+1 408 555 8133",
+            "lastname": "Falena",
+            "room": 1917,
+            "homeDirectory": "/home/jfalena",
+            "mail": "jfalena@example.com",
+            "location": "Santa Clara",
+            "uidNumber": 1034,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "jgoldste",
+            "userpassword": "yellow",
+            "fax": "+1 408 555 7472",
+            "firstname": "Jon",
+            "fullname": [
+                "Jon Goldstein"
+            ],
+            "phone": "+1 408 555 5769",
+            "lastname": "Goldstein",
+            "room": 1454,
+            "homeDirectory": "/home/jgoldste",
+            "mail": "jgoldste@example.com",
+            "location": "Santa Clara",
+            "uidNumber": 1107,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "jhunter",
+            "userpassword": "nanometer",
+            "fax": "+1 408 555 8473",
+            "firstname": "Janet",
+            "fullname": [
+                "Janet Hunter"
+            ],
+            "phone": "+1 408 555 7665",
+            "lastname": "Hunter",
+            "room": 4856,
+            "homeDirectory": "/home/jhunter",
+            "mail": "jhunter@example.com",
+            "location": "Santa Clara",
+            "uidNumber": 1059,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "jjensen",
+            "userpassword": "borderland",
+            "fax": "+1 408 555 8721",
+            "firstname": "Jody",
+            "fullname": [
+                "Jody Jensen"
+            ],
+            "phone": "+1 408 555 7587",
+            "lastname": "Jensen",
+            "room": 4882,
+            "homeDirectory": "/home/jjensen",
+            "mail": "jjensen@example.com",
+            "location": "Sunnyvale",
+            "uidNumber": 1086,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "jlange",
+            "userpassword": "chastity",
+            "fax": "+1 408 555 1992",
+            "firstname": "Jim",
+            "fullname": [
+                "Jim Lange"
+            ],
+            "phone": "+1 408 555 0488",
+            "lastname": "Lange",
+            "room": 3798,
+            "homeDirectory": "/home/jlange",
+            "mail": "jlange@example.com",
+            "location": "Santa Clara",
+            "uidNumber": 1077,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "jlut2",
+            "userpassword": "shrank",
+            "fax": "+1 408 555 3825",
+            "firstname": "James",
+            "fullname": [
+                "James Lutz"
+            ],
+            "phone": "+1 408 555 9689",
+            "lastname": "Lutz",
+            "room": 3541,
+            "homeDirectory": "/home/jlut2",
+            "mail": "jlut2@example.com",
+            "location": "Santa Clara",
+            "uidNumber": 1123,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "jlutz",
+            "userpassword": "autumn",
+            "fax": "+1 408 555 3825",
+            "firstname": "Janet",
+            "fullname": [
+                "Janet Lutz"
+            ],
+            "phone": "+1 408 555 4902",
+            "lastname": "Lutz",
+            "room": 2544,
+            "homeDirectory": "/home/jlutz",
+            "mail": "jlutz@example.com",
+            "location": "Sunnyvale",
+            "uidNumber": 1110,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "jmcFarla",
+            "userpassword": "walnut",
+            "fax": "+1 408 555 4774",
+            "firstname": "Judy",
+            "fullname": [
+                "Judy McFarland"
+            ],
+            "phone": "+1 408 555 2567",
+            "lastname": "McFarland",
+            "room": 2359,
+            "homeDirectory": "/home/jmcFarla",
+            "mail": "jmcFarla@example.com",
+            "location": "Santa Clara",
+            "uidNumber": 1021,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "jmuffly",
+            "userpassword": "dictate",
+            "fax": "+1 408 555 9751",
+            "firstname": "Jeff",
+            "fullname": [
+                "Jeff Muffly"
+            ],
+            "phone": "+1 408 555 5287",
+            "lastname": "Muffly",
+            "room": 997,
+            "homeDirectory": "/home/jmuffly",
+            "mail": "jmuffly@example.com",
+            "location": "Cupertino",
+            "uidNumber": 1104,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "jrent2",
+            "userpassword": "tachistoscope",
+            "fax": "+1 408 555 8473",
+            "firstname": "Judy",
+            "fullname": [
+                "Judy Rentz"
+            ],
+            "phone": "+1 408 555 2523",
+            "lastname": "Rentz",
+            "room": 4405,
+            "homeDirectory": "/home/jrent2",
+            "mail": "jrent2@example.com",
+            "location": "Santa Clara",
+            "uidNumber": 1127,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "jrentz",
+            "userpassword": "meander",
+            "fax": "+1 408 555 1992",
+            "firstname": "Jody",
+            "fullname": [
+                "Jody Rentz"
+            ],
+            "phone": "+1 408 555 5829",
+            "lastname": "Rentz",
+            "room": 3025,
+            "homeDirectory": "/home/jrentz",
+            "mail": "jrentz@example.com",
+            "location": "Santa Clara",
+            "uidNumber": 1093,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "jreuter",
+            "userpassword": "destroy",
+            "fax": "+1 408 555 8721",
+            "firstname": "Jayne",
+            "fullname": [
+                "Jayne Reuter"
+            ],
+            "phone": "+1 408 555 1122",
+            "lastname": "Reuter",
+            "room": 2942,
+            "homeDirectory": "/home/jreuter",
+            "mail": "jreuter@example.com",
+            "location": "Cupertino",
+            "uidNumber": 1015,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "jvaughan",
+            "userpassword": "appoint",
+            "fax": "+1 408 555 9751",
+            "firstname": "Jeff",
+            "fullname": [
+                "Jeff Vaughan"
+            ],
+            "phone": "+1 408 555 4543",
+            "lastname": "Vaughan",
+            "room": 1734,
+            "homeDirectory": "/home/jvaughan",
+            "mail": "jvaughan@example.com",
+            "location": "Sunnyvale",
+            "uidNumber": 1138,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "jvedder",
+            "userpassword": "befitting",
+            "fax": "+1 408 555 0111",
+            "firstname": "Jeff",
+            "fullname": [
+                "Jeff Vedder"
+            ],
+            "phone": "+1 408 555 4668",
+            "lastname": "Vedder",
+            "room": 3445,
+            "homeDirectory": "/home/jvedder",
+            "mail": "jvedder@example.com",
+            "location": "Santa Clara",
+            "uidNumber": 1151,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "jwalker",
+            "userpassword": "dogleg",
+            "fax": "+1 408 555 1992",
+            "firstname": "John",
+            "fullname": [
+                "John Walker"
+            ],
+            "phone": "+1 408 555 1476",
+            "lastname": "Walker",
+            "room": 3915,
+            "homeDirectory": "/home/jwalker",
+            "mail": "jwalker@example.com",
+            "location": "Cupertino",
+            "uidNumber": 1012,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "jwallace",
+            "userpassword": "linear",
+            "fax": "+1 408 555 8473",
+            "firstname": "Judy",
+            "fullname": [
+                "Judy Wallace"
+            ],
+            "phone": "+1 408 555 0319",
+            "lastname": "Wallace",
+            "room": 1033,
+            "homeDirectory": "/home/jwallace",
+            "mail": "jwallace@example.com",
+            "location": "Sunnyvale",
+            "uidNumber": 1011,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "kcarter",
+            "userpassword": "radiosonde",
+            "fax": "+1 408 555 0111",
+            "firstname": "Karen",
+            "fullname": [
+                "Karen Carter"
+            ],
+            "phone": "+1 408 555 4675",
+            "lastname": "Carter",
+            "room": 2320,
+            "homeDirectory": "/home/kcarter",
+            "mail": "kcarter@example.com",
+            "location": "Cupertino",
+            "uidNumber": 1072,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "kcope",
+            "userpassword": "forfeiture",
+            "fax": "+1 408 555 8721",
+            "firstname": "Karl",
+            "fullname": [
+                "Karl Cope"
+            ],
+            "phone": "+1 408 555 2709",
+            "lastname": "Cope",
+            "room": 3040,
+            "homeDirectory": "/home/kcope",
+            "mail": "kcope@example.com",
+            "location": "Sunnyvale",
+            "uidNumber": 1118,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "kjensen",
+            "userpassword": "regulatory",
+            "fax": "+1 408 555 8721",
+            "firstname": "Kurt",
+            "fullname": [
+                "Kurt Jensen"
+            ],
+            "phone": "+1 408 555 6127",
+            "lastname": "Jensen",
+            "room": 1944,
+            "homeDirectory": "/home/kjensen",
+            "mail": "kjensen@example.com",
+            "location": "Santa Clara",
+            "uidNumber": 1039,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "kmcinnis",
+            "userpassword": "stargaze",
+            "fax": "+1 408 555 0111",
+            "firstname": "Kelly",
+            "fullname": [
+                "Kelly Mcinnis"
+            ],
+            "phone": "+1 408 555 8596",
+            "lastname": "Mcinnis",
+            "room": 4312,
+            "homeDirectory": "/home/kmcinnis",
+            "mail": "kmcinnis@example.com",
+            "location": "Santa Clara",
+            "uidNumber": 1113,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "kschmith",
+            "userpassword": "purvey",
+            "fax": "+1 408 555 3372",
+            "firstname": "Kelly",
+            "fullname": [
+                "Kelly Schmith"
+            ],
+            "phone": "+1 408 555 9749",
+            "lastname": "Schmith",
+            "room": 2221,
+            "homeDirectory": "/home/kschmith",
+            "mail": "kschmith@example.com",
+            "location": "Cupertino",
+            "uidNumber": 1096,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "kvaughan",
+            "userpassword": "bribery",
+            "fax": "+1 408 555 3372",
+            "firstname": "Kirsten",
+            "fullname": [
+                "Kirsten Vaughan"
+            ],
+            "phone": "+1 408 555 5625",
+            "lastname": "Vaughan",
+            "room": 2871,
+            "homeDirectory": "/home/kvaughan",
+            "mail": "kvaughan@example.com",
+            "location": "Sunnyvale",
+            "uidNumber": 1004,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "kwinters",
+            "userpassword": "forsook",
+            "fax": "+1 408 555 1992",
+            "firstname": "Kelly",
+            "fullname": [
+                "Kelly Winters"
+            ],
+            "phone": "+1 408 555 9069",
+            "lastname": "Winters",
+            "room": 4178,
+            "homeDirectory": "/home/kwinters",
+            "mail": "kwinters@example.com",
+            "location": "Santa Clara",
+            "uidNumber": 1008,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "lcampbel",
+            "userpassword": "impress",
+            "fax": "+1 408 555 1992",
+            "firstname": "Laurel",
+            "fullname": [
+                "Laurel Campbell"
+            ],
+            "phone": "+1 408 555 2537",
+            "lastname": "Campbell",
+            "room": 2073,
+            "homeDirectory": "/home/lcampbel",
+            "mail": "lcampbel@example.com",
+            "location": "Santa Clara",
+            "uidNumber": 1053,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "llabonte",
+            "userpassword": "sourdough",
+            "fax": "+1 408 555 8473",
+            "firstname": "Lee",
+            "fullname": [
+                "Lee Labonte"
+            ],
+            "phone": "+1 408 555 0957",
+            "lastname": "Labonte",
+            "room": 2854,
+            "homeDirectory": "/home/llabonte",
+            "mail": "llabonte@example.com",
+            "location": "Santa Clara",
+            "uidNumber": 1022,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "lrentz",
+            "userpassword": "calcium",
+            "fax": "+1 408 555 8473",
+            "firstname": "Lex",
+            "fullname": [
+                "Lex Rentz"
+            ],
+            "phone": "+1 408 555 2019",
+            "lastname": "Rentz",
+            "room": 2203,
+            "homeDirectory": "/home/lrentz",
+            "mail": "lrentz@example.com",
+            "location": "Santa Clara",
+            "uidNumber": 1137,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "lstockto",
+            "userpassword": "brooklyn",
+            "fax": "+1 408 555 4774",
+            "firstname": "Lee",
+            "fullname": [
+                "Lee Stockton"
+            ],
+            "phone": "+1 408 555 0518",
+            "lastname": "Stockton",
+            "room": 169,
+            "homeDirectory": "/home/lstockto",
+            "mail": "lstockto@example.com",
+            "location": "Santa Clara",
+            "uidNumber": 1115,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "lulrich",
+            "userpassword": "attribution",
+            "fax": "+1 408 555 3825",
+            "firstname": "Lee",
+            "fullname": [
+                "Lee Ulrich"
+            ],
+            "phone": "+1 408 555 8652",
+            "lastname": "Ulrich",
+            "room": 985,
+            "homeDirectory": "/home/lulrich",
+            "mail": "lulrich@example.com",
+            "location": "Sunnyvale",
+            "uidNumber": 1030,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "mcarter",
+            "userpassword": "mainland",
+            "fax": "+1 408 555 4661",
+            "firstname": "Mike",
+            "fullname": [
+                "Mike Carter"
+            ],
+            "phone": "+1 408 555 1846",
+            "lastname": "Carter",
+            "room": 3819,
+            "homeDirectory": "/home/mcarter",
+            "mail": "mcarter@example.com",
+            "location": "Santa Clara",
+            "uidNumber": 1087,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "mjablons",
+            "userpassword": "minimal",
+            "fax": "+1 408 555 7472",
+            "firstname": "Morgan",
+            "fullname": [
+                "Morgan Jablonski"
+            ],
+            "phone": "+1 408 555 0813",
+            "lastname": "Jablonski",
+            "room": 3160,
+            "homeDirectory": "/home/mjablons",
+            "mail": "mjablons@example.com",
+            "location": "Cupertino",
+            "uidNumber": 1124,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "mlangdon",
+            "userpassword": "threat",
+            "fax": "+1 408 555 9332",
+            "firstname": "Marcus",
+            "fullname": [
+                "Marcus Langdon"
+            ],
+            "phone": "+1 408 555 6249",
+            "lastname": "Langdon",
+            "room": 4471,
+            "homeDirectory": "/home/mlangdon",
+            "mail": "mlangdon@example.com",
+            "location": "Cupertino",
+            "uidNumber": 1031,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "mlott",
+            "userpassword": "cognac",
+            "fax": "+1 408 555 9332",
+            "firstname": "Mike",
+            "fullname": [
+                "Mike Lott"
+            ],
+            "phone": "+1 408 555 2234",
+            "lastname": "Lott",
+            "room": 498,
+            "homeDirectory": "/home/mlott",
+            "mail": "mlott@example.com",
+            "location": "Sunnyvale",
+            "uidNumber": 1040,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "mmcinnis",
+            "userpassword": "calcify",
+            "fax": "+1 408 555 8721",
+            "firstname": "Marcus",
+            "fullname": [
+                "Marcus Mcinnis"
+            ],
+            "phone": "+1 408 555 9655",
+            "lastname": "Mcinnis",
+            "room": 4818,
+            "homeDirectory": "/home/mmcinnis",
+            "mail": "mmcinnis@example.com",
+            "location": "Santa Clara",
+            "uidNumber": 1061,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "mreuter",
+            "userpassword": "oblivious",
+            "fax": "+1 408 555 3825",
+            "firstname": "Matthew",
+            "fullname": [
+                "Matthew Reuter"
+            ],
+            "phone": "+1 408 555 6879",
+            "lastname": "Reuter",
+            "room": 1356,
+            "homeDirectory": "/home/mreuter",
+            "mail": "mreuter@example.com",
+            "location": "Sunnyvale",
+            "uidNumber": 1098,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "mschneid",
+            "userpassword": "motorcycle",
+            "fax": "+1 408 555 3372",
+            "firstname": "Martin",
+            "fullname": [
+                "Martin Schneider"
+            ],
+            "phone": "+1 408 555 5017",
+            "lastname": "Schneider",
+            "room": 3153,
+            "homeDirectory": "/home/mschneid",
+            "mail": "mschneid@example.com",
+            "location": "Cupertino",
+            "uidNumber": 1063,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "mtalbot",
+            "userpassword": "currant",
+            "fax": "+1 408 555 8473",
+            "firstname": "Martin",
+            "fullname": [
+                "Martin Talbot"
+            ],
+            "phone": "+1 408 555 9228",
+            "lastname": "Talbot",
+            "room": 1415,
+            "homeDirectory": "/home/mtalbot",
+            "mail": "mtalbot@example.com",
+            "location": "Cupertino",
+            "uidNumber": 1084,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "mtyler",
+            "userpassword": "instantiate",
+            "fax": "+1 408 555 4661",
+            "firstname": "Matthew",
+            "fullname": [
+                "Matthew Tyler"
+            ],
+            "phone": "+1 408 555 7907",
+            "lastname": "Tyler",
+            "room": 2701,
+            "homeDirectory": "/home/mtyler",
+            "mail": "mtyler@example.com",
+            "location": "Cupertino",
+            "uidNumber": 1148,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "mvaughan",
+            "userpassword": "submitted",
+            "fax": "+1 408 555 0111",
+            "firstname": "Matthew",
+            "fullname": [
+                "Matthew Vaughan"
+            ],
+            "phone": "+1 408 555 4692",
+            "lastname": "Vaughan",
+            "room": 4508,
+            "homeDirectory": "/home/mvaughan",
+            "mail": "mvaughan@example.com",
+            "location": "Sunnyvale",
+            "uidNumber": 1122,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "mward",
+            "userpassword": "normal",
+            "fax": "+1 408 555 0111",
+            "firstname": "Marcus",
+            "fullname": [
+                "Marcus Ward"
+            ],
+            "phone": "+1 408 555 5688",
+            "lastname": "Ward",
+            "room": 1707,
+            "homeDirectory": "/home/mward",
+            "mail": "mward@example.com",
+            "location": "Santa Clara",
+            "uidNumber": 1019,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "mwhite",
+            "userpassword": "staple",
+            "fax": "+1 408 555 4661",
+            "firstname": "Morgan",
+            "fullname": [
+                "Morgan White"
+            ],
+            "phone": "+1 408 555 9620",
+            "lastname": "White",
+            "room": 3088,
+            "homeDirectory": "/home/mwhite",
+            "mail": "mwhite@example.com",
+            "location": "Cupertino",
+            "uidNumber": 1080,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "pchassin",
+            "userpassword": "barbital",
+            "fax": "+1 408 555 3372",
+            "firstname": "Peter",
+            "fullname": [
+                "Peter Chassin"
+            ],
+            "phone": "+1 408 555 2816",
+            "lastname": "Chassin",
+            "room": 4524,
+            "homeDirectory": "/home/pchassin",
+            "mail": "pchassin@example.com",
+            "location": "Santa Clara",
+            "uidNumber": 1125,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "pcruse",
+            "userpassword": "pauper",
+            "fax": "+1 408 555 9751",
+            "firstname": "Patricia",
+            "fullname": [
+                "Patricia Cruse"
+            ],
+            "phone": "+1 408 555 8641",
+            "lastname": "Cruse",
+            "room": 3967,
+            "homeDirectory": "/home/pcruse",
+            "mail": "pcruse@example.com",
+            "location": "Santa Clara",
+            "uidNumber": 1064,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "phun2",
+            "userpassword": "absorb",
+            "fax": "+1 408 555 4661",
+            "firstname": "Pete",
+            "fullname": [
+                "Pete Hunt"
+            ],
+            "phone": "+1 408 555 0342",
+            "lastname": "Hunt",
+            "room": 87,
+            "homeDirectory": "/home/phun2",
+            "mail": "phun2@example.com",
+            "location": "Santa Clara",
+            "uidNumber": 1121,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "phunt",
+            "userpassword": "wastewater",
+            "fax": "+1 408 555 0111",
+            "firstname": "Philip",
+            "fullname": [
+                "Philip Hunt"
+            ],
+            "phone": "+1 408 555 1242",
+            "lastname": "Hunt",
+            "room": 1183,
+            "homeDirectory": "/home/phunt",
+            "mail": "phunt@example.com",
+            "location": "Sunnyvale",
+            "uidNumber": 1074,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "plorig",
+            "userpassword": "calorimeter",
+            "fax": "+1 408 555 7472",
+            "firstname": "Peter",
+            "fullname": [
+                "Peter Lorig"
+            ],
+            "phone": "+1 408 555 0624",
+            "lastname": "Lorig",
+            "room": 1276,
+            "homeDirectory": "/home/plorig",
+            "mail": "plorig@example.com",
+            "location": "Sunnyvale",
+            "uidNumber": 1094,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "polfield",
+            "userpassword": "monologue",
+            "fax": "+1 408 555 8473",
+            "firstname": "Peter",
+            "fullname": [
+                "Peter Olfield"
+            ],
+            "phone": "+1 408 555 8231",
+            "lastname": "Olfield",
+            "room": 1376,
+            "homeDirectory": "/home/polfield",
+            "mail": "polfield@example.com",
+            "location": "Santa Clara",
+            "uidNumber": 1135,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "prigden",
+            "userpassword": "epiphyseal",
+            "fax": "+1 408 555 8473",
+            "firstname": "Peter",
+            "fullname": [
+                "Peter Rigden"
+            ],
+            "phone": "+1 408 555 5099",
+            "lastname": "Rigden",
+            "room": 1271,
+            "homeDirectory": "/home/prigden",
+            "mail": "prigden@example.com",
+            "location": "Sunnyvale",
+            "uidNumber": 1037,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "prose",
+            "userpassword": "regatta",
+            "fax": "+1 408 555 3825",
+            "firstname": "Paula",
+            "fullname": [
+                "Paula Rose"
+            ],
+            "phone": "+1 408 555 9998",
+            "lastname": "Rose",
+            "room": 542,
+            "homeDirectory": "/home/prose",
+            "mail": "prose@example.com",
+            "location": "Cupertino",
+            "uidNumber": 1058,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "pshelton",
+            "userpassword": "nosedive",
+            "fax": "+1 408 555 4661",
+            "firstname": "Patricia",
+            "fullname": [
+                "Patricia Shelton"
+            ],
+            "phone": "+1 408 555 6442",
+            "lastname": "Shelton",
+            "room": 2918,
+            "homeDirectory": "/home/pshelton",
+            "mail": "pshelton@example.com",
+            "location": "Cupertino",
+            "uidNumber": 1092,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "ptyler",
+            "userpassword": "vinegar",
+            "fax": "+1 408 555 4774",
+            "firstname": "Pete",
+            "fullname": [
+                "Pete Tyler"
+            ],
+            "phone": "+1 408 555 3335",
+            "lastname": "Tyler",
+            "room": 327,
+            "homeDirectory": "/home/ptyler",
+            "mail": "ptyler@example.com",
+            "location": "Santa Clara",
+            "uidNumber": 1069,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "pworrell",
+            "userpassword": "solicitous",
+            "fax": "+1 408 555 7472",
+            "firstname": "Pete",
+            "fullname": [
+                "Pete Worrell"
+            ],
+            "phone": "+1 408 555 1637",
+            "lastname": "Worrell",
+            "room": 2449,
+            "homeDirectory": "/home/pworrell",
+            "mail": "pworrell@example.com",
+            "location": "Santa Clara",
+            "uidNumber": 1097,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "rbannist",
+            "userpassword": "demonstrate",
+            "fax": "+1 408 555 4661",
+            "firstname": "Richard",
+            "fullname": [
+                "Richard Bannister"
+            ],
+            "phone": "+1 408 555 1833",
+            "lastname": "Bannister",
+            "room": 983,
+            "homeDirectory": "/home/rbannist",
+            "mail": "rbannist@example.com",
+            "location": "Santa Clara",
+            "uidNumber": 1043,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "rdaugherty",
+            "userpassword": "apples",
+            "fax": "+1 408 555 1992",
+            "firstname": "Robert",
+            "fullname": [
+                "Robert Daugherty"
+            ],
+            "phone": "+1 408 555 1296",
+            "lastname": "Daugherty",
+            "room": 194,
+            "homeDirectory": "/home/rdaugherty",
+            "mail": "rdaugherty@example.com",
+            "location": "Sunnyvale",
+            "uidNumber": 1014,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "rfish",
+            "userpassword": "mailbox",
+            "fax": "+1 408 555 8473",
+            "firstname": "Randy",
+            "fullname": [
+                "Randy Fish"
+            ],
+            "phone": "+1 408 555 9865",
+            "lastname": "Fish",
+            "room": 2317,
+            "homeDirectory": "/home/rfish",
+            "mail": "rfish@example.com",
+            "location": "Santa Clara",
+            "uidNumber": 1073,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "rfisher",
+            "userpassword": "pomegranate",
+            "fax": "+1 408 555 1992",
+            "firstname": "Randy",
+            "fullname": [
+                "Randy Fisher"
+            ],
+            "phone": "+1 408 555 1506",
+            "lastname": "Fisher",
+            "room": 1579,
+            "homeDirectory": "/home/rfisher",
+            "mail": "rfisher@example.com",
+            "location": "Cupertino",
+            "uidNumber": 1132,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "rfrancis",
+            "userpassword": "hacienda",
+            "fax": "+1 408 555 4774",
+            "firstname": "Richard",
+            "fullname": [
+                "Richard Francis"
+            ],
+            "phone": "+1 408 555 8157",
+            "lastname": "Francis",
+            "room": 3482,
+            "homeDirectory": "/home/rfrancis",
+            "mail": "rfrancis@example.com",
+            "location": "Santa Clara",
+            "uidNumber": 1079,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "rhunt",
+            "userpassword": "becloud",
+            "fax": "+1 408 555 8473",
+            "firstname": "Richard",
+            "fullname": [
+                "Richard Hunt"
+            ],
+            "phone": "+1 408 555 0139",
+            "lastname": "Hunt",
+            "room": 718,
+            "homeDirectory": "/home/rhunt",
+            "mail": "rhunt@example.com",
+            "location": "Santa Clara",
+            "uidNumber": 1145,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "rjense2",
+            "userpassword": "transpose",
+            "fax": "+1 408 555 1992",
+            "firstname": "Randy",
+            "fullname": [
+                "Randy Jensen"
+            ],
+            "phone": "+1 408 555 9045",
+            "lastname": "Jensen",
+            "room": 1984,
+            "homeDirectory": "/home/rjense2",
+            "mail": "rjense2@example.com",
+            "location": "Sunnyvale",
+            "uidNumber": 1144,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "rjensen",
+            "userpassword": "disciplinarian",
+            "fax": "+1 408 555 3825",
+            "firstname": "Richard",
+            "fullname": [
+                "Richard Jensen"
+            ],
+            "phone": "+1 408 555 5957",
+            "lastname": "Jensen",
+            "room": 2631,
+            "homeDirectory": "/home/rjensen",
+            "mail": "rjensen@example.com",
+            "location": "Cupertino",
+            "uidNumber": 1120,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "rmills",
+            "userpassword": "condescend",
+            "fax": "+1 408 555 3372",
+            "firstname": "Randy",
+            "fullname": [
+                "Randy Mills"
+            ],
+            "phone": "+1 408 555 2072",
+            "lastname": "Mills",
+            "room": 3823,
+            "homeDirectory": "/home/rmills",
+            "mail": "rmills@example.com",
+            "location": "Santa Clara",
+            "uidNumber": 1045,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "rschneid",
+            "userpassword": "decorous",
+            "fax": "+1 408 555 9332",
+            "firstname": "Rachel",
+            "fullname": [
+                "Rachel Schneider"
+            ],
+            "phone": "+1 408 555 9908",
+            "lastname": "Schneider",
+            "room": 4183,
+            "homeDirectory": "/home/rschneid",
+            "mail": "rschneid@example.com",
+            "location": "Santa Clara",
+            "uidNumber": 1075,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "rulrich",
+            "userpassword": "twinkle",
+            "fax": "+1 408 555 8721",
+            "firstname": "Randy",
+            "fullname": [
+                "Randy Ulrich"
+            ],
+            "phone": "+1 408 555 5311",
+            "lastname": "Ulrich",
+            "room": 1282,
+            "homeDirectory": "/home/rulrich",
+            "mail": "rulrich@example.com",
+            "location": "Sunnyvale",
+            "uidNumber": 1078,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "scarte2",
+            "userpassword": "scooter",
+            "fax": "+1 408 555 9751",
+            "firstname": "Stephen",
+            "fullname": [
+                "Stephen Carter"
+            ],
+            "phone": "+1 408 555 6022",
+            "lastname": "Carter",
+            "room": 2013,
+            "homeDirectory": "/home/scarte2",
+            "mail": "scarte2@example.com",
+            "location": "Santa Clara",
+            "uidNumber": 1050,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "scarter",
+            "userpassword": "sprain",
+            "fax": "+1 408 555 9751",
+            "firstname": "Sam",
+            "fullname": [
+                "Sam Carter"
+            ],
+            "phone": "+1 408 555 4798",
+            "lastname": "Carter",
+            "room": 4612,
+            "homeDirectory": "/home/scarter",
+            "mail": "scarter@example.com",
+            "location": "Sunnyvale",
+            "uidNumber": 1002,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "sfarmer",
+            "userpassword": "triumphal",
+            "fax": "+1 408 555 4661",
+            "firstname": "Scott",
+            "fullname": [
+                "Scott Farmer"
+            ],
+            "phone": "+1 408 555 4228",
+            "lastname": "Farmer",
+            "room": 19,
+            "homeDirectory": "/home/sfarmer",
+            "mail": "sfarmer@example.com",
+            "location": "Santa Clara",
+            "uidNumber": 1089,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "skellehe",
+            "userpassword": "sweltering",
+            "fax": "+1 408 555 8721",
+            "firstname": "Sue",
+            "fullname": [
+                "Sue Kelleher"
+            ],
+            "phone": "+1 408 555 3480",
+            "lastname": "Kelleher",
+            "room": 1608,
+            "homeDirectory": "/home/skellehe",
+            "mail": "skellehe@example.com",
+            "location": "Santa Clara",
+            "uidNumber": 1047,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "slee",
+            "userpassword": "revertive",
+            "fax": "+1 408 555 4774",
+            "firstname": "Scott",
+            "fullname": [
+                "Scott Lee"
+            ],
+            "phone": "+1 408 555 2335",
+            "lastname": "Lee",
+            "room": 1806,
+            "homeDirectory": "/home/slee",
+            "mail": "slee@example.com",
+            "location": "Santa Clara",
+            "uidNumber": 1055,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "smason",
+            "userpassword": "sensible",
+            "fax": "+1 408 555 0111",
+            "firstname": "Sue",
+            "fullname": [
+                "Sue Mason"
+            ],
+            "phone": "+1 408 555 9780",
+            "lastname": "Mason",
+            "room": 4971,
+            "homeDirectory": "/home/smason",
+            "mail": "smason@example.com",
+            "location": "Cupertino",
+            "uidNumber": 1068,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "speterso",
+            "userpassword": "quinine",
+            "fax": "+1 408 555 9332",
+            "firstname": "Sue",
+            "fullname": [
+                "Sue Peterson"
+            ],
+            "phone": "+1 408 555 3613",
+            "lastname": "Peterson",
+            "room": 3073,
+            "homeDirectory": "/home/speterso",
+            "mail": "speterso@example.com",
+            "location": "Cupertino",
+            "uidNumber": 1035,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "striplet",
+            "userpassword": "compactify",
+            "fax": "+1 408 555 4661",
+            "firstname": "Stephen",
+            "fullname": [
+                "Stephen Triplett"
+            ],
+            "phone": "+1 408 555 4519",
+            "lastname": "Triplett",
+            "room": 3083,
+            "homeDirectory": "/home/striplet",
+            "mail": "striplet@example.com",
+            "location": "Santa Clara",
+            "uidNumber": 1032,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "tclow",
+            "userpassword": "cardreader",
+            "fax": "+1 408 555 1992",
+            "firstname": "Torrey",
+            "fullname": [
+                "Torrey Clow"
+            ],
+            "phone": "+1 408 555 8825",
+            "lastname": "Clow",
+            "room": 4376,
+            "homeDirectory": "/home/tclow",
+            "mail": "tclow@example.com",
+            "location": "Santa Clara",
+            "uidNumber": 1013,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "tcouzens",
+            "userpassword": "tambourine",
+            "fax": "+1 408 555 4661",
+            "firstname": "Trent",
+            "fullname": [
+                "Trent Couzens"
+            ],
+            "phone": "+1 408 555 8401",
+            "lastname": "Couzens",
+            "room": 3994,
+            "homeDirectory": "/home/tcouzens",
+            "mail": "tcouzens@example.com",
+            "location": "Sunnyvale",
+            "uidNumber": 1114,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "tcruse",
+            "userpassword": "flinty",
+            "fax": "+1 408 555 4774",
+            "firstname": "Tobias",
+            "fullname": [
+                "Tobias Cruse"
+            ],
+            "phone": "+1 408 555 5980",
+            "lastname": "Cruse",
+            "room": 4191,
+            "homeDirectory": "/home/tcruse",
+            "mail": "tcruse@example.com",
+            "location": "Cupertino",
+            "uidNumber": 1128,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "tjames",
+            "userpassword": "turtle",
+            "fax": "+1 408 555 9751",
+            "firstname": "Tobias",
+            "fullname": [
+                "Tobias James"
+            ],
+            "phone": "+1 408 555 2458",
+            "lastname": "James",
+            "room": 730,
+            "homeDirectory": "/home/tjames",
+            "mail": "tjames@example.com",
+            "location": "Santa Clara",
+            "uidNumber": 1141,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "tjensen",
+            "userpassword": "ecosystem",
+            "fax": "+1 408 555 3825",
+            "firstname": "Ted",
+            "fullname": [
+                "Ted Jensen"
+            ],
+            "phone": "+1 408 555 8622",
+            "lastname": "Jensen",
+            "room": 4717,
+            "homeDirectory": "/home/tjensen",
+            "mail": "tjensen@example.com",
+            "location": "Santa Clara",
+            "uidNumber": 1105,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "tkelly",
+            "userpassword": "risible",
+            "fax": "+1 408 555 1992",
+            "firstname": "Timothy",
+            "fullname": [
+                "Timothy Kelly"
+            ],
+            "phone": "+1 408 555 4295",
+            "lastname": "Kelly",
+            "room": 3107,
+            "homeDirectory": "/home/tkelly",
+            "mail": "tkelly@example.com",
+            "location": "Santa Clara",
+            "uidNumber": 1065,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "tlabonte",
+            "userpassword": "express",
+            "fax": "+1 408 555 9751",
+            "firstname": "Tim",
+            "fullname": [
+                "Tim Labonte"
+            ],
+            "phone": "+1 408 555 0058",
+            "lastname": "Labonte",
+            "room": 1426,
+            "homeDirectory": "/home/tlabonte",
+            "mail": "tlabonte@example.com",
+            "location": "Cupertino",
+            "uidNumber": 1054,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "tmason",
+            "userpassword": "squatted",
+            "fax": "+1 408 555 9751",
+            "firstname": "Torrey",
+            "fullname": [
+                "Torrey Mason"
+            ],
+            "phone": "+1 408 555 1596",
+            "lastname": "Mason",
+            "room": 1124,
+            "homeDirectory": "/home/tmason",
+            "mail": "tmason@example.com",
+            "location": "Sunnyvale",
+            "uidNumber": 1016,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "tmorris",
+            "userpassword": "irrefutable",
+            "fax": "+1 408 555 8473",
+            "firstname": "Ted",
+            "fullname": [
+                "Ted Morris"
+            ],
+            "phone": "+1 408 555 9187",
+            "lastname": "Morris",
+            "room": 4117,
+            "homeDirectory": "/home/tmorris",
+            "mail": "tmorris@example.com",
+            "location": "Santa Clara",
+            "uidNumber": 1003,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "tpierce",
+            "userpassword": "rascal",
+            "fax": "+1 408 555 9332",
+            "firstname": "Tobias",
+            "fullname": [
+                "Tobias Pierce"
+            ],
+            "phone": "+1 408 555 1531",
+            "lastname": "Pierce",
+            "room": 1383,
+            "homeDirectory": "/home/tpierce",
+            "mail": "tpierce@example.com",
+            "location": "Sunnyvale",
+            "uidNumber": 1042,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "trigden",
+            "userpassword": "sensitive",
+            "fax": "+1 408 555 8473",
+            "firstname": "Torrey",
+            "fullname": [
+                "Torrey Rigden"
+            ],
+            "phone": "+1 408 555 9280",
+            "lastname": "Rigden",
+            "room": 3584,
+            "homeDirectory": "/home/trigden",
+            "mail": "trigden@example.com",
+            "location": "Santa Clara",
+            "uidNumber": 1009,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "tschmith",
+            "userpassword": "compost",
+            "fax": "+1 408 555 1992",
+            "firstname": "Tobias",
+            "fullname": [
+                "Tobias Schmith"
+            ],
+            "phone": "+1 408 555 9626",
+            "lastname": "Schmith",
+            "room": 4607,
+            "homeDirectory": "/home/tschmith",
+            "mail": "tschmith@example.com",
+            "location": "Cupertino",
+            "uidNumber": 1100,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "tschneid",
+            "userpassword": "chaperone",
+            "fax": "+1 408 555 8473",
+            "firstname": "Torrey",
+            "fullname": [
+                "Torrey Schneider"
+            ],
+            "phone": "+1 408 555 7086",
+            "lastname": "Schneider",
+            "room": 2292,
+            "homeDirectory": "/home/tschneid",
+            "mail": "tschneid@example.com",
+            "location": "Sunnyvale",
+            "uidNumber": 1057,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "ttully",
+            "userpassword": "schooner",
+            "fax": "+1 408 555 0111",
+            "firstname": "Torrey",
+            "fullname": [
+                "Torrey Tully"
+            ],
+            "phone": "+1 408 555 2274",
+            "lastname": "Tully",
+            "room": 3924,
+            "homeDirectory": "/home/ttully",
+            "mail": "ttully@example.com",
+            "location": "Sunnyvale",
+            "uidNumber": 1130,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "tward",
+            "userpassword": "cedilla",
+            "fax": "+1 408 555 4661",
+            "firstname": "Tobias",
+            "fullname": [
+                "Tobias Ward"
+            ],
+            "phone": "+1 408 555 7202",
+            "lastname": "Ward",
+            "room": 2238,
+            "homeDirectory": "/home/tward",
+            "mail": "tward@example.com",
+            "location": "Santa Clara",
+            "uidNumber": 1091,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "wlutz",
+            "userpassword": "bassinet",
+            "fax": "+1 408 555 9332",
+            "firstname": "Wendy",
+            "fullname": [
+                "Wendy Lutz"
+            ],
+            "phone": "+1 408 555 3358",
+            "lastname": "Lutz",
+            "room": 4912,
+            "homeDirectory": "/home/wlutz",
+            "mail": "wlutz@example.com",
+            "location": "Santa Clara",
+            "uidNumber": 1109,
+            "gidNumber": 1000
+        },
+        {
+            "uid": "fdupont",
+            "userpassword": "ratatouille",
+            "fax": "+33 1 23 45 67 88",
+            "firstname": "Fredérique",
+            "fullname": [
+                "Frederique Dupont"
+            ],
+            "phone": "+33 1 23 45 67 89",
+            "lastname": "Dupont",
+            "room": 42,
+            "homeDirectory": "/home/fdupont",
+            "mail": "fdupont@example.fr",
+            "location": "Paris",
+            "uidNumber": 1110,
+            "gidNumber": 1000
+        }
+    ]
+}
