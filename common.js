@@ -15,7 +15,7 @@
  */
 
 /**
- * Common functions for ForgeRock common REST demo.
+ * Functions to access ForgeRock common REST API.
  */
 
 // Create a resource putting an object to a resource URL, specifying the ID.
@@ -29,7 +29,20 @@ function create(object, resource) {
 }
 
 // Read a resource based on a resource URL.
-function read(resource) {
+// The optional fields takes an array of field names, such as uid and mail
+// for users, or name and members for groups.
+function read(resource, fields) {
+    fields = (typeof fields === "undefined") ? [] : fields;
+
+    var args = "";
+    if (fields.length > 0) {
+        args = "?_fields=" + fields[0];
+        for (var i = 1; i < fields.length; i++) {
+            args = args + "," + fields[i];
+        }
+    }
+    resource = resource + args;
+
     var xhr = new XMLHttpRequest();
     xhr.open('GET', resource, false);
     xhr.send("");
@@ -57,12 +70,14 @@ function remove(resource) {
 }
 
 // Return an array of user or group objects.
-// The endpoint takes a URI as a string, either "/users" or "/groups".
+// The resource takes a collection resource like http://host:/port/json/users,
+// or http://host:/port/json/groups.
 // The optional fields takes an array of field names, such as uid and mail
 // for users, or name and members for groups.
-function queryObjects(endpoint, fields) {
-    var query = getServletURL() + endpoint + "?_queryId=all";
+function queryObjects(resource, fields) {
+    fields = (typeof fields === "undefined") ? [] : fields;
 
+    var query = resource + "?_queryId=all";
     var args = "";
     if (fields.length > 0) {
         args = "&_fields=" + fields[0];
@@ -86,96 +101,4 @@ function queryObjects(endpoint, fields) {
         }
     }
     return allObjects;
-}
-
-// JSON Resource Servlet deployed under /json, at http://host:port/json.
-function getServletURL() {
-    var protocol = window.location.protocol;
-    var hostname = window.location.hostname;
-    var port = window.location.port;
-    return protocol + "//" + hostname + ":" + port + "/json";
-}
-
-// Return base URL of demo.
-function getDemoBase() {
-    return window.location.href.substring(
-        0, window.location.href.lastIndexOf('/'));
-}
-
-// Prepare string for logging into HTML page.
-function preWrap(string) { return "<pre>" + string + "</pre>"}
-
-// Empty DOM node of all children.
-function empty(node) {
-    while (node.hasChildNodes()) {
-        node.removeChild(node.lastChild);
-    }
-    return;
-}
-
-// Create a user object.
-function User(mail, first, last, pwd, tel, fax, room, loc, home, uid, gid) {
-    if (mail != null && mail != "") {
-        this.uid = mail.substring(0, mail.lastIndexOf('@'));
-        this.mail = mail;
-    } else {
-        return null;
-    }
-
-    if (first != null && first != "") { this.firstname = first; }
-    if (last != null && last != "") { this.lastname = last; }
-    var full = first + last;
-    if (full != null && full != "") { this.fullname = [first + " " + last]; }
-
-    if (pwd != null && pwd != "") { this.userpassword = pwd; }
-
-    if (tel != null && tel != "") { this.phone = tel; }
-    if (fax != null && fax != "") { this.fax = fax; }
-
-    if (room != null && room != "" ) { this.room = room; }
-    if (loc != null && loc != "Select Location") { this.location = loc; }
-
-    if (home != null && home != "") { this.homeDirectory = home; }
-    if (uid != null && uid != "") { this.uidNumber = uid; }
-    if (gid != null && gid !="" ) { this.gidNumber = gid; }
-    return this;
-}
-
-// http://stackoverflow.com/questions/1026069/capitalize-the-first-letter-of-string-in-javascript
-String.prototype.capitalize = function() {
-    return this.charAt(0).toUpperCase() + this.slice(1);
-}
-
-// Build and return a table of objects such as users or groups.
-function getHeaderRow(object) {
-    var cells = "";
-    for (var prop in object) {
-        cells = cells + "<th>" + prop.capitalize() + "</th>";
-    }
-    return "<tr>" + cells + "</tr>";
-}
-
-function getDataRow(object) {
-    var cells = "";
-    for (var prop in object) {
-        cells = cells + "<td>" + object[prop] + "</td>";
-    }
-    return "<tr>" + cells + "</tr>";
-}
-
-function getTable(objects) {
-    if (objects.length == 0) { return ""; }
-
-    var rows = getHeaderRow(objects[0]);
-    for (var i = 0; i < objects.length; i++) {
-        rows = rows + getDataRow(objects[i]);
-    }
-    return "<table>" + rows + "</table>";
-}
-
-// Return a user's full name given the user's ID.
-function getUserName(id) {
-    return JSON.parse(
-            read(getServletURL() + "/users/" + id + "?_fields=fullname"))
-        .fullname;
 }

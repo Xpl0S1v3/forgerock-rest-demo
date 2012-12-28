@@ -20,242 +20,533 @@
 <head>
     <title>ForgeRock Common REST Demo</title>
     <link rel="shortcut icon" href="images/favicon.ico" />
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
     <script type="text/javascript" src="common.js"></script>
-    <script type="text/javascript" src="provision.js"></script>
+    <script type="text/javascript" src="util.js"></script>
+    <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+    <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            $( "#tabs" ).tabs();
+        });
+    </script>
 </head>
 <body>
+<a href="http://commons.forgerock.org/forgerock-rest/json-resource-servlet/"><img
+        style="float: right;"
+        src="http://forgerock.org/images/ForgeRock-Community-grey-295x50.png"
+/></a>
 <h1>ForgeRock Common REST Demo</h1>
 
-<div class="toc">
-    <p><a href="#about">About the ForgeRock Common REST API</a></p>
-
-    <p><a href="#prerequisites">Before You Start</a></p>
-
-    <p><a href="#create">Creating Users &amp; Groups</a></p>
-
-    <p><a href="#read">Reading Users &amp; Groups</a></p>
-
-    <p><a href="#update">Updating Users &amp; Groups</a></p>
-
-    <p><a href="#delete">Deleting Users &amp; Groups</a></p>
-
-    <p><a href="#patch">Patching Users &amp; Groups</a></p>
-
-    <p><a href="#action">Performing Actions</a></p>
-
-    <p><a href="#query">Querying Users &amp; Groups</a></p>
-</div>
-
-<div class="section">
-    <a name="about"></a>
-
-    <h2>About the ForgeRock Common REST API</h2>
-
-    <p>
-        The ForgeRock common REST API defines seven verbs:
-    </p>
-
-    <dl>
-        <dt>Create</dt>
-        <dd>Add a resource that does not yet exist</dd>
-
-        <dt>Read</dt>
-        <dd>Retrieve a single resource</dd>
-
-        <dt>Update</dt>
-        <dd>Replace an existing resource</dd>
-
-        <dt>Delete</dt>
-        <dd>Remove an existing resource</dd>
-
-        <dt>Patch</dt>
-        <dd>Modify part of an existing resource</dd>
-
-        <dt>Action</dt>
-        <dd>Perform a predefined action</dd>
-
-        <dt>Query</dt>
-        <dd>List a set of resources</dd>
-    </dl>
-
-    <p>
-        A resource store can use the ForgeRock
-        <a href="http://commons.forgerock.org/forgerock-rest/">REST
-            libraries</a>
-        to expose an API that defines these verbs in the common way.
-    </p>
-
-    <p>
-        A resource store defines collection endpoints for resources that it
-        serves. The default
-        <a href="http://commons.forgerock.org/forgerock-rest/json-resource-servlet/"
-                >JSON Resource Servlet</a> defines two collection endpoints,
-        <code>/users</code> and <code>/groups</code>.
-    </p>
-
-    <p>
-        A resource store may extend available actions and queries.
-    </p>
+<div id="tabs">
 
     <ul>
-        <li>
-            <p>
-                A resource store may define additional actions that it allows.
-            </p>
-
-            <p>
-                By default, the only actions defined are those corresponding
-                to the other six basic verbs: create, read, update, delete,
-                patch, and query.
-            </p>
-
-            <p>
-                The default JSON Resource Servlet defines no additional
-                actions.
-            </p>
-        </li>
-        <li>
-            <p>
-                A resource store may further define queries that can be called
-                by their IDs.
-            </p>
-
-            <p>
-                The default JSON Resource Servlet defines no queries to be
-                called by ID.
-            </p>
-        </li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#prerequisites">Before You Start</a></li>
+        <li><a href="#create">Create</a></li>
+        <li><a href="#read">Read</a></li>
+        <li><a href="#update">Update</a></li>
+        <li><a href="#delete">Delete</a></li>
+        <li><a href="#patch">Patch</a></li>
+        <li><a href="#action">Action</a></li>
+        <li><a href="#query">Query</a></li>
     </ul>
-</div>
 
-<div class="section">
-    <a name="prerequisites"></a>
+    <div id="about">
+        <p>
+            The ForgeRock common REST API defines seven verbs:
+        </p>
 
-    <h2>Before You Start</h2>
+        <dl>
+            <dt>Create</dt>
+            <dd>Add a resource that does not yet exist</dd>
 
-    <p>
-        This demo uses the REST API exposed by the JSON Resource Servlet.
-    </p>
+            <dt>Read</dt>
+            <dd>Retrieve a single resource</dd>
 
-    <ol>
-        <li>
-            Download and deploy the JSON Resource Servlet .war under
-            <code>http://<i>host</i>:<i>port</i>/json</code>.
-        </li>
+            <dt>Update</dt>
+            <dd>Replace an existing resource</dd>
 
-        <li>
-            Deploy this demo as static pages alongside the JSON Resource
-            Servlet.
-        </li>
-    </ol>
+            <dt>Delete</dt>
+            <dd>Remove an existing resource</dd>
 
-    <p>
-        This demo provides sample <a href="Users.json" target="_blank">users</a>
-        and <a href="Groups.json" target="_blank">groups</a> in JSON format.
-    </p>
+            <dt>Patch</dt>
+            <dd>Modify part of an existing resource</dd>
 
-    <p>
-        Provision users and groups with the buttons below. When you click one
-        of the buttons, the latest response from the JSON Resource Servlet is
-        shown below the buttons.
-    </p>
+            <dt>Action</dt>
+            <dd>Perform a predefined action</dd>
 
-    <button type="button" onclick="provisionUsers()">Provision Users</button>
-    <button type="button" onclick="provisionGroups()">Provision Groups</button>
-    <button type="button"
-            onclick="document.getElementById('provisioning-log').innerHTML = ''"
-            >Clear Log</button>
-    <div id="provisioning-log"></div>
-</div>
+            <dt>Query</dt>
+            <dd>List a set of resources</dd>
+        </dl>
 
-<div class="section">
-    <a name="create"></a>
+        <p>
+            A resource store can use the ForgeRock
+            <a href="http://commons.forgerock.org/forgerock-rest/">REST
+                libraries</a>
+            to expose an API that defines these verbs in the common way.
+        </p>
 
-    <h2>Creating Users &amp; Groups</h2>
-    <!-- Create a single user -->
-    <!-- Create a single group -->
-    <p>See <a href="create.html">create.html</a>.</p>
+        <p>
+            A resource store defines collection endpoints for resources that it
+            serves. The default
+            <a href="http://commons.forgerock.org/forgerock-rest/json-resource-servlet/"
+                    >JSON Resource Servlet</a> defines two collection endpoints,
+            <code>/users</code> and <code>/groups</code>.
+        </p>
 
-</div>
+        <p>
+            A resource store may extend available actions and queries.
+        </p>
 
-<div class="section">
-    <a name="read"></a>
+        <ul>
+            <li>
+                <p>
+                    A resource store may define additional actions that it allows.
+                </p>
 
-    <h2>Reading Users &amp; Groups</h2>
-    <!-- Read a single user with optional _fields -->
-    <!-- Read a single group with member IDs converted to names -->
-    <p>See <a href="read.html">read.html</a>.</p>
+                <p>
+                    By default, the only actions defined are those corresponding
+                    to the other six basic verbs: create, read, update, delete,
+                    patch, and query.
+                </p>
 
-</div>
+                <p>
+                    The default JSON Resource Servlet defines no additional
+                    actions.
+                </p>
+            </li>
+            <li>
+                <p>
+                    A resource store may further define queries that can be
+                    called by their IDs.
+                </p>
 
-<div class="section">
-    <a name="update"></a>
+                <p>
+                    The default JSON Resource Servlet defines no queries to be
+                    called by ID.
+                </p>
+            </li>
+        </ul>
+    </div>
 
-    <h2>Updating Users &amp; Groups</h2>
-    <!-- Update a single user -->
-    <!-- Update a single group -->
-    <p>See <a href="update.html">update.html</a>.</p>
+    <div id="prerequisites">
+        <p>
+            This demo uses the REST API exposed by the JSON Resource Servlet.
+        </p>
 
-</div>
+        <ol>
+            <li>
+                Download and deploy the JSON Resource Servlet .war under
+                <code>http://<i>host</i>:<i>port</i>/json</code>.
+            </li>
 
-<div class="section">
-    <a name="delete"></a>
+            <li>
+                Deploy this demo as static pages alongside the JSON Resource
+                Servlet.
+            </li>
+        </ol>
 
-    <h2>Deleting Users &amp; Groups</h2>
-    <!-- Delete a single user -->
-    <!-- Delete a single group -->
-    <p>See <a href="delete.html">delete.html</a>.</p>
+        <p>
+            This demo provides sample <a href="Users.json" target="_blank">users</a>
+            and <a href="Groups.json" target="_blank">groups</a> in JSON format.
+        </p>
 
-</div>
+        <p>
+            Provision users and groups with the buttons below. When you click one
+            of the buttons, the latest response from the JSON Resource Servlet is
+            shown below the buttons.
+        </p>
 
-<div class="section">
-    <a name="patch"></a>
+        <button type="button" onclick="provisionUsers('provisioning-log')"
+                >Provision Users</button>
+        <button type="button" onclick="provisionGroups('provisioning-log')"
+                >Provision Groups</button>
+        <button type="button"
+                onclick="document.getElementById('provisioning-log').innerHTML = ''"
+                >Clear Log</button>
+        <div id="provisioning-log"></div>
+    </div>
 
-    <h2>Patching Users &amp; Groups</h2>
+    <div id="create">
+        <form id="create-user" action="#">
+            <h3>Create User</h3>
 
-    <p>TODO: Demonstrate when patch is finished. See <a href="https://bugster.forgerock.org/jira/browse/CREST-3">CREST-3</a>.</p>
-</div>
+            <label for="create-mail">Email: </label>
+            <input id="create-mail" type="email" required="required" /> *
+            <br />
 
-<div class="section">
-    <a name="action"></a>
+            <label for="create-firstname">First Name: </label>
+            <input id="create-firstname" type="text" required="required" /> *
+            <br />
 
-    <h2>Performing Actions</h2>
+            <label for="create-lastname">Last Name: </label>
+            <input id="create-lastname" type="text" required="required" /> *
+            <br />
 
-    <p>
-        The default JSON Resource Servlet implements only the actions
-        corresponding to the other six basic verbs: create, read, update,
-        delete, patch, and query.
-    </p>
+            <label for="create-userpassword">Password: </label>
+            <input id="create-userpassword" type="password" />
+            <br />
 
-    <p>
-        In other words, you can call those verbs as actions with an HTTP POST.
-        For example, to create a user with an ID assigned by the resource store,
-        POST the JSON representation of the user to
-        <code>/users?_action=create</code>.
-    </p>
-</div>
+            <label for="create-phone">Phone: </label>
+            <input id="create-phone" type="tel" />
+            <br />
 
-<div class="section">
-    <a name="query"></a>
+            <label for="create-fax">Fax: </label>
+            <input id="create-fax" type="tel" />
+            <br />
 
-    <h2>Querying Users &amp; Groups</h2>
+            <label for="create-room">Room Number: </label>
+            <input id="create-room" type="number" />
+            <br />
 
-    <!-- List all users in tables with optional _fields -->
-    <!-- http://localhost:8080/json/users?_queryId=all&_fields=mail,uid -->
+            <label for="create-location">Location: </label>
+            <select id="create-location">
+                <option>Select Location</option>
+                <option value="Cupertino">Cupertino</option>
+                <option value="Paris">Paris</option>
+                <option value="Santa Clara">Santa Clara</option>
+                <option value="Sunnyvale">Sunnyvale</option>
+            </select>
+            <br />
 
-    <!-- List groups in tables with member IDs converted to names -->
-    <!-- http://localhost:8080/json/groups?_queryId=all&_fields=name,members,description -->
+            <label for="create-homeDirectory">Home Directory:</label>
+            <input id="create-homeDirectory" type="text" />
+            <br />
 
-    <p>See <a href="query.html">query.html</a>.</p>
+            <label for="create-uidNumber">UID Number: </label>
+            <input id="create-uidNumber" type="number" />
+            <br />
 
-    <pre>
-        TODO:
-        // _filter=FILTER, where the filter is TBD
-        // _sortKeys=[+-]FIELD,..., where + is encoded as %2B
-        // _pagedResultsCookie=STRING
-        // _pageSize=INTEGER
-        // _queryId=ID to trigger a stored query, also takes arg1=value1 to argN=valueN
-    </pre>
+            <label for="create-gidNumber">GID Number: </label>
+            <input id="create-gidNumber" type="number" />
+            <br />
+
+            <button type="button"
+                    onclick="createUser(this.form, 'create-', 'user-log')"
+                    >Create</button>
+        </form>
+        <div id="create-user-log"></div>
+
+        <form id="create-group">
+            <h3>Create Group</h3>
+
+            <label for="create-name">Name: </label>
+            <input id="create-name" type="text" required="required" /> *
+            <br />
+
+            <label for="create-description">Description: </label>
+            <input id="create-description" type="text" />
+            <br />
+
+            <label for="create-users">Members:</label>
+            <select id="create-users" multiple="multiple"
+                    onfocus="populateUserList('create-users')"></select>
+            <br />
+
+            <button type="button"
+                    onclick="createGroup(this.form, 'create-', 'group-log')"
+                    >Create</button>
+        </form>
+        <div id="create-group-log"></div>
+    </div>
+
+    <div id="read">
+        <form id="read-user">
+            <h3>Read User</h3>
+            <label for="read-select-user">User to read: </label>
+            <select id="read-select-user"
+                    onfocus="populateUserList('read-select-user')">
+                <option>Select User</option>
+            </select>
+            <button type="button"
+                    onclick="writeUserTable(this.form, 'read-', 'select-user', 'user-table')"
+                    >Read</button>
+            <br />
+
+            Properties:
+            <input id="read-mail" type="checkbox" checked="checked" />
+            <label for="read-mail">Email</label>
+
+            <input id="read-fullname" type="checkbox" checked="checked" />
+            <label for="read-fullname">Full name</label>
+
+            <input id="read-phone" type="checkbox" />
+            <label for="read-phone">Phone number</label>
+
+            <input id="read-all" type="checkbox" />
+            <label for="read-all">Everything</label>
+        </form>
+        <div id="read-user-table"></div>
+
+        <form id="read-group">
+            <h3>Read Group</h3>
+            <label for="read-select-group">Group to read: </label>
+            <select id="read-select-group"
+                    onfocus="populateGroupList('read-select-group')">
+                <option>Select Group</option>
+            </select>
+
+            <button type="button"
+                    onclick="writeGroupTable(this.form, 'read-', 'select-group', 'group-table')"
+                    >Read</button>
+        </form>
+        <div id="read-group-table"></div>
+    </div>
+
+    <div id="update">
+        <form id="update-user">
+            <h3>Update User</h3>
+
+            <label for="update-select-user">User to update: </label>
+            <select id="update-select-user"
+                    onfocus="populateUserList('update-select-user')">
+                <option>Select User</option>
+            </select>
+            <br />
+
+            <button type="button"
+                    onclick="selectUserFromList(this.form, 'update-', 'select-user')"
+                    >Load</button>
+            <br />
+
+            <input id="update-userId" type="hidden" />
+            <input id="update-userVersion" type="hidden" />
+
+            <label for="update-mail">Email: </label>
+            <input id="update-mail" type="email" readonly="readonly" />
+            <br />
+
+            <label for="update-firstname">First Name: </label>
+            <input id="update-firstname" type="text" />
+            <br />
+
+            <label for="update-lastname">Last Name: </label>
+            <input id="update-lastname" type="text" />
+            <br />
+
+            <label for="update-userpassword">Password: </label>
+            <input id="update-userpassword" type="password" />
+            <br />
+
+            <label for="update-phone">Phone: </label>
+            <input id="update-phone" type="tel" />
+            <br />
+
+            <label for="update-fax">Fax: </label>
+            <input id="update-fax" type="tel" />
+            <br />
+
+            <label for="update-room">Room Number: </label>
+            <input id="update-room" type="number" />
+            <br />
+
+            <label for="update-location">Location: </label>
+            <select id="update-location">
+                <option>Select Location</option>
+                <option value="Cupertino">Cupertino</option>
+                <option value="Paris">Paris</option>
+                <option value="Santa Clara">Santa Clara</option>
+                <option value="Sunnyvale">Sunnyvale</option>
+            </select>
+            <br />
+
+            <label for="update-homeDirectory">Home Directory:</label>
+            <input id="update-homeDirectory" type="text" />
+            <br />
+
+            <label for="update-uidNumber">UID Number: </label>
+            <input id="update-uidNumber" type="number" />
+            <br />
+
+            <label for="update-gidNumber">GID Number: </label>
+            <input id="update-gidNumber" type="number" />
+            <br />
+
+            <button type="button"
+                    onclick="updateUser(this.form, 'update-', 'user-log')"
+                    >Update</button>
+        </form>
+        <div id="update-user-log"></div>
+
+        <form id="update-group">
+            <h3>Update Group</h3>
+
+            <label for="update-select-group">Group to update: </label>
+            <select id="update-select-group"
+                    onfocus="populateGroupList('update-select-group')">
+                <option>Select Group</option>
+            </select>
+            <br />
+
+            <button type="button"
+                    onclick="selectGroupFromList(this.form, 'update-', 'select-group', 'members')"
+                    >Load</button>
+            <br />
+
+            <input id="update-groupId" type="hidden" />
+            <input id="update-groupVersion" type="hidden" />
+
+            <label for="update-name">Name: </label>
+            <input id="update-name" type="text" readonly="readonly" />
+            <br />
+
+            <label for="update-description">Description: </label>
+            <input id="update-description" type="text" />
+            <br />
+
+            <label for="update-members">Members: </label>
+            <select id="update-members" multiple="multiple"></select>
+            <br />
+
+            <button type="button"
+                    onclick="updateGroup(this.form, 'update-', 'group-log')"
+                    >Update</button>
+        </form>
+        <div id="update-group-log"></div>
+    </div>
+
+    <div id="delete">
+        <form id="delete-user-by-uid" action="#">
+            <h3>Delete User By ID</h3>
+
+            <label>Lookup user IDs: </label>
+            <button type="button" onclick="listUsersByUid('delete-user-log')"
+                    >List User IDs</button>
+            <button type="button"
+                    onclick="document.getElementById('delete-user-log').innerHTML = ''"
+                    >Clear List</button>
+            <br />
+            <label for="delete-uid">Specify user ID: </label>
+            <input id="delete-uid" type="text" value=""/>
+            <button type="button"
+                    onclick="deleteUser(this.form, 'delete-', 'user-log')"
+                    >Delete</button>
+        </form>
+
+        <form id="delete-user-from-list" action="#">
+            <h3>Delete User From List</h3>
+
+            <label for="delete-select-user">User: </label>
+            <select id="delete-select-user"
+                    onfocus="populateUserList('delete-select-user')">
+                <option>Select User</option>
+            </select>
+            <button type="button"
+                    onclick="deleteUserFromList('delete-select-user', 'delete-user-log')"
+                    >Delete</button>
+        </form>
+        <div id="delete-user-log"></div>
+
+        <p>
+            Delete a group with one of the following forms.
+        </p>
+        <form id="delete-group-by-name" action="#">
+            <h3>Delete Group By ID</h3>
+
+            <label>Lookup group names: </label>
+            <button type="button" onclick="listGroupsByName('delete-group-log')"
+                    >List Groups</button>
+            <button type="button"
+                    onclick="document.getElementById('delete-group-log').innerHTML = ''"
+                    >Clear List</button>
+            <br />
+            <label for="delete-name">Specify group name: </label>
+            <input id="delete-name" type="text" value="" />
+            <button type="button"
+                    onclick="deleteGroup(this.form, 'delete-', 'group-log')"
+                    >Delete</button>
+        </form>
+
+        <form id="delete-group-from-list" action="#">
+            <h3>Delete Group From List</h3>
+
+            <label for="delete-select-group">Group: </label>
+            <select id="delete-select-group"
+                    onfocus="populateGroupList('delete-select-group')">
+                <option>Select Group</option>
+            </select>
+            <button type="button"
+                    onclick="deleteGroupFromList('delete-select-group', 'delete-group-log')"
+                    >Delete</button>
+        </form>
+        <div id="delete-group-log"></div>
+    </div>
+
+    <div id="patch">
+        <p>
+            TODO: Demonstrate when patch is finished. See
+            <a href="https://bugster.forgerock.org/jira/browse/CREST-3">CREST-3</a>.
+        </p>
+    </div>
+
+    <div id="action">
+        <p>
+            The default JSON Resource Servlet implements only the actions
+            corresponding to the other six basic verbs: create, read, update,
+            delete, patch, and query.
+        </p>
+
+        <p>
+            In other words, you can call those verbs as actions with an HTTP POST.
+            For example, to create a user with an ID assigned by the resource store,
+            POST the JSON representation of the user to
+            <code>/users?_action=create</code>.
+        </p>
+    </div>
+
+    <div id="query">
+        <form id="query-users">
+            <h3>Query Users</h3>
+            Retrieve properties:
+            <input id="query-mail" type="checkbox" checked="checked" />
+            <label for="query-mail">Email</label>
+
+            <input id="query-fullname" type="checkbox" checked="checked" />
+            <label for="query-fullname">Full name</label>
+
+            <input id="query-phone" type="checkbox" />
+            <label for="query-phone">Phone number</label>
+
+            <input id="query-all" type="checkbox" />
+            <label for="query-all">Everything</label>
+            <br />
+
+            <button type="button"
+                    onclick="writeUsersTable(this.form, 'query-', 'table')"
+                    >Query Users</button>
+        </form>
+
+        <form id="query-groups">
+            <h3>Query Groups</h3>
+            Retrieve properties:
+            <input id="query-name" type="checkbox" checked="checked" />
+            <label for="query-name">Name</label>
+
+            <input id="query-members" type="checkbox" checked="checked" />
+            <label for="query-members">Members</label>
+
+            <input id="query-description" type="checkbox" />
+            <label for="query-description">Description</label>
+            <br />
+
+            <button type="button"
+                    onclick="writeGroupsTable(this.form, 'query-', 'table')"
+                    >Query Groups</button>
+        </form>
+
+        <div id="query-table"></div>
+
+        <pre>
+            TODO:
+            // _filter=FILTER, where the filter is TBD
+            // _sortKeys=[+-]FIELD,..., where + is encoded as %2B
+            // _pagedResultsCookie=STRING
+            // _pageSize=INTEGER
+            // _queryId=ID to trigger a stored query, also takes arg1=value1 to argN=valueN
+        </pre>
+    </div>
+
 </div>
 </body>
 </html>
