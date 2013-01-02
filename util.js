@@ -44,9 +44,9 @@ function provisionGroups(logId) {
     setGroups();
 
     var collection = JSON.parse(getGroups());
-    for (var i = 0; i < collection.groups.length; i++) {
-        var group = collection.groups[i];
-        var resource = getGroupContainer() + collection.groups[i].name;
+    for (var i = 0; i < collection.length; i++) {
+        var group = collection[i];
+        var resource = getGroupContainer() + collection[i].name;
         var result = create(group, resource);
         writeLog(logId, result);
     }
@@ -58,9 +58,9 @@ function provisionUsers(logId) {
     setUsers();
 
     var collection = JSON.parse(getUsers());
-    for (var i = 0; i < collection.users.length; i++) {
-        var user = collection.users[i];
-        var resource = getUserContainer() + collection.users[i].uid;
+    for (var i = 0; i < collection.length; i++) {
+        var user = collection[i];
+        var resource = getUserContainer() + collection[i].uid;
         var result = create(user, resource);
         writeLog(logId, result);
     }
