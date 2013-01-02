@@ -67,7 +67,7 @@ function provisionUsers(logId) {
 }
 
 // Create user based on a form having prefixed field names.
-// Log results to the element with id = prefix + logId.
+// Log results to the element with id = logId.
 function createUser(form, prefix, logId) {
     try {
         var myUser = new User(
@@ -86,14 +86,14 @@ function createUser(form, prefix, logId) {
 
         var resource = getUserContainer() + myUser.uid;
         var result = create(myUser, resource);
-        writeLog(prefix + logId, result);
+        writeLog(logId, result);
     } catch (err) {
-        writeLog(prefix + logId, "Create failed: " + err)
+        writeLog(logId, "Create failed: " + err)
     }
 }
 
 // Create group based on a form having prefixed field names.
-// Log results to the element with id = prefix + logId.
+// Log results to the element with id = logId.
 function createGroup(form, prefix, logId) {
     var members = [];
     for (var i = 0; i < form[prefix + "users"].options.length; i++) {
@@ -111,9 +111,9 @@ function createGroup(form, prefix, logId) {
         var resource = getGroupContainer() + myGroup.name;
         console.log(myGroup);
         var result = create(myGroup, resource);
-        writeLog(prefix + logId, result);
+        writeLog(logId, result);
     } catch (err) {
-        writeLog(prefix + logId, "Create failed: " + err);
+        writeLog(logId, "Create failed: " + err);
     }
 }
 
@@ -177,7 +177,7 @@ function clearUserForm(form, prefix) {
 
 // Update a user in JSON Resource Servlet based on the content of a form.
 // Form fields start with prefix.
-// Log results to element with id = prefix + logId.
+// Log results to element with id = logId.
 function updateUser(form, prefix, logId) {
     var myUser;
     try {
@@ -195,13 +195,13 @@ function updateUser(form, prefix, logId) {
             form[prefix + "gidNumber"].value
         );
     } catch (err) {
-        writeLog(prefix + logId, "Update failed: " + err);
+        writeLog(logId, "Update failed: " + err);
         return;
     }
 
     var resource = getUserContainer() + form[prefix + "userId"].value;
     var result = update(myUser, form[prefix + "userVersion"].value, resource);
-    writeLog(prefix + logId, result);
+    writeLog(logId, result);
     clearUserForm(form, prefix);
 }
 
@@ -255,7 +255,7 @@ function selectGroupFromList(form, prefix, listId, memberListId) {
 
 // Update a group in JSON Resource Servlet based on the content of a form.
 // Form fields start with prefix.
-// Log results to element with id = prefix + logId.
+// Log results to element with id = logId.
 function updateGroup(form, prefix, logId) {
     var myGroup;
 
@@ -273,12 +273,12 @@ function updateGroup(form, prefix, logId) {
             members
         );
     } catch (err) {
-        writeLog(prefix + logId, "Update failed: " + err);
+        writeLog(logId, "Update failed: " + err);
     }
 
     var resource = getGroupContainer() + form[prefix + "groupId"].value;
     var result = update(myGroup, form[prefix + "groupVersion"].value, resource);
-    writeLog(prefix + logId, result);
+    writeLog(logId, result);
 }
 
 // List users by their user ID strings in sorted order.
@@ -297,11 +297,11 @@ function listUsersByUid(logId) {
 
 // Delete a user taking the user ID from a form.
 // Form fields start with prefix.
-// Log results to element with id = prefix + logId.
+// Log results to element with id = logId.
 function deleteUser(form, prefix, logId) {
     var resource = getUserContainer() + form[prefix + "uid"].value;
     var result = remove(resource);
-    writeLog(prefix + logId, result);
+    writeLog(logId, result);
 }
 
 // Populate a <select> element with user name <option> elements.
@@ -349,11 +349,11 @@ function deleteUserFromList(listId, logId) {
 
 // Delete a group taking the name from a form.
 // Form fields start with prefix.
-// Log results to element with id = prefix + logId.
+// Log results to element with id = logId.
 function deleteGroup(form, prefix, logId) {
     var resource = getGroupContainer() + form[prefix + "name"].value;
     var result = remove(resource);
-    writeLog(prefix + logId, result);
+    writeLog(logId, result);
 }
 
 // Populate a <select> element with group name <option> elements.
@@ -387,7 +387,7 @@ function deleteGroupFromList(listId, logId) {
 
 // Return a table of one user, based on fields selected on form.
 // Form fields start with prefix.
-// Display results to element with id = prefix + table.
+// Display results to element with id = tableId.
 function writeUserTable(form, prefix, listId, tableId) {
     var list = document.getElementById(prefix + listId);
     var id = list.options[list.selectedIndex].value;
@@ -403,12 +403,12 @@ function writeUserTable(form, prefix, listId, tableId) {
 
     var resource = getUserContainer() + id;
     var user = JSON.parse(read(resource, fields));
-    writeTable(prefix + tableId, [user]);
+    writeTable(tableId, [user]);
 }
 
 // Return a table of all users, based on fields selected on form.
 // Form fields start with prefix.
-// Display results to element with id = prefix + table.
+// Display results to element with id = tableId.
 function writeUsersTable(form, prefix, tableId) {
     var fields = [];
     if (form[prefix + "all"].checked) {
@@ -419,14 +419,14 @@ function writeUsersTable(form, prefix, tableId) {
         if (form[prefix + "phone"].checked) { fields.push("phone"); }
     }
 
-    writeTable(prefix + tableId, queryObjects(getUsersURL(), fields)
+    writeTable(tableId, queryObjects(getUsersURL(), fields)
         .sort(function(a,b){ return a.fullname[0].toString()
             .localeCompare(b.fullname[0].toString()) }));
 }
 
 // Return a table of one group.
 // Form fields start with prefix.
-// Display results to element with id = prefix + table.
+// Display results to element with id = tableId.
 function writeGroupTable(form, prefix, listId, tableId) {
     var list = document.getElementById(prefix + listId);
     var id = list.options[list.selectedIndex].value;
@@ -444,12 +444,12 @@ function writeGroupTable(form, prefix, listId, tableId) {
         }
     }
     group.members = names;
-    writeTable(prefix + tableId, [group]);
+    writeTable(tableId, [group]);
 }
 
 // Return a table of all groups, based on fields selected on form.
 // Form fields start with prefix.
-// Display results to element with id = prefix + table.
+// Display results to element with id = tableId.
 function writeGroupsTable(form, prefix, tableId) {
     var fields = [];
     if (form[prefix + "name"].checked) { fields.push("name"); }
@@ -470,7 +470,7 @@ function writeGroupsTable(form, prefix, tableId) {
         groups[i].members = names;
     }
 
-    writeTable(prefix + tableId, groups.sort(function(a,b){
+    writeTable(tableId, groups.sort(function(a,b){
         return a.name.toString().localeCompare(b.name.toString()) }));
 }
 
@@ -651,7 +651,8 @@ function getUserName(id) {
 
 // Write a log message into a <div id="logId"></div>.
 function writeLog(logId, message) {
-    document.getElementById(logId).innerHTML = preWrap(message);
+    document.getElementById(logId).innerHTML = "<h3>Log Message</h3>"
+        + preWrap(message);
 }
 
 // Write a table into a <div id="tableId"></div>.
