@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<!--
+/*
+ * The contents of this file are subject to the terms of the Common Development and
+ * Distribution License (the License). You may not use this file except in compliance with the
+ * License.
+ *
+ * You can obtain a copy of the License at legal/CDDLv1.0.txt. See the License for the
+ * specific language governing permission and limitations under the License.
+ *
+ * When distributing Covered Software, include this CDDL Header Notice in each file and include
+ * the License file at legal/CDDLv1.0.txt. If applicable, add the following below the CDDL
+ * Header, with the fields enclosed by brackets [] replaced by your own identifying
+ * information: "Portions Copyrighted [year] [name of copyright owner]".
+ *
+ * Copyright © 2013 ForgeRock AS. All rights reserved.
+ */
+-->
+<html>
+<head>
+<title>Autocomplete</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
+<script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+<script type="text/javascript">
+$(function() {
+	var userNames = ["Test Users"];
+	var groupNames = ["Test Groups"];
+
+	$("#users").autocomplete({
+		source: function(request, response) {
+			$.ajax({
+				url: "/json/users",
+				dataType: "json",
+				data: "_filter=fullname co " + request.term + "&_fields=fullname,_id",
+				success: function(data) {
+					response($.map(data.result, function(item) {
+						return {
+							label: item.fullname[0],
+							value: item._id
+						}
+					}));
+				}
+			});
+		},
+		select: function(event, ui) { $("#log").html(ui.item.value); }
+	});
+	$("#groups").autocomplete({
+		source: function(request, response) {
+			$.ajax({
+				url: "/json/groups",
+				dataType: "json",
+				data: "_filter=name co " + request.term + "&_fields=name,_id",
+				success: function(data) {
+					response($.map(data.result, function(item) {
+						return {
+							label: item.name,
+							value: item._id
+						}
+					}));
+				}
+			});
+		},
+		select: function(event, ui) { $("#log").html(ui.item.value); }
+	});
+	
+	$( "#tabs" ).tabs();
+});
+</script>
+</head>
+<body>
+<h1>Autocomplete</h1>
+<div id="tabs">
+<ul>
+ 	<li><a href="#user-sect">Users</a></li>
+ 	<li><a href="#group-sect">Groups</a></li>
+</ul>
+
+    <div id="user-sect">
+    <label for="users">Users</label>
+    <input id="users" />
+	</div>
+
+    <div id="group-sect">
+    <label for="groups">Groups</label>
+    <input id="groups" />
+    </div>
+</div>
+
+<div id="log"></div>
+</body>
+</html>
