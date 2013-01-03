@@ -38,6 +38,13 @@
             $( ".field" ).menu();
             $( "select" ).menu();
             $( "form" ).sortable();
+            $( "#log").dialog({
+                autoOpen: false,
+                width: "auto"
+            });
+            $( ".logger").click(function() {
+                $("#log").dialog("open");
+            });
         });
     </script>
     <style type="text/css">
@@ -156,10 +163,10 @@
             shown below the buttons.
         </p>
 
-        <button type="button"
+        <button type="button" class="logger"
                 onclick="provisionUsers('log'); return false;"
                 >Provision Users</button>
-        <button type="button"
+        <button type="button" class="logger"
                 onclick="provisionGroups('log'); return false;"
                 >Provision Groups</button>
     </div>
@@ -206,7 +213,7 @@
             <label for="create-gidNumber">GID Number</label>
             <input id="create-gidNumber" class="field" type="number" />
 
-            <button type="button"
+            <button type="button" class="logger"
                     onclick="createUser(this.form, 'create-', 'log'); return false;"
                     >Create</button>
         </form>
@@ -225,7 +232,7 @@
                 <option>Select Members</option>
             </select>
 
-            <button type="button"
+            <button type="button" class="logger"
                     onclick="createGroup(this.form, 'create-', 'log'); return false;"
                     >Create</button>
         </form>
@@ -239,7 +246,7 @@
                 <option>Select User</option>
             </select>
 
-            <button type="button"
+            <button type="button" class="logger"
                     onclick="writeUserTable(this.form, 'read-', 'select-user', 'log'); return false;"
                     >Read</button>
 
@@ -267,7 +274,7 @@
                 <option>Select Group</option>
             </select>
 
-            <button type="button"
+            <button type="button" class="logger"
                     onclick="writeGroupTable(this.form, 'read-', 'select-group', 'log'); return false;"
                     >Read</button>
         </form>
@@ -329,7 +336,7 @@
             <label for="update-gidNumber">GID Number</label>
             <input id="update-gidNumber" class="field" type="number" />
 
-            <button type="button"
+            <button type="button" class="logger"
                     onclick="updateUser(this.form, 'update-', 'log'); return false;
                     ">Update</button>
         </form>
@@ -358,7 +365,7 @@
             <label for="update-members">Members</label>
             <select id="update-members" class="field" multiple="multiple"></select>
 
-            <button type="button"
+            <button type="button" class="logger"
                     onclick="updateGroup(this.form, 'update-', 'log'); return false;
                     ">Update</button>
         </form>
@@ -367,12 +374,12 @@
     <div id="delete">
         <form id="delete-user-by-uid" action="#">
             <h3>Delete User By ID</h3>
-            <button type="button"
+            <button type="button" class="logger"
                     onclick="listUsersByUid('log'); return false;"
                     >List User IDs</button>
             <label for="delete-uid">Specify user ID</label>
             <input id="delete-uid" class="field" type="text" value=""/>
-            <button type="button"
+            <button type="button" class="logger"
                     onclick="deleteUser(this.form, 'delete-', 'log'); return false;"
                     >Delete</button>
         </form>
@@ -383,7 +390,7 @@
                     onfocus="populateUserList('delete-select-user')">
                 <option>Select User</option>
             </select>
-            <button type="button"
+            <button type="button" class="logger"
                     onclick="deleteUserFromList('delete-select-user', 'log'); return false;"
                     >Delete</button>
         </form>
@@ -392,12 +399,12 @@
 
         <form id="delete-group-by-name" action="#">
             <h3>Delete Group By ID</h3>
-            <button type="button"
+            <button type="button" class="logger"
                     onclick="listGroupsByName('log'); return false;"
                     >List Groups</button>
             <label for="delete-name">Specify group name</label>
             <input id="delete-name" class="field" type="text" value="" />
-            <button type="button"
+            <button type="button" class="logger"
                     onclick="deleteGroup(this.form, 'delete-', 'log'); return false;"
                     >Delete</button>
         </form>
@@ -408,7 +415,7 @@
                     onfocus="populateGroupList('delete-select-group')">
                 <option>Select Group</option>
             </select>
-            <button type="button"
+            <button type="button" class="logger"
                     onclick="deleteGroupFromList('delete-select-group', 'log'); return false;"
                     >Delete</button>
         </form>
@@ -462,7 +469,7 @@
                 <label for="query-all">Everything</label>
             </div>
 
-            <button type="button"
+            <button type="button" class="logger"
                     onclick="writeUsersTable(this.form, 'query-', 'log'); return false;"
                     >Query Users</button>
         </form>
@@ -481,7 +488,7 @@
                 <label for="query-description">Description</label>
             </div>
 
-            <button type="button"
+            <button type="button" class="logger"
                     onclick="writeGroupsTable(this.form, 'query-', 'log'); return false;"
                     >Query Groups</button>
         </form>
@@ -570,6 +577,6 @@ TODO:
     </div>
 </div>
 
-<div id="log"></div>
+<div id="log" title="Result"></div>
 </body>
 </html>

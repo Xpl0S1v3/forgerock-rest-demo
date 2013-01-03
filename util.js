@@ -48,7 +48,7 @@ function provisionGroups(logId) {
         var group = collection[i];
         var resource = getGroupContainer() + collection[i].name;
         var result = create(group, resource);
-        writeLog(logId, result);
+        writeLog(logId, "Last group provisioned:\n" + prettyPrint(result));
     }
 }
 
@@ -62,7 +62,7 @@ function provisionUsers(logId) {
         var user = collection[i];
         var resource = getUserContainer() + collection[i].uid;
         var result = create(user, resource);
-        writeLog(logId, result);
+        writeLog(logId, "Last user provisioned:\n" + prettyPrint(result));
     }
 }
 
@@ -86,7 +86,7 @@ function createUser(form, prefix, logId) {
 
         var resource = getUserContainer() + myUser.uid;
         var result = create(myUser, resource);
-        writeLog(logId, result);
+        writeLog(logId, "Created user:\n" + prettyPrint(result));
     } catch (err) {
         writeLog(logId, "Create failed: " + err)
     }
@@ -111,7 +111,7 @@ function createGroup(form, prefix, logId) {
         var resource = getGroupContainer() + myGroup.name;
         console.log(myGroup);
         var result = create(myGroup, resource);
-        writeLog(logId, result);
+        writeLog(logId, "Created group:\n" + prettyPrint(result));
     } catch (err) {
         writeLog(logId, "Create failed: " + err);
     }
@@ -201,7 +201,7 @@ function updateUser(form, prefix, logId) {
 
     var resource = getUserContainer() + form[prefix + "userId"].value;
     var result = update(myUser, form[prefix + "userVersion"].value, resource);
-    writeLog(logId, result);
+    writeLog(logId, "Updated user:\n" + prettyPrint(result));
     clearUserForm(form, prefix);
 }
 
@@ -278,7 +278,7 @@ function updateGroup(form, prefix, logId) {
 
     var resource = getGroupContainer() + form[prefix + "groupId"].value;
     var result = update(myGroup, form[prefix + "groupVersion"].value, resource);
-    writeLog(logId, result);
+    writeLog(logId, "Updated group:\n" + prettyPrint(result));
 }
 
 // List users by their user ID strings in sorted order.
@@ -292,7 +292,7 @@ function listUsersByUid(logId) {
     for (var i = 0; i < array.length; i++) {
         list = list + array[i].uid + "\n";
     }
-    writeLog(logId, list);
+    writeLog(logId, "User IDs:\n" + list);
 }
 
 // Delete a user taking the user ID from a form.
@@ -301,7 +301,7 @@ function listUsersByUid(logId) {
 function deleteUser(form, prefix, logId) {
     var resource = getUserContainer() + form[prefix + "uid"].value;
     var result = remove(resource);
-    writeLog(logId, result);
+    writeLog(logId, "Deleted user:\n" + prettyPrint(result));
 }
 
 // Populate a <select> element with user name <option> elements.
@@ -334,7 +334,7 @@ function listGroupsByName(logId) {
     for (var i = 0; i < array.length; i++) {
         list = list + array[i].name + "\n";
     }
-    writeLog(logId, list);
+    writeLog(logId, "Group names:\n" + list);
 }
 
 // Delete a user taking the user ID from a <select> list.
@@ -344,7 +344,7 @@ function deleteUserFromList(listId, logId) {
     var id = list.options[list.selectedIndex].value;
     var resource = getUserContainer() + id;
     var result = remove(resource);
-    writeLog(logId, result);
+    writeLog(logId, "Deleted user:\n" + prettyPrint(result));
 }
 
 // Delete a group taking the name from a form.
@@ -353,7 +353,7 @@ function deleteUserFromList(listId, logId) {
 function deleteGroup(form, prefix, logId) {
     var resource = getGroupContainer() + form[prefix + "name"].value;
     var result = remove(resource);
-    writeLog(logId, result);
+    writeLog(logId, "Deleted group:\n" + prettyPrint(result));
 }
 
 // Populate a <select> element with group name <option> elements.
@@ -382,7 +382,7 @@ function deleteGroupFromList(listId, logId) {
     var id = list.options[list.selectedIndex].value;
     var resource = getGroupContainer() + id;
     var result = remove(resource);
-    writeLog(logId, result);
+    writeLog(logId, "Deleted group:\n" + prettyPrint(result));
 }
 
 // Return a table of one user, based on fields selected on form.
@@ -651,11 +651,14 @@ function getUserName(id) {
 
 // Write a log message into a <div id="logId"></div>.
 function writeLog(logId, message) {
-    document.getElementById(logId).innerHTML = "<h3>Log Message</h3>"
-        + preWrap(message);
+    document.getElementById(logId).innerHTML = preWrap(message);
 }
 
 // Write a table into a <div id="tableId"></div>.
 function writeTable(tableId, array) {
     document.getElementById(tableId).innerHTML = getTable(array);
+}
+
+function prettyPrint(jsonString) {
+    return JSON.stringify(JSON.parse(jsonString), undefined, 4);
 }
