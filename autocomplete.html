@@ -18,73 +18,72 @@
 -->
 <html>
 <head>
-<title>Autocomplete</title>
-<meta charset="utf-8" />
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
-<script src="http://code.jquery.com/jquery-1.8.3.js"></script>
-<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
-<script type="text/javascript">
-$(function() {
-	var userNames = ["Test Users"];
-	var groupNames = ["Test Groups"];
+    <title>Autocomplete</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
+    <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+    <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            $("#users").autocomplete({
+                source: function(request, response) {
+                    $.ajax({
+                        url: "/json/users",
+                        dataType: "json",
+                        data: "_filter=fullname co " + request.term + "&_fields=fullname,_id",
+                        success: function(data) {
+                            response($.map(data.result, function(item) {
+                                return {
+                                    label: item.fullname[0],
+                                    value: item.fullname[0],
+                                    id: item._id
+                                }
+                            }));
+                        }
+                    });
+                },
+                select: function(event, ui) { $("#log").html(ui.item.id); }
+            });
+            $("#groups").autocomplete({
+                source: function(request, response) {
+                    $.ajax({
+                        url: "/json/groups",
+                        dataType: "json",
+                        data: "_filter=name co " + request.term + "&_fields=name,_id",
+                        success: function(data) {
+                            response($.map(data.result, function(item) {
+                                return {
+                                    label: item.name,
+                                    value: item.name,
+                                    id: item._id
+                                }
+                            }));
+                        }
+                    });
+                },
+                select: function(event, ui) { $("#log").html(ui.item.id); }
+            });
 
-	$("#users").autocomplete({
-		source: function(request, response) {
-			$.ajax({
-				url: "/json/users",
-				dataType: "json",
-				data: "_filter=fullname co " + request.term + "&_fields=fullname,_id",
-				success: function(data) {
-					response($.map(data.result, function(item) {
-						return {
-							label: item.fullname[0],
-							value: item._id
-						}
-					}));
-				}
-			});
-		},
-		select: function(event, ui) { $("#log").html(ui.item.value); }
-	});
-	$("#groups").autocomplete({
-		source: function(request, response) {
-			$.ajax({
-				url: "/json/groups",
-				dataType: "json",
-				data: "_filter=name co " + request.term + "&_fields=name,_id",
-				success: function(data) {
-					response($.map(data.result, function(item) {
-						return {
-							label: item.name,
-							value: item._id
-						}
-					}));
-				}
-			});
-		},
-		select: function(event, ui) { $("#log").html(ui.item.value); }
-	});
-	
-	$( "#tabs" ).tabs();
-});
-</script>
+            $( "#tabs" ).tabs();
+        });
+    </script>
 </head>
 <body>
 <h1>Autocomplete</h1>
 <div id="tabs">
-<ul>
- 	<li><a href="#user-sect">Users</a></li>
- 	<li><a href="#group-sect">Groups</a></li>
-</ul>
+    <ul>
+        <li><a href="#user-sect">Users</a></li>
+        <li><a href="#group-sect">Groups</a></li>
+    </ul>
 
     <div id="user-sect">
-    <label for="users">Users</label>
-    <input id="users" />
-	</div>
+        <label for="users">Users</label>
+        <input id="users" />
+    </div>
 
     <div id="group-sect">
-    <label for="groups">Groups</label>
-    <input id="groups" />
+        <label for="groups">Groups</label>
+        <input id="groups" />
     </div>
 </div>
 
