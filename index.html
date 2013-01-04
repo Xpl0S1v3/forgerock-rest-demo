@@ -37,7 +37,7 @@
             $( "checkboxes" ).buttonset();
             $( ".field" ).menu();
             $( "select" ).menu();
-            $( "form" ).sortable();
+            $( "form" ).sortable().width("auto");
             $( "#log").dialog({
                 autoOpen: false,
                 width: "auto"
@@ -58,6 +58,9 @@
         }
         #about, #action, #prerequisites {
             max-width: 800px;
+        }
+        button {
+            float: right;
         }
         dt {
             float: left;
@@ -81,7 +84,6 @@
             margin-right: 10px;
             margin-bottom: 10px;
             padding: 10px;
-            width: 45%;
         }
         #log {
             font-size: small;
@@ -163,10 +165,10 @@
             shown below the buttons.
         </p>
 
-        <button type="button" class="logger"
+        <button type="button" class="logger" style="float: left;"
                 onclick="provisionUsers('log'); return false;"
                 >Provision Users</button>
-        <button type="button" class="logger"
+        <button type="button" class="logger" style="float: left;"
                 onclick="provisionGroups('log'); return false;"
                 >Provision Groups</button>
     </div>
@@ -246,12 +248,8 @@
                 <option>Select User</option>
             </select>
 
-            <button type="button" class="logger"
-                    onclick="writeUserTable(this.form, 'read-', 'select-user', 'log'); return false;"
-                    >Read</button>
-
-            <div class="checkboxes">
-                <label>Retrieve</label>
+           <div class="checkboxes">
+                <label>Retrieve:</label>
                 <input id="read-mail" type="checkbox" checked="checked" class="checkbox" />
                 <label for="read-mail">Email</label>
 
@@ -264,8 +262,11 @@
                 <input id="read-all" type="checkbox"  class="checkbox" />
                 <label for="read-all">Everything</label>
             </div>
+
+            <button type="button" class="logger"
+                    onclick="writeUserTable(this.form, 'read-', 'select-user', 'log'); return false;"
+                    >Read</button>
         </form>
-        <div id="read-user-table"></div>
 
         <form id="read-group">
             <h3>Read Group</h3>
@@ -278,7 +279,6 @@
                     onclick="writeGroupTable(this.form, 'read-', 'select-group', 'log'); return false;"
                     >Read</button>
         </form>
-        <div id="read-group-table"></div>
     </div>
 
     <div id="update">
@@ -293,6 +293,8 @@
             <button type="button"
                     onclick="selectUserFromList(this.form, 'update-', 'select-user'); return false;"
                     >Load</button>
+
+            <br style="clear: both;"/>
 
             <input id="update-userId" type="hidden" />
             <input id="update-userVersion" type="hidden" />
@@ -353,6 +355,8 @@
                     onclick="selectGroupFromList(this.form, 'update-', 'select-group', 'members'); return false;"
                     >Load</button>
 
+            <br style="clear: both;"/>
+
             <input id="update-groupId" type="hidden" />
             <input id="update-groupVersion" class="field" type="hidden" />
 
@@ -374,11 +378,11 @@
     <div id="delete">
         <form id="delete-user-by-uid" action="#">
             <h3>Delete User By ID</h3>
-            <button type="button" class="logger"
+            <label for="delete-uid"></label>
+            <input id="delete-uid" class="field" type="text" value=""/>
+            <button type="button" class="logger" style="float: left;"
                     onclick="listUsersByUid('log'); return false;"
                     >List User IDs</button>
-            <label for="delete-uid">Specify user ID</label>
-            <input id="delete-uid" class="field" type="text" value=""/>
             <button type="button" class="logger"
                     onclick="deleteUser(this.form, 'delete-', 'log'); return false;"
                     >Delete</button>
@@ -395,15 +399,13 @@
                     >Delete</button>
         </form>
 
-        <br style="clear: both;">
-
         <form id="delete-group-by-name" action="#">
-            <h3>Delete Group By ID</h3>
-            <button type="button" class="logger"
+            <h3>Delete Group By Name</h3>
+            <label for="delete-name"></label>
+            <input id="delete-name" class="field" type="text" value="" />
+            <button type="button" class="logger" style="float: left;"
                     onclick="listGroupsByName('log'); return false;"
                     >List Groups</button>
-            <label for="delete-name">Specify group name</label>
-            <input id="delete-name" class="field" type="text" value="" />
             <button type="button" class="logger"
                     onclick="deleteGroup(this.form, 'delete-', 'log'); return false;"
                     >Delete</button>
@@ -455,7 +457,7 @@
         <form id="query-users">
             <h3>Query Users</h3>
             <div class="checkboxes">
-                <label>Retrieve</label>
+                <label>Retrieve:</label>
                 <input id="query-mail" type="checkbox" checked="checked" class="checkbox" />
                 <label for="query-mail">Email</label>
 
@@ -477,7 +479,7 @@
         <form id="query-groups">
             <h3>Query Groups</h3>
             <div class="checkboxes">
-                <label>Retrieve</label>
+                <label>Retrieve:</label>
                 <input id="query-name" type="checkbox" checked="checked" class="checkbox" />
                 <label for="query-name">Name</label>
 
