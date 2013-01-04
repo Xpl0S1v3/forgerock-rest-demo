@@ -48,7 +48,7 @@ function provisionGroups(logId) {
         var group = collection[i];
         var resource = getGroupContainer() + collection[i].name;
         var result = create(group, resource);
-        writeLog(logId, "Last group provisioned:\n" + prettyPrint(result));
+        writeLog(logId, "Result for last group:\n" + prettyPrint(result));
     }
 }
 
@@ -62,7 +62,7 @@ function provisionUsers(logId) {
         var user = collection[i];
         var resource = getUserContainer() + collection[i].uid;
         var result = create(user, resource);
-        writeLog(logId, "Last user provisioned:\n" + prettyPrint(result));
+        writeLog(logId, "Result for last user:\n" + prettyPrint(result));
     }
 }
 
