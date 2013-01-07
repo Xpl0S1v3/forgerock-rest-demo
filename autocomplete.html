@@ -30,7 +30,7 @@
                     $.ajax({
                         url: "/json/users",
                         dataType: "json",
-                        data: "_filter=fullname co " + request.term + "&_fields=fullname,_id",
+                        data: "_filter=fullname co \"" + request.term + "\"&_fields=fullname,_id",
                         success: function(data) {
                             response($.map(data.result, function(item) {
                                 return {
@@ -49,7 +49,7 @@
                     $.ajax({
                         url: "/json/groups",
                         dataType: "json",
-                        data: "_filter=name co " + request.term + "&_fields=name,_id",
+                        data: "_filter=name co \"" + request.term + "\"&_fields=name,_id",
                         success: function(data) {
                             response($.map(data.result, function(item) {
                                 return {
