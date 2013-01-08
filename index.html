@@ -498,10 +498,13 @@
         <pre style="clear: both;">
 TODO:
 // _filter=FILTER, where the filter is TBD
-// _sortKeys=[+-]FIELD,..., where + is encoded as %2B
+// _sortKeys=[+-]FIELD,..., where + is encoded as %2B, and is also the default
 // _pagedResultsCookie=STRING
 // _pageSize=INTEGER
-// _queryId=ID to trigger a stored query, also takes arg1=value1 to argN=valueN
+// _queryId=ID to trigger a stored query, also takes arg1=value1 to argN=valueN: Not for the default backend
+
+http://localhost:8080/json/users?_filter=uid%20co%20%22jensen%22&amp;_sortKeys=fullname&amp;_pageSize=2&amp;_prettyPrint=true
+http://localhost:8080/json/groups?_filter=true&amp;_sortKeys=name&amp;_prettyPrint=true
         </pre>
     </div>
 
