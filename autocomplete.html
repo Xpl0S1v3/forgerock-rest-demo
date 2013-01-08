@@ -21,9 +21,44 @@
     <title>Autocomplete</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
-    <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
-    <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+    <script type="text/javascript" src="common.js"></script>
     <script type="text/javascript">
+        // Capitalize first letter.
+        String.prototype.capitalize = function () {
+            return this.charAt(0).toUpperCase() + this.slice(1);
+        };
+
+        // Return a <tr> with <th> for each field of an object.
+        function getHeaderRow(object) {
+            var cells = "";
+            for (var prop in object) {
+                cells = cells + "<th>" + prop.capitalize() + "</th>";
+            }
+            return "<tr>" + cells + "</tr>";
+        }
+
+        // Return a <tr> with <td> for each field of an object.
+        function getDataRow(object) {
+            var cells = "";
+            for (var prop in object) {
+                cells = cells + "<td>" + object[prop] + "</td>";
+            }
+            return "<tr>" + cells + "</tr>";
+        }
+
+        // Build and return a table of objects such as users or groups.
+        function getTable(objects) {
+            if (objects.length == 0) { return ""; }
+
+            var rows = getHeaderRow(objects[0]);
+            for (var i = 0; i < objects.length; i++) {
+                rows = rows + getDataRow(objects[i]);
+            }
+            return "<table>" + rows + "</table>";
+        }
+
         $(function() {
             $("#users").autocomplete({
                 source: function(request, response) {
@@ -42,7 +77,12 @@
                         }
                     });
                 },
-                select: function(event, ui) { $("#log").html(ui.item.id); }
+                select: function(event, ui) {
+                    var resource = "/json/users/" + ui.item.id;
+                    var queryString = "?_fields=fullname,mail,phone"
+                    var user = JSON.parse(read(resource + queryString));
+                    $("#log").html(getTable([user]));
+                }
             });
             $("#groups").autocomplete({
                 source: function(request, response) {
@@ -61,12 +101,36 @@
                         }
                     });
                 },
-                select: function(event, ui) { $("#log").html(ui.item.id); }
+                select: function(event, ui) {
+                    var resource = "/json/groups/" + ui.item.id;
+                    var queryString = "?_fields=name,members,description"
+                    var group = JSON.parse(read(resource + queryString));
+                    $("#log").html(getTable([group]));
+                }
             });
 
             $( "#tabs" ).tabs();
         });
     </script>
+    <style type="text/css">
+        table {
+            border: 1px solid black;
+            border-collapse: collapse;
+            font-size: small;
+            margin: 20px;
+        }
+        th, td {
+            border: 1px solid black;
+            margin: 5px;
+            padding: 5px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background-color: #808080;
+            color: white;
+        }
+    </style>
 </head>
 <body>
 <h1>Autocomplete</h1>
