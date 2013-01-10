@@ -77,7 +77,7 @@ function remove(resource) {
 function queryObjects(resource, fields) {
     fields = (typeof fields === "undefined") ? [] : fields;
 
-    var query = resource + "?_queryId=all";
+    var query = resource + "?_filter=true";
     var args = "";
     if (fields.length > 0) {
         args = "&_fields=" + fields[0];
