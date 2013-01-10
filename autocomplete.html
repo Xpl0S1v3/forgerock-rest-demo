@@ -25,6 +25,35 @@
     <script type="text/javascript" src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
     <script type="text/javascript" src="common.js"></script>
     <script type="text/javascript">
+        // Return base URL of demo.
+        function getDemoBase() {
+            return window.location.href.substring(
+                    0, window.location.href.lastIndexOf('/'));
+        }
+
+        function getJSON(file) {
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', getDemoBase() + "/" + file, false);
+            xhr.send("");
+
+            var response = "";
+            if (xhr.status === 200) { // OK
+                response = xhr.responseText;
+            }
+            return response;
+        }
+
+        // Use the common REST API to provision from a JSON file to a container.
+        // Calling this repeatedly should cause a bunch of HTTP 409 Conflicts.
+        function provision(file, container) {
+            var collection = JSON.parse(getJSON(file));
+            for (var i = 0; i < collection.length; i++) {
+                var myObject = collection[i];
+                var resource = container + "/" + collection[i].id;
+                var result = create(myObject, resource);
+            }
+        }
+
         // Capitalize first letter.
         String.prototype.capitalize = function () {
             return this.charAt(0).toUpperCase() + this.slice(1);
@@ -65,12 +94,12 @@
                     $.ajax({
                         url: "/json/users",
                         dataType: "json",
-                        data: "_filter=fullname co \"" + request.term + "\"&_fields=fullname,_id",
+                        data: "_filter=displayName co \"" + request.term + "\"&_fields=displayName,_id",
                         success: function(data) {
                             response($.map(data.result, function(item) {
                                 return {
-                                    label: item.fullname[0],
-                                    value: item.fullname[0],
+                                    label: item.displayName,
+                                    value: item.displayName,
                                     id: item._id
                                 }
                             }));
@@ -79,7 +108,7 @@
                 },
                 select: function(event, ui) {
                     var resource = "/json/users/" + ui.item.id;
-                    var queryString = "?_fields=fullname,mail,phone"
+                    var queryString = "?_fields=displayName,userName,password";
                     var user = JSON.parse(read(resource + queryString));
                     $("#log").html(getTable([user]));
                 }
@@ -89,12 +118,12 @@
                     $.ajax({
                         url: "/json/groups",
                         dataType: "json",
-                        data: "_filter=name co \"" + request.term + "\"&_fields=name,_id",
+                        data: "_filter=displayName co \"" + request.term + "\"&_fields=displayName,_id",
                         success: function(data) {
                             response($.map(data.result, function(item) {
                                 return {
-                                    label: item.name,
-                                    value: item.name,
+                                    label: item.displayName,
+                                    value: item.displayName,
                                     id: item._id
                                 }
                             }));
@@ -103,13 +132,16 @@
                 },
                 select: function(event, ui) {
                     var resource = "/json/groups/" + ui.item.id;
-                    var queryString = "?_fields=name,members,description"
+                    var queryString = "?_fields=displayName,members";
                     var group = JSON.parse(read(resource + queryString));
                     $("#log").html(getTable([group]));
                 }
             });
 
             $( "#tabs" ).tabs();
+
+            provision("SCIMUsers.json", "/json/users");
+            provision("SCIMGroups.json", "/json/groups");
         });
     </script>
     <style type="text/css">
