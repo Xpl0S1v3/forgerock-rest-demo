@@ -11,7 +11,7 @@
  * Header, with the fields enclosed by brackets [] replaced by your own identifying
  * information: "Portions Copyrighted [year] [name of copyright owner]".
  *
- * Copyright © 2012 ForgeRock AS. All rights reserved.
+ * Copyright © 2012-2013 ForgeRock AS. All rights reserved.
  */
 
 /**
@@ -19,9 +19,9 @@
  */
 
 // Create a resource putting an object to a resource URL, specifying the ID.
-function create(object, resource) {
+function create(object, uri) {
     var xhr = new XMLHttpRequest();
-    xhr.open('PUT', resource, false);
+    xhr.open('PUT', uri, false);
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.setRequestHeader("If-None-Match", "*");
     xhr.send(JSON.stringify(object));
@@ -31,7 +31,7 @@ function create(object, resource) {
 // Read a resource based on a resource URL.
 // The optional fields takes an array of field names, such as uid and mail
 // for users, or name and members for groups.
-function read(resource, fields) {
+function read(uri, fields) {
     fields = (typeof fields === "undefined") ? [] : fields;
 
     var args = "";
@@ -41,29 +41,29 @@ function read(resource, fields) {
             args = args + "," + fields[i];
         }
     }
-    resource = resource + args;
+    uri = uri + args;
 
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', resource, false);
+    xhr.open('GET', uri, false);
     xhr.send("");
     return xhr.responseText;
 }
 
 // Update a resource.
-function update(object, version, resource) {
+function update(object, revision, uri) {
     var xhr = new XMLHttpRequest();
-    xhr.open('PUT', resource, false);
+    xhr.open('PUT', uri, false);
     xhr.setRequestHeader("Content-Type", "application/json");
-    xhr.setRequestHeader("If-Match", version);
+    xhr.setRequestHeader("If-Match", revision);
     xhr.send(JSON.stringify(object));
     return xhr.responseText;
 }
 
 // Delete a resource based on a resource URL that specifies the ID.
 // This function is called remove because delete is a reserved word.
-function remove(resource) {
+function remove(uri) {
     var xhr = new XMLHttpRequest();
-    xhr.open('DELETE', resource, false);
+    xhr.open('DELETE', uri, false);
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.send("");
     return xhr.responseText;
@@ -74,10 +74,10 @@ function remove(resource) {
 // or http://host:/port/json/groups.
 // The optional fields takes an array of field names, such as uid and mail
 // for users, or name and members for groups.
-function queryObjects(resource, fields) {
+function queryObjects(uri, fields) {
     fields = (typeof fields === "undefined") ? [] : fields;
 
-    var query = resource + "?_filter=true";
+    var query = uri + "?_filter=true";
     var args = "";
     if (fields.length > 0) {
         args = "&_fields=" + fields[0];
