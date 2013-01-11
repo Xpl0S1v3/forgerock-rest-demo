@@ -662,3 +662,23 @@ function writeTable(tableId, array) {
 function prettyPrint(jsonString) {
     return JSON.stringify(JSON.parse(jsonString), undefined, 4);
 }
+
+// http://note19.com/2007/05/27/javascript-guid-generator/
+// var myFakeId = GUID();
+function GUID ()
+{
+    var S4 = function ()
+    {
+        return Math.floor(
+            Math.random() * 0x10000 /* 65536 */
+        ).toString(16);
+    };
+
+    return (
+        S4() + S4() + "-" +
+            S4() + "-" +
+            S4() + "-" +
+            S4() + "-" +
+            S4() + S4() + S4()
+        );
+}
