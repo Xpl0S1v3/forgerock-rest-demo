@@ -1,0 +1,71 @@
+See http://mustache.github.com/#demo
+
+    {
+        "schemas": [
+            "urn:scim:schemas:core:1.0"
+        ],
+        "id": "87243cde-1df8-4d31-aa05-525525b6e8af",
+        "userName": "abarnes@example.com",
+        "name": {
+            "familyName": "Barnes",
+            "givenName": "Anne-Louise"
+        },
+        "displayName": "Anne-Louise Barnes",
+        "phoneNumbers": [
+            {
+                "value": "+1 408 555 9445",
+                "type": "work"
+            },
+            {
+                "value": "+1 408 555 4661",
+                "type": "mobile"
+            }
+        ],
+        "preferredLanguage": "en_US",
+        "locale": "en_US",
+        "timezone": "America/Los_Angeles",
+        "active": true,
+        "password": "chevron",
+        "emails": [
+            {
+                "value": "abarnes@example.com",
+                "type": "work",
+                "primary": true
+            }
+        ]
+    }
+
+
+<pre>
+{{userName}}
+{{#name}}
+{{familyName}}
+{{givenName}}
+{{/name}}
+{{displayName}}
+{{#phoneNumbers}}
+{{type}}: {{value}}
+{{/phoneNumbers}}
+{{preferredLanguage}}
+{{locale}}
+{{timezone}}
+{{#active}}
+Account status: active
+{{/active}}
+{{password}}
+{{#emails}}
+{{type}}: {{value}} {{#primary}}(primary){{/primary}}
+{{/emails}}
+</pre>
+
+<pre>
+abarnes@example.com
+Anne-Louise Barnes
+work: +1 408 555 9445
+mobile: +1 408 555 4661
+en_US
+en_US
+America/Los_Angeles
+Account status: active
+chevron
+work: abarnes@example.com (primary)</pre>
