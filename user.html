@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<!--
+/*
+ * The contents of this file are subject to the terms of the Common Development and
+ * Distribution License (the License). You may not use this file except in compliance with the
+ * License.
+ *
+ * You can obtain a copy of the License at legal/CDDLv1.0.txt. See the License for the
+ * specific language governing permission and limitations under the License.
+ *
+ * When distributing Covered Software, include this CDDL Header Notice in each file and include
+ * the License file at legal/CDDLv1.0.txt. If applicable, add the following below the CDDL
+ * Header, with the fields enclosed by brackets [] replaced by your own identifying
+ * information: "Portions Copyrighted [year] [name of copyright owner]".
+ *
+ * Copyright © 2013 ForgeRock AS. All rights reserved.
+ */
+-->
+<html>
+<head>
+    <title>Update User</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
+    <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+    <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+    <script src="https://github.com/andyet/ICanHaz.js/raw/master/ICanHaz.js"></script>
+    <script src="https://raw.github.com/maxatwork/form2js/master/src/form2js.js"></script>
+    <script type="text/javascript" src="common.js"></script>
+    <script id="user" type="text/html">
+        <form id="update" action="#not-implemented-yet">
+            <label><input name="_id" value="{{_id}}" type="hidden"/></label>
+            <label><input name="_rev" value="{{_rev}}" type="hidden"/></label>
+            <label>User Name
+                <input name="userName" value="{{userName}}" required="required"/>
+            </label>
+            <label>First Name
+                <input name="name.givenName" value="{{name.givenName}}"/>
+            </label>
+            <label>Last Name
+                <input name="name.familyName" value="{{name.familyName}}"/>
+            </label>
+            <label><input name="displayName" value="{{displayName}}" type="hidden"/></label>
+            {{#phoneNumbers}}
+            <label>{{type}} Phone
+                <input name="phoneNumbers.value" value="{{value}}"/>
+                <input name="phoneNumbers.type" value="{{type}}" type="hidden"/>
+            </label>
+            {{/phoneNumbers}}
+            <label><input name="preferredLanguage" value="{{preferredLanguage}}" type="hidden"/></label>
+            <label><input name="locale" value="{{locale}}" type="hidden"/></label>
+            <label><input name="timezone" value="{{timezone}}" type="hidden"/></label>
+            <label>Account Status
+                {{#active}}
+                <input type="radio" name="active" checked="checked"/> Active
+                <input type="radio" name="active"/> Inactive
+                {{/active}}
+                {{^active}}
+                <input type="radio" name="active"/> Active
+                <input type="radio" name="active" checked="checked"/> Inactive
+                {{/active}}
+            </label>
+            <label>Password
+                <input type="password" name="password" value="{{password}}"/>
+            </label>
+            {{#emails}}
+            <label>{{type}} Email
+                <input type="email" name="emails.value" value="{{value}}"/>
+                <input name="emails.type" value="{{type}}" type="hidden"/>
+                <input name="emails.primary" value="{{primary}}" type="hidden"/>
+            </label>
+            {{/emails}}
+            <button type="button">Update</button>
+        </form>
+    </script>
+    <script type="text/javascript">
+        $(function() {
+            $("form").width("auto").submit(function(event){
+                event.preventDefault();
+            });
+            $("#search").autocomplete({
+                source: function(request, response) {
+                    $.ajax({
+                        url: "/json/users",
+                        dataType: "json",
+                        data: "_filter=displayName co \"" + request.term + "\"&_fields=displayName,_id",
+                        success: function(data) {
+                            response($.map(data.result, function(item) {
+                                return {
+                                    label: item.displayName,
+                                    value: item.displayName,
+                                    id: item._id
+                                }
+                            }));
+                        }
+                    });
+                },
+                select: function(event, ui) {
+                    var user = JSON.parse(read("/json/users/" + ui.item.id));
+                    var form = ich.user(user); // TODO capitalize the labels
+                    $("#userForm").html(form);
+                }
+            });
+        });
+    </script>
+    <style type="text/css">
+        body {
+            font-family: Verdana,Arial,sans-serif;
+        }
+        label {
+            float: left;
+        }
+        button {
+            float: right;
+        }
+        label, button, form {
+            clear: both;
+        }
+        form {
+            border: 1px dashed #d3d3d3;
+            float: left;
+            margin-left: 10px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Update User</h1>
+
+<form>
+    <label>Search <input id="search" /></label>
+    <p style="font-size: x-small; text-align: right;">(Hint: try "jensen".)</p>
+</form>
+
+<div id="userForm"></div>
+
+<script type="text/javascript">
+    // Return base URL of demo.
+    function getDemoBase() {
+        return window.location.href.substring(
+                0, window.location.href.lastIndexOf('/'));
+    }
+
+    function getJSON(file) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', getDemoBase() + "/" + file, false);
+        xhr.send("");
+
+        var response = "";
+        if (xhr.status === 200) { // OK
+            response = xhr.responseText;
+        }
+        return response;
+    }
+
+    // Use the common REST API to provision from a JSON file to a container.
+    // Calling this repeatedly should cause a bunch of HTTP 409 Conflicts.
+    function provision(file, container) {
+        var collection = JSON.parse(getJSON(file));
+        for (var i = 0; i < collection.length; i++) {
+            var myObject = collection[i];
+            var resource = container + "/" + collection[i].id;
+            var result = create(myObject, resource);
+        }
+    }
+
+    //provision("SCIMUsers.json", "/json/users");
+    //provision("SCIMGroups.json", "/json/groups");
+</script>
+
+</body>
+</html>
