@@ -54,6 +54,7 @@
   <developerConnection>scm:git:git@github.com:markcraig/forgerock-rest-demo.git</developerConnection>
  </scm>
 
+ <!-- Obtain JSON Resource Servlet from the ForgeRock repo. -->
  <repositories>
   <repository>
    <id>forgerock-staging-repository</id>
@@ -79,31 +80,72 @@
   <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
  </properties>
 
+ <!-- Get JSON Resource for Java demos
  <dependencies>
   <dependency>
    <groupId>org.forgerock.commons</groupId>
    <artifactId>json-resource</artifactId>
    <version>${commonsRestVersion}</version>
   </dependency>
-  <dependency>
-   <groupId>org.forgerock.commons</groupId>
-   <artifactId>json-resource-servlet</artifactId>
-   <version>${commonsRestVersion}</version>
-  </dependency>
  </dependencies>
+ -->
 
  <build>
   <plugins>
+
+   <!-- Unpack JSON Resource Servlet .war locally. -->
+   <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-dependency-plugin</artifactId>
+     <executions>
+      <execution>
+       <id>copy-json-resource-servlet</id>
+       <phase>process-sources</phase>
+       <goals>
+        <goal>copy</goal>
+       </goals>
+       <configuration>
+        <artifactItems>
+         <artifactItem>
+          <groupId>org.forgerock.commons</groupId>
+          <artifactId>json-resource-servlet</artifactId>
+          <version>${commonsRestVersion}</version>
+          <type>war</type>
+          <classifier>servlet</classifier>
+          <overWrite>true</overWrite>
+          <outputDirectory>${project.build.directory}/lib</outputDirectory>
+          <destFileName>json.war</destFileName>
+         </artifactItem>
+        </artifactItems>
+       </configuration>
+     </execution>
+    </executions>
+   </plugin>
+
+   <!-- Run demo and JSON Resource Servlet in Jetty. -->
    <plugin>
     <groupId>org.eclipse.jetty</groupId>
     <artifactId>jetty-maven-plugin</artifactId>
     <version>9.0.4.v20130625</version>
+
     <configuration>
+
+     <!-- Deploy demo at http://localhost:8080/demo -->
      <webAppSourceDirectory>${basedir}</webAppSourceDirectory>
      <webApp>
       <contextPath>/demo</contextPath>
      </webApp>
+
+     <!-- Deploy JSON Resource Servlet at http://localhost:8080/json -->
+     <contextHandlers>
+      <contextHandler implementation="org.eclipse.jetty.webapp.WebAppContext">
+       <war>${project.build.directory}/lib/json.war</war>
+       <contextPath>/json</contextPath>
+      </contextHandler>
+     </contextHandlers>
+
     </configuration>
+
    </plugin>
   </plugins>
  </build>

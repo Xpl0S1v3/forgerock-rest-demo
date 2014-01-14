@@ -6,11 +6,9 @@ by a browser-based application.
 
 To try the demo:
 
-1.  Deploy the default JSON Resource Servlet in your container
-    under `/json`.
-2.  Deploy the demo in the same container.
-3.  Point your browser at the base of the demo, such as
-    `http://localhost:8080/demo`.
+1.  Clone the workspace locally.
+2.  Run the demo with `mvn jetty:run`.
+3.  Access the demo at <http://localhost:8080/demo/>.
 
 The ForgeRock browser-based user interface makes much more interesting use of the REST APIs exposed in ForgeRock products. This demo uses the common REST API in simple ways.
 
@@ -18,9 +16,6 @@ The ForgeRock browser-based user interface makes much more interesting use of th
 
 *   Move to a JavaScript framework such as AngularJS.
 *   Style with a well-known framework such as Bootstrap.
-*   Make this demo self-sufficient
-    by integrating the JSON Resource Servlet to automate deployment
-    _à la_ `mvn jetty:run`.
 *   Provide client-side examples for chapters proposed in
     [CREST-113](https://bugster.forgerock.org/jira/browse/CREST-113).
 
