@@ -11,7 +11,7 @@
  * Header, with the fields enclosed by brackets [] replaced by your own identifying
  * information: "Portions Copyrighted [year] [name of copyright owner]".
  *
- * Copyright © 2012-2013 ForgeRock AS. All rights reserved.
+ * Copyright © 2012-2014 ForgeRock AS. All rights reserved.
  */
 
 /**
@@ -77,7 +77,7 @@ function remove(uri) {
 function queryObjects(uri, fields) {
     fields = (typeof fields === "undefined") ? [] : fields;
 
-    var query = uri + "?_filter=true";
+    var query = uri + "?_queryFilter=true";
     var args = "";
     if (fields.length > 0) {
         args = "&_fields=" + fields[0];

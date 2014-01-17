@@ -82,7 +82,7 @@
                     $.ajax({
                         url: "/json/users",
                         dataType: "json",
-                        data: "_filter=displayName co \"" + request.term + "\"&_fields=displayName,_id",
+                        data: "_queryFilter=displayName co \"" + request.term + "\"&_fields=displayName,_id",
                         success: function(data) {
                             response($.map(data.result, function(item) {
                                 return {
