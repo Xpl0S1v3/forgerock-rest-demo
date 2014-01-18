@@ -18,80 +18,91 @@
  * Functions to access ForgeRock common REST API.
  */
 
+/*global JSON, XMLHttpRequest, create, read, update, remove, queryObjects */
+
+var create, read, update, remove, queryObjects;
+
 // Create a resource putting an object to a resource URL, specifying the ID.
-function create(object, uri) {
+create = function (object, uri) {
+    "use strict";
     var xhr = new XMLHttpRequest();
     xhr.open('PUT', uri, false);
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.setRequestHeader("If-None-Match", "*");
     xhr.send(JSON.stringify(object));
     return xhr.responseText;
-}
+};
 
 // Read a resource based on a resource URL.
 // The optional fields takes an array of field names, such as uid and mail
 // for users, or name and members for groups.
-function read(uri, fields) {
-    fields = (typeof fields === "undefined") ? [] : fields;
+read = function (uri, fields) {
+    "use strict";
+    var args, i, xhr;
+    fields = fields || [];
 
-    var args = "";
+    args = "";
     if (fields.length > 0) {
         args = "?_fields=" + fields[0];
-        for (var i = 1; i < fields.length; i++) {
+        for (i = 1; i < fields.length; i += 1) {
             args = args + "," + fields[i];
         }
     }
     uri = uri + args;
 
-    var xhr = new XMLHttpRequest();
+    xhr = new XMLHttpRequest();
     xhr.open('GET', uri, false);
     xhr.send("");
     return xhr.responseText;
-}
+};
 
 // Update a resource.
-function update(object, revision, uri) {
+update = function (object, revision, uri) {
+    "use strict";
     var xhr = new XMLHttpRequest();
     xhr.open('PUT', uri, false);
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.setRequestHeader("If-Match", revision);
     xhr.send(JSON.stringify(object));
     return xhr.responseText;
-}
+};
 
 // Delete a resource based on a resource URL that specifies the ID.
 // This function is called remove because delete is a reserved word.
-function remove(uri) {
+remove = function (uri) {
+    "use strict";
     var xhr = new XMLHttpRequest();
     xhr.open('DELETE', uri, false);
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.send("");
     return xhr.responseText;
-}
+};
 
 // Return an array of user or group objects.
 // The resource takes a collection resource like http://host:/port/json/users,
 // or http://host:/port/json/groups.
 // The optional fields takes an array of field names, such as uid and mail
 // for users, or name and members for groups.
-function queryObjects(uri, fields) {
-    fields = (typeof fields === "undefined") ? [] : fields;
+queryObjects = function (uri, fields) {
+    "use strict";
+    var query, args, i, xhr, allObjects;
+    fields = fields || [];
 
-    var query = uri + "?_queryFilter=true";
-    var args = "";
+    query = uri + "?_queryFilter=true";
+    args = "";
     if (fields.length > 0) {
         args = "&_fields=" + fields[0];
-        for (var i = 1; i < fields.length; i++) {
+        for (i = 1; i < fields.length; i += 1) {
             args = args + "," + fields[i];
         }
         query = query + args;
     }
 
-    var xhr = new XMLHttpRequest();
+    xhr = new XMLHttpRequest();
     xhr.open('GET', query, false);
     xhr.send("");
 
-    var allObjects = [];
+    allObjects = [];
     if (xhr.status === 200) { // OK
         allObjects = JSON.parse(xhr.responseText);
         if (allObjects.result.length > 0) {
@@ -101,4 +112,4 @@ function queryObjects(uri, fields) {
         }
     }
     return allObjects;
-}
+};
