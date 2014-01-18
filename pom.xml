@@ -75,7 +75,6 @@
  </repositories>
 
  <properties>
-  <!--<commonsRestVersion>2.0.0</commonsRestVersion>-->
   <commonsRestVersion>2.1.0-SNAPSHOT</commonsRestVersion>
 
   <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
