@@ -30,6 +30,15 @@
 </head>
 
 <body>
+
+<!--
+ Tab based layout as in index.html is fine.
+ However, now that `mvn jetty:run` pulls the JSON Resource Servlet
+ there should be no need for a manual provisioning step.
+ Instead the JSON Resource Servlet should be provisioned with users & groups
+ the first time that the application is loaded.
+-->
+
 <div ng-view></div>
 </body>
 </html>
