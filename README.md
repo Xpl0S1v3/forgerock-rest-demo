@@ -15,7 +15,7 @@ The ForgeRock browser-based user interface makes much more interesting use of th
 ## TODO
 
 *   Move to a JavaScript framework such as AngularJS.
-*   Style with a well-known framework such as Bootstrap.
+*   Style with a well-known framework such as Bootstrap. Responsive?
 *   Provide client-side examples for chapters proposed in
     [CREST-113](https://bugster.forgerock.org/jira/browse/CREST-113).
     Perhaps rely instead on
