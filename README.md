@@ -19,7 +19,10 @@ The ForgeRock browser-based user interface makes much more interesting use of th
 *   Provide client-side examples for chapters proposed in
     [CREST-113](https://bugster.forgerock.org/jira/browse/CREST-113).
     Perhaps rely instead on
+    [CREST-134](https://bugster.forgerock.org/jira/browse/CREST-134), which is
     [JSON Resource examples](http://commons.forgerock.org/forgerock-rest/json-resource-examples/).
+*   Explain the how to get reference content, which is dependent on
+    [CREST-71](https://bugster.forgerock.org/jira/browse/CREST-71).
 
 * * *
 This work is licensed under the Creative Commons
