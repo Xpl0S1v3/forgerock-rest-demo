@@ -14,10 +14,14 @@
  * Copyright 2014 ForgeRock AS
  */
 
+/*globals angular */
+
 angular.module('main', ['ngResource', 'ngRoute', 'ui.bootstrap'])
-    .config(function($routeProvider) {
+    .config(function ($routeProvider) {
+        "use strict";
+
         $routeProvider
             .when('/', {
                 templateUrl: 'partials/about.html'
-            })
-});
+            });
+    });
