@@ -19,9 +19,9 @@ angular.module('main', ['ngResource', 'ngRoute', 'ui.bootstrap'])
 .config(function($routeProvider) {
     $routeProvider
         .when('/', {
-            templateUrl: 'partials/empty.html',
+            templateUrl: 'partials/about.html',
             controller: function($scope) {
-                $scope.message = 'This page intentionally left blank';
+                $scope.message = 'TODO';
             }
         })
 });

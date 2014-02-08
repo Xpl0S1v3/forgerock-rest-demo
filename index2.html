@@ -23,7 +23,7 @@
     <script src="js/angular.min.js"></script>
     <script src="js/angular-resource.min.js"></script>
     <script src="js/angular-route.min.js"></script>
-    <script src="js/ui-bootstrap-0.10.0.min.js"></script>
+    <script src="js/ui-bootstrap-tpls-0.10.0.min.js"></script>
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <style type="text/css">.nav, .pagination, .carousel a { cursor: pointer; }</style>
     <script src="js/main.js"></script>
@@ -42,6 +42,30 @@
  the first time that the application is loaded.
 -->
 
-<div ng-view></div>
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container">
+        <ul class="nav navbar-nav">
+            <li><a href="#">About</a></li>
+            <li><a href="#create">Create</a></li>
+            <li><a href="#read">Read</a></li>
+            <li><a href="#update">Update</a></li>
+            <li><a href="#delete">Delete</a></li>
+            <li><a href="#patch">Patch</a></li>
+            <li><a href="#action">Action</a></li>
+            <li><a href="#query">Query</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="row">
+        <h1>ForgeRock Common REST Demo</h1>
+    </div>
+</div>
+
+<div class="container">
+    <div ng-view></div>
+</div>
+
 </body>
 </html>

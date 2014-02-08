@@ -1,0 +1,80 @@
+<div class="container">
+    <h2>{{message}}</h2>
+    <div class="row">
+        <h3>Verbs</h3>
+
+        <p>
+            The ForgeRock common REST API defines seven verbs.
+        </p>
+
+        <dl>
+            <dt>Create</dt>
+            <dd>Add a resource that does not yet exist</dd>
+
+            <dt>Read</dt>
+            <dd>Retrieve a single resource</dd>
+
+            <dt>Update</dt>
+            <dd>Replace an existing resource</dd>
+
+            <dt>Delete</dt>
+            <dd>Remove an existing resource</dd>
+
+            <dt>Patch</dt>
+            <dd>Modify part of an existing resource</dd>
+
+            <dt>Action</dt>
+            <dd>Perform a predefined action</dd>
+
+            <dt>Query</dt>
+            <dd>List a set of resources</dd>
+        </dl>
+
+        <p>
+            A resource store can use the ForgeRock
+            <a href="http://commons.forgerock.org/forgerock-rest/">REST
+                libraries</a>
+            to expose a common CRUDPAQ API.
+        </p>
+    </div>
+
+    <div class="row">
+        <h3>Endpoints</h3>
+        <p>
+            A resource store defines collection endpoints for resources that it
+            serves. The default
+            <a href="http://commons.forgerock.org/forgerock-rest/json-resource-servlet/"
+                    >JSON Resource Servlet</a> defines two collection endpoints,
+            <code>/users</code> and <code>/groups</code>.
+        </p>
+    </div>
+
+    <div class="row">
+        <h3>Extensions</h3>
+
+        <dl>
+            <dt>Action</dt>
+            <dd>
+                <p>
+                    By default, the only actions defined are those corresponding
+                    to the other six basic verbs: create, read, update, delete,
+                    patch, and query.
+                </p>
+
+                <p>
+                    A resource store might define additional actions that it allows.
+                    For example, <code>/tasks/1?_action=cancel</code>.
+                </p>
+            </dd>
+
+            <dt>Query</dt>
+            <dd>
+                <p>
+                    A resource store might define additional stored queries that
+                    can be called by their IDs. For example,
+                    <code>/groups?_queryId=hasDeletedMembers</code>.
+                </p>
+            </dd>
+        </dl>
+    </div>
+</div>
