@@ -15,13 +15,9 @@
  */
 
 angular.module('main', ['ngResource', 'ngRoute', 'ui.bootstrap'])
-
-.config(function($routeProvider) {
-    $routeProvider
-        .when('/', {
-            templateUrl: 'partials/about.html',
-            controller: function($scope) {
-                $scope.message = 'TODO';
-            }
-        })
+    .config(function($routeProvider) {
+        $routeProvider
+            .when('/', {
+                templateUrl: 'partials/about.html'
+            })
 });
