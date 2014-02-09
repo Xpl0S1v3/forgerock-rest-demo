@@ -14,7 +14,7 @@
  * Copyright 2014 ForgeRock AS
  */
 
-/*globals angular */
+/*global angular */
 
 angular.module('main', ['ngResource', 'ngRoute', 'ui.bootstrap'])
     .config(function ($routeProvider) {
