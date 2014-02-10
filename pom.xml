@@ -21,10 +21,16 @@
                      http://maven.apache.org/xsd/maven-4.0.0.xsd">
  <modelVersion>4.0.0</modelVersion>
 
+ <parent>
+  <groupId>org.forgerock</groupId>
+  <artifactId>forgerock-parent</artifactId>
+  <version>1.2.1</version>
+ </parent>
+
  <groupId>org.forgerock.commons</groupId>
  <artifactId>forgerock-rest-demo</artifactId>
  <version>1.0.0-SNAPSHOT</version>
- <packaging>pom</packaging>
+ <packaging>jar</packaging>
 
  <name>ForgeRock Common REST Demo</name>
  <description>Demonstrate use of ForgeRock JSON Resource Servlet</description>
@@ -80,15 +86,20 @@
   <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
  </properties>
 
- <!-- Get JSON Resource for Java demos
  <dependencies>
+  <!-- Get JSON Resource for Java demos?
   <dependency>
    <groupId>org.forgerock.commons</groupId>
    <artifactId>json-resource</artifactId>
    <version>${commonsRestVersion}</version>
   </dependency>
+  -->
+  <dependency>
+   <groupId>com.google.code.gson</groupId>
+   <artifactId>gson</artifactId>
+   <version>2.2.4</version>
+  </dependency>
  </dependencies>
- -->
 
  <build>
   <plugins>
