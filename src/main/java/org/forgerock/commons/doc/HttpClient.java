@@ -50,13 +50,16 @@ public class HttpClient {
             throws IOException {
         final URL resourceUrl = new URL(servletUrl, uri);
 
-        HttpURLConnection connection = (HttpURLConnection) resourceUrl.openConnection();
+        Integer contentLength = new Integer(jsonResource.length);
+
+        HttpURLConnection connection =
+                (HttpURLConnection) resourceUrl.openConnection();
         connection.setRequestMethod("PUT");
         connection.setRequestProperty("Accept", "application/json");
-        connection.setRequestProperty("Content-Length", Integer.toString(jsonResource.length));
+        connection.setRequestProperty("Content-Length", contentLength.toString());
         connection.setRequestProperty("Content-Type", "application/json");
         connection.setRequestProperty("If-None-Match", "*");
-        connection.setFixedLengthStreamingMode(jsonResource.length);
+        connection.setFixedLengthStreamingMode(contentLength.intValue());
         connection.setDoOutput(true);
 
         InputStream in;
