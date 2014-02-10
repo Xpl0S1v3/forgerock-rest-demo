@@ -22,10 +22,6 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 /**
  * Basic HTTP client for the JSON Resource Servlet.
@@ -54,26 +50,12 @@ public class HttpClient {
             throws IOException {
         final URL resourceUrl = new URL(servletUrl, uri);
 
-        Map<String, List<String>> headers = new HashMap<String, List<String>>();
-
-        ArrayList<String> accepts = new ArrayList<String>();
-        accepts.add("application/json");
-        headers.put("Accept", accepts);
-
-        ArrayList<String> lengths = new ArrayList<String>();
-        lengths.add(Integer.toString(jsonResource.length));
-        headers.put("Content-Length", lengths);
-
-        ArrayList<String> types = new ArrayList<String>();
-        types.add("application/json");
-        headers.put("Content-Type", types);
-
-        ArrayList<String> matches = new ArrayList<String>();
-        matches.add("*");
-        headers.put("If-None-Match", matches);
-
         HttpURLConnection connection = (HttpURLConnection) resourceUrl.openConnection();
         connection.setRequestMethod("PUT");
+        connection.setRequestProperty("Accept", "application/json");
+        connection.setRequestProperty("Content-Length", Integer.toString(jsonResource.length));
+        connection.setRequestProperty("Content-Type", "application/json");
+        connection.setRequestProperty("If-None-Match", "*");
         connection.setFixedLengthStreamingMode(jsonResource.length);
         connection.setDoOutput(true);
 
@@ -90,6 +72,7 @@ public class HttpClient {
         try {
             out.write(jsonResource);
             httpStatus = connection.getResponseCode();
+            out.close();
         } catch (IOException e) {
             throw new IOException("Failed to create " + uri, e.getCause());
         }
@@ -104,6 +87,7 @@ public class HttpClient {
             in = connection.getInputStream();
             System.out.println("Response creating " + uri + ":");
             System.out.println(Utils.streamToString(in));
+            in.close();
         } catch (IOException e) {
             throw new IOException("Failed to read output", e.getCause());
         } finally {
