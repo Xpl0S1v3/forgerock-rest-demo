@@ -31,6 +31,7 @@ import java.net.URL;
 public class Provisioner {
     private File users;
     private File groups;
+    private URL servletUrl;
     private HttpClient httpClient;
 
     /**
@@ -58,6 +59,7 @@ public class Provisioner {
             throws MalformedURLException {
         this.users = users;
         this.groups = groups;
+        this.servletUrl = servletUrl;
         this.httpClient = new HttpClient(servletUrl);
     }
 
@@ -69,24 +71,8 @@ public class Provisioner {
         Gson gson = new Gson();
 
         try {
-            /*
-            TODO
-            The parser needs to be a bit smarter than this.
-
-            $ java -cp target/forgerock-rest-demo-1.0.0-SNAPSHOT.jar:/Users/mark/.m2/repository/com/google/code/gson/gson/2.2.4/gson-2.2.4.jar org.forgerock.commons.doc.Main `pwd`/Users.json `pwd`/Groups.json
-            Exception in thread "main" com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was BEGIN_ARRAY at line 1 column 2
-                at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:176)
-                at com.google.gson.Gson.fromJson(Gson.java:803)
-                at com.google.gson.Gson.fromJson(Gson.java:741)
-                at org.forgerock.commons.doc.Provisioner.addUsers(Provisioner.java:72)
-                at org.forgerock.commons.doc.Main.main(Main.java:44)
-            Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was BEGIN_ARRAY at line 1 column 2
-                at com.google.gson.stream.JsonReader.beginObject(JsonReader.java:374)
-                at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:165)
-                ... 4 more
-             */
-            Users theUsers = gson.fromJson(new FileReader(users), Users.class);
-            for (User user : theUsers.getUsers()) {
+            User[] theUsers = gson.fromJson(new FileReader(users), User[].class);
+            for (User user : theUsers) {
                 createUser(user);
             }
         } catch (FileNotFoundException e) {
@@ -104,8 +90,8 @@ public class Provisioner {
         Gson gson = new Gson();
 
         try {
-            Groups theGroups = gson.fromJson(new FileReader(groups), Groups.class);
-            for (Group group : theGroups.getGroups()) {
+            Group[] theGroups = gson.fromJson(new FileReader(groups), Group[].class);
+            for (Group group : theGroups) {
                 createGroup(group);
             }
         } catch (FileNotFoundException e) {
@@ -117,17 +103,19 @@ public class Provisioner {
 
     private void createUser(User user) throws IOException {
         Gson gson = new Gson();
-        byte[] resource = gson.toJson(user).getBytes();
-        createResource("users/" + user.getId(), resource);
+        final byte[] resource = gson.toJson(user).getBytes();
+        final String id = Utils.encodeUriComponent(user.getId());
+        createResource(servletUrl + "users/" + id, resource);
     }
 
     private void createGroup(Group group) throws IOException {
         Gson gson = new Gson();
-        byte[] resource = gson.toJson(group).getBytes();
-        createResource("groups/" + group.getId(), resource);
+        final byte[] resource = gson.toJson(group).getBytes();
+        final String id = Utils.encodeUriComponent(group.getId());
+        createResource(servletUrl + "groups/" + id, resource);
     }
 
     private void createResource(final String uri, final byte[] resource) throws IOException {
-        httpClient.create(Utils.encodeUriComponent(uri), resource);
+        httpClient.create(uri, resource);
     }
 }
