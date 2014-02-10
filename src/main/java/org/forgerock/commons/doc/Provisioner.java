@@ -69,6 +69,22 @@ public class Provisioner {
         Gson gson = new Gson();
 
         try {
+            /*
+            TODO
+            The parser needs to be a bit smarter than this.
+
+            $ java -cp target/forgerock-rest-demo-1.0.0-SNAPSHOT.jar:/Users/mark/.m2/repository/com/google/code/gson/gson/2.2.4/gson-2.2.4.jar org.forgerock.commons.doc.Main `pwd`/Users.json `pwd`/Groups.json
+            Exception in thread "main" com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was BEGIN_ARRAY at line 1 column 2
+                at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:176)
+                at com.google.gson.Gson.fromJson(Gson.java:803)
+                at com.google.gson.Gson.fromJson(Gson.java:741)
+                at org.forgerock.commons.doc.Provisioner.addUsers(Provisioner.java:72)
+                at org.forgerock.commons.doc.Main.main(Main.java:44)
+            Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was BEGIN_ARRAY at line 1 column 2
+                at com.google.gson.stream.JsonReader.beginObject(JsonReader.java:374)
+                at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:165)
+                ... 4 more
+             */
             Users theUsers = gson.fromJson(new FileReader(users), Users.class);
             for (User user : theUsers.getUsers()) {
                 createUser(user);
