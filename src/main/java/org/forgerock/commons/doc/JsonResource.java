@@ -17,32 +17,13 @@
 package org.forgerock.commons.doc;
 
 /**
- * Group object corresponding to a group JSON resource.
+ * Interface for a CREST JSON resource object.
  */
-public class Group implements JsonResource {
-    private String name;
-    private String description;
-    private String[] members;
+public interface JsonResource {
 
     /**
-     * Construct a group object corresponding to a group JSON resource.
-     *
-     * @param name           Group name
-     * @param description  Description of the group
-     * @param members      Members of the group
+     * Get an ID for this resource.
+     * @return an ID for this resource
      */
-    public Group(String name, String description, String[] members) {
-
-        this.name = name;
-        this.description = description;
-        this.members = members;
-    }
-
-    /**
-     * Get an ID for this group.
-     * @return an ID for this group
-     */
-    public String getId() {
-        return this.name;
-    }
+    public String getId();
 }

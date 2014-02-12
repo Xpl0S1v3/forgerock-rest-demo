@@ -19,7 +19,7 @@ package org.forgerock.commons.doc;
 /**
  * User object corresponding to a user JSON resource.
  */
-public class User {
+public class User implements JsonResource {
     private String uid;
     private String userpassword;
     private String fax;

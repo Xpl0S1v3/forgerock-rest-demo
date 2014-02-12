@@ -102,17 +102,19 @@ public class Provisioner {
     }
 
     private void createUser(User user) throws IOException {
-        Gson gson = new Gson();
-        final byte[] resource = gson.toJson(user).getBytes();
-        final String id = Utils.encodeUriComponent(user.getId());
-        createResource(servletUrl + "users/" + id, resource);
+        createResource("users/", user);
     }
 
     private void createGroup(Group group) throws IOException {
+        createResource("groups/", group);
+    }
+
+    private void createResource(final String baseUri, final JsonResource resource)
+            throws IOException {
         Gson gson = new Gson();
-        final byte[] resource = gson.toJson(group).getBytes();
-        final String id = Utils.encodeUriComponent(group.getId());
-        createResource(servletUrl + "groups/" + id, resource);
+        final byte[] bytes = gson.toJson(resource).getBytes();
+        final String id = Utils.encodeUriComponent(resource.getId());
+        createResource(servletUrl + baseUri + id, bytes);
     }
 
     private void createResource(final String uri, final byte[] resource) throws IOException {
