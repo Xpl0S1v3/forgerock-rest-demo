@@ -1,68 +1,102 @@
+<!--
+/*
+ * The contents of this file are subject to the terms of the Common Development and
+ * Distribution License (the License). You may not use this file except in compliance with the
+ * License.
+ *
+ * You can obtain a copy of the License at legal/CDDLv1.0.txt. See the License for the
+ * specific language governing permission and limitations under the License.
+ *
+ * When distributing Covered Software, include this CDDL Header Notice in each file and include
+ * the License file at legal/CDDLv1.0.txt. If applicable, add the following below the CDDL
+ * Header, with the fields enclosed by brackets [] replaced by your own identifying
+ * information: "Portions Copyrighted [year] [name of copyright owner]".
+ *
+ * Copyright 2014 ForgeRock AS
+ */
+-->
 <div class="row">
-    <div class="col-md-12">
-        <h3>Verbs</h3>
-
-        <p>
-            The ForgeRock common REST API defines seven verbs.
-        </p>
-    </div>
-
-    <div class="col-md-4">
-        <dl>
-            <dt>Create</dt>
-            <dd>Add a resource that does not yet exist</dd>
-
-            <dt>Read</dt>
-            <dd>Retrieve a single resource</dd>
-        </dl>
-    </div>
-
-    <div class="col-md-4">
-        <dl>
-            <dt>Update</dt>
-            <dd>Replace an existing resource</dd>
-
-            <dt>Delete</dt>
-            <dd>Remove an existing resource</dd>
-        </dl>
-    </div>
-
-    <div class="col-md-4">
-        <dl>
-            <dt>Patch</dt>
-            <dd>Modify part of an existing resource</dd>
-
-            <dt>Action</dt>
-            <dd>Perform a predefined action</dd>
-
-            <dt>Query</dt>
-            <dd>List a set of resources</dd>
-        </dl>
-    </div>
+    <h1>About ForgeRock Common REST</h1>
 </div>
 
 <div class="row">
 
     <div class="col-md-4">
-        <h3>Providers</h3>
+        <h3>Resources</h3>
 
         <p>
-            A resource store can use the ForgeRock
-            <a href="http://commons.forgerock.org/forgerock-rest/">REST
-                libraries</a>
-            to expose a common CRUDPAQ API.
+            ForgeRock common <abbr title="REpresentational State Transfer"
+                >REST</abbr>
+            defines a common
+            <abbr title="Application Programming Interface">API</abbr>
+            to access <em>web resources</em> and collections of resources.
+            A container that stores and serves resources,
+            in other words a <em>resource store</em>,
+            can use the ForgeRock
+            <a href="http://commons.forgerock.org/forgerock-rest/"
+                    >REST libraries</a>
+            to implement this common API.
+        </p>
+
+        <p>
+            A basic sample in-memory resource store,
+            <a href="http://commons.forgerock.org/forgerock-rest/json-resource-servlet/"
+                    >JSON Resource Servlet</a>,
+            defines two web resource collections,
+            <code>/users</code> and <code>/groups</code>.
+        </p>
+
+        <p>
+            Resources in the collections can be found
+            by their unique identifiers, their <em>ID</em>s.
+            IDs are exposed in the resource URIs.
+            For example, <code>/users/{id}</code> and <code>/groups/{id}</code>.
+            The ID is also in the <code>"_id"</code> field of the resource.
+        </p>
+
+        <p>
+            Resources are versioned using <em>revision</em> numbers.
+            A revision is specified in the resource's <code>"_rev"</code> field.
+            Revisions make it possible to figure out whether to apply changes
+            without locking resources and without distributed transactions.
         </p>
     </div>
 
     <div class="col-md-4">
-        <h3>Endpoints</h3>
+        <h3>Verbs</h3>
+
         <p>
-            A resource store defines collection endpoints for resources that it
-            serves. The default
-            <a href="http://commons.forgerock.org/forgerock-rest/json-resource-servlet/"
-                    >JSON Resource Servlet</a> defines two collection endpoints,
-            <code>/users</code> and <code>/groups</code>.
+            The common REST API has these verbs:
         </p>
+
+        <ul class="list-unstyled">
+            <li><em>Create</em>: Add a new resource</li>
+            <li><em>Read</em>: Retrieve a single resource</li>
+            <li><em>Update</em>: Replace an existing resource</li>
+            <li><em>Delete</em>: Remove an existing resource</li>
+            <li><em>Patch</em>: Modify part of an existing resource</li>
+            <li><em>Action</em>: Perform a predefined action</li>
+            <li><em>Query</em>: Search a collection of resources</li>
+        </ul>
+
+        <p>
+            <abbr title="Create Read Update Delete Patch Action Query"
+                    >CRUDPAQ</abbr> is an acronym for the verbs.
+        </p>
+
+        <p>
+            The verbs map to HTTP operations:
+        </p>
+
+        <ul class="list-unstyled">
+            <li>Create maps to HTTP PUT (or POST).</li>
+            <li>Read maps to HTTP GET.</li>
+            <li>Update maps to HTTP PUT.</li>
+            <li>Delete maps to HTTP DELETE.</li>
+            <li>Patch maps to HTTP PATCH.</li>
+            <li>Action maps to... well, it depends.</li>
+            <li>Query maps to HTTP GET.</li>
+        </ul>
     </div>
 
     <div class="col-md-4">
@@ -72,13 +106,17 @@
             <dt>Action</dt>
             <dd>
                 <p>
-                    By default, the only actions defined are those corresponding
-                    to the other six basic verbs: create, read, update, delete,
-                    patch, and query.
+                    The <em>action</em> verb is the main vehicle
+                    for extending the common REST API.
                 </p>
 
                 <p>
-                    A resource store might define additional actions that it allows.
+                    To create a new user with HTTP POST rather than HTTP PUT,
+                    <code>/users?_action=create</code>.
+                </p>
+
+                <p>
+                    A resource store can define additional actions.
                     For example, <code>/tasks/1?_action=cancel</code>.
                 </p>
             </dd>
@@ -86,9 +124,9 @@
             <dt>Query</dt>
             <dd>
                 <p>
-                    A resource store might define additional stored queries that
-                    can be called by their IDs. For example,
-                    <code>/groups?_queryId=hasDeletedMembers</code>.
+                    A resource store can define stored queries
+                    that can be called by their IDs.
+                    For example, <code>/groups?_queryId=hasDeletedMembers</code>.
                 </p>
             </dd>
         </dl>
