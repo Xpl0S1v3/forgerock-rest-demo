@@ -23,5 +23,26 @@ angular.module('main', ['ngResource', 'ngRoute', 'ui.bootstrap'])
         $routeProvider
             .when('/', {
                 templateUrl: 'partials/about.html'
+            })
+            .when('/create', {
+                templateUrl: 'partials/create.html'
+            })
+            .when('/read', {
+                templateUrl: 'partials/read.html'
+            })
+            .when('/update', {
+                templateUrl: 'partials/update.html'
+            })
+            .when('/delete', {
+                templateUrl: 'partials/delete.html'
+            })
+            .when('/patch', {
+                templateUrl: 'partials/patch.html'
+            })
+            .when('/action', {
+                templateUrl: 'partials/action.html'
+            })
+            .when('/query', {
+                templateUrl: 'partials/query.html'
             });
     });
