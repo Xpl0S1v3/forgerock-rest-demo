@@ -16,5 +16,19 @@
  */
 -->
 <div class="row">
-    <h1>Not implemented yet</h1>
+
+    <div class="col-md-4">
+        <h3>Read User</h3>
+
+        <form role="form">
+            <div class="form-group">
+                <select class="form-control">
+                    <option ng-repeat="user in users"
+                            value="{{user.uid}}">{{user.fullname[0]}}</option>
+                </select>
+            </div>
+        </form>
+
+        <p>TODO: Display selected user's info.</p>
+    </div>
 </div>
