@@ -22,13 +22,15 @@
 
         <form role="form">
             <div class="form-group">
-                <select class="form-control">
-                    <option ng-repeat="user in users"
-                            value="{{user.uid}}">{{user.fullname[0]}}</option>
+                <select class="form-control"
+                        ng-model="user"
+                        ng-options="user.fullname[0] for user in users">
+                    <option value="">Select a user</option>
                 </select>
             </div>
         </form>
 
-        <p>TODO: Display selected user's info.</p>
+        <!-- TODO: Filter the user to present in a reader-friendly way. -->
+        <pre>{{ {selected_user:user} }}</pre>
     </div>
 </div>
