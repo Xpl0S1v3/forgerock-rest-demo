@@ -54,7 +54,63 @@
                     <dd>{{user.phone}}</dd>
                 </dl>
             </div>
-
         </div>
+
     </div>
+
+    <div class="col-md-4">
+        <h3>Read Group</h3>
+
+        <p>
+            TODO: Show group in this section.
+        </p>
+    </div>
+
+    <div class="col-md-4">
+        <h3>Reading Resources</h3>
+
+        <p>
+            TODO: This page actually doesn't read a resource,
+            but instead queries a set of resources.
+        </p>
+
+        <p>
+            To retrieve a single resource,
+            perform an HTTP GET and accept a JSON response.
+        </p>
+
+        <pre>
+GET /users/1  HTTP/1.1
+Host: example.com
+Accept: application/json
+        </pre>
+
+        <p>
+            The following example retrieves Barbara Jensen's resource
+            using the <code>curl</code> command.
+        </p>
+
+        <pre>$ curl --request GET \
+ --header "Accept: application/json" \
+ http://localhost:8080/json/users/bjensen?_prettyPrint=true
+{
+  "uid" : "bjensen",
+  "mail" : "bjensen@example.com",
+  "phone" : "+1 408 555 1862",
+  "fax" : "+1 408 555 1992",
+  "location" : "Cupertino",
+  "lastname" : "Jensen",
+  "uidNumber" : 1076,
+  "firstname" : "Barbara",
+  "homeDirectory" : "/home/bjensen",
+  "_rev" : "0",
+  "userpassword" : "hifalutin",
+  "_id" : "bjensen",
+  "gidNumber" : 1000,
+  "fullname" : [ "Barbara Jensen", "Babs Jensen" ],
+  "room" : 209
+}</pre>
+
+    </div>
+
 </div>
