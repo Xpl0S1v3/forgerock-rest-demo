@@ -30,7 +30,31 @@
             </div>
         </form>
 
-        <!-- TODO: Filter the user to present in a reader-friendly way. -->
-        <pre>{{ {selected_user:user} }}</pre>
+        <!-- Show the entire selected user object.
+        <pre>{{ {selected_user:user} | json }}</pre>
+         -->
+
+        <!-- Show some attributes of the selected user. -->
+        <div class="panel panel-default"
+             ng-show="user.uid"><!-- Hide the panel if no user is selected. -->
+
+            <div class="panel-heading">
+                <h3 class="panel-title">{{user.fullname[0]}}</h3>
+            </div>
+
+            <div class="panel-body">
+                <dl>
+                    <dt>Office</dt>
+                    <dd>{{user.location}}, Room: {{user.room}}</dd>
+
+                    <dt>Email</dt>
+                    <dd><a href="mailto:{{user.mail}}">{{user.mail}}</a></dd>
+
+                    <dt>Phone</dt>
+                    <dd>{{user.phone}}</dd>
+                </dl>
+            </div>
+
+        </div>
     </div>
 </div>
