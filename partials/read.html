@@ -22,17 +22,15 @@
 
         <form role="form">
             <div class="form-group">
-                <select class="form-control"
+                <label class="sr-only" for="select-user">Select a user</label>
+                <select id="select-user"
+                        class="form-control"
                         ng-model="user"
                         ng-options="user.fullname[0] for user in users">
                     <option value="">Select a user</option>
                 </select>
             </div>
         </form>
-
-        <!-- Show the entire selected user object.
-        <pre>{{ {selected_user:user} | json }}</pre>
-         -->
 
         <!-- Show some attributes of the selected user. -->
         <div class="panel panel-default"
@@ -53,6 +51,15 @@
                     <dt>Phone</dt>
                     <dd>{{user.phone}}</dd>
                 </dl>
+
+                <!-- Generic output
+                <dl>
+                    <div ng-repeat="(key, value) in user">
+                        <dt style="text-transform: capitalize">{{key}}</dt>
+                        <dd>{{value}}</dd>
+                    </div>
+                </dl>
+                -->
             </div>
         </div>
 
@@ -61,13 +68,55 @@
     <div class="col-md-4">
         <h3>Read Group</h3>
 
-        <p>
-            TODO: Show group in this section.
-        </p>
+        <form role="form">
+            <div class="form-group">
+                <label class="sr-only" for="select-group">Select a group</label>
+                <select id="select-group"
+                        class="form-control"
+                        ng-model="group"
+                        ng-options="group.name for group in groups">
+                    <option value="">Select a group</option>
+                </select>
+            </div>
+        </form>
+
+        <!-- Show some attributes of the selected group. -->
+        <div class="panel panel-default"
+             ng-show="group.name"><!-- Hide the panel if no group is selected. -->
+
+            <div class="panel-heading">
+                <h3 class="panel-title">{{group.name}}</h3>
+            </div>
+
+            <div class="panel-body">
+                <dl>
+                    <dt>Description</dt>
+                    <dd>{{group.description}}</dd>
+
+                    <dt>Members</dt>
+                    <dd>
+                        <ul class="list-unstyled">
+                            <!-- TODO: members are by uid; get fullname instead. -->
+                            <li ng-repeat="member in group.members">{{member}}</li>
+                        </ul>
+                    </dd>
+                </dl>
+
+                <!-- Generic output
+                <dl>
+                    <div ng-repeat="(key, value) in group">
+                        <dt style="text-transform: capitalize">{{key}}</dt>
+                        <dd>{{value}}</dd>
+                    </div>
+                </dl>
+                -->
+            </div>
+        </div>
+
     </div>
 
     <div class="col-md-4">
-        <h3>Reading Resources</h3>
+        <h3>About Reading</h3>
 
         <p>
             TODO: This page actually doesn't read a resource,
@@ -80,36 +129,16 @@
         </p>
 
         <pre>
-GET /users/1  HTTP/1.1
+GET /users/bjensen  HTTP/1.1
 Host: example.com
 Accept: application/json
         </pre>
 
         <p>
-            The following example retrieves Barbara Jensen's resource
-            using the <code>curl</code> command.
+            You can use <code>_prettyPrint=true</code>
+            to pretty print the JSON when reading resources
+            on the command line.
         </p>
-
-        <pre>$ curl --request GET \
- --header "Accept: application/json" \
- http://localhost:8080/json/users/bjensen?_prettyPrint=true
-{
-  "uid" : "bjensen",
-  "mail" : "bjensen@example.com",
-  "phone" : "+1 408 555 1862",
-  "fax" : "+1 408 555 1992",
-  "location" : "Cupertino",
-  "lastname" : "Jensen",
-  "uidNumber" : 1076,
-  "firstname" : "Barbara",
-  "homeDirectory" : "/home/bjensen",
-  "_rev" : "0",
-  "userpassword" : "hifalutin",
-  "_id" : "bjensen",
-  "gidNumber" : 1000,
-  "fullname" : [ "Barbara Jensen", "Babs Jensen" ],
-  "room" : 209
-}</pre>
 
     </div>
 

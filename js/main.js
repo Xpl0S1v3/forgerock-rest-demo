@@ -50,8 +50,9 @@ angular.module('main', ['ngResource', 'ngRoute', 'ui.bootstrap'])
             })
             .when('/read', {
                 templateUrl: 'partials/read.html',
-                controller: function ($scope, users) {
+                controller: function ($scope, users, groups) {
                     $scope.users = users;
+                    $scope.groups = groups;
                 },
                 resolve: {
                     users: function ($q, crestResource) {
@@ -75,6 +76,33 @@ angular.module('main', ['ngResource', 'ngRoute', 'ui.bootstrap'])
 
                         failureCb = function () {
                             deferred.reject("No users found");
+                        };
+
+                        crestResource.getAll(url, successCb, failureCb);
+
+                        return deferred.promise;
+                    },
+                    groups: function ($q, crestResource) {
+                        var url, deferred, successCb, options, failureCb;
+
+                        url = rsUrl + "groups";
+
+                        deferred = $q.defer();
+
+                        successCb = function (result) {
+                            if (angular.equals(result, {})) {
+                                deferred.reject("No groups found");
+                            } else {
+                                options = result.result.sort(function (a, b) {
+                                    return a.name.toString()
+                                        .localeCompare(b.name.toString());
+                                });
+                                deferred.resolve(options);
+                            }
+                        };
+
+                        failureCb = function () {
+                            deferred.reject("No groups found");
                         };
 
                         crestResource.getAll(url, successCb, failureCb);
