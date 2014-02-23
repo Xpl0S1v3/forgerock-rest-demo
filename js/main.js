@@ -124,6 +124,71 @@ angular.module('main', ['ngResource', 'ngRoute', 'ui.bootstrap'])
                 templateUrl: 'partials/action.html'
             })
             .when('/query', {
-                templateUrl: 'partials/query.html'
+                templateUrl: 'partials/query.html',
+                controller: function ($scope, users, groups) {
+                    $scope.users = users;
+                    $scope.userName = true;
+                    $scope.userMail = true;
+
+                    $scope.groups = groups;
+                    $scope.groupName = true;
+                    $scope.groupDescription = true;
+                },
+                resolve: {
+                    users: function ($q, crestResource) {
+                        var url, deferred, successCb, theUsers, failureCb;
+
+                        url = rsUrl + "users";
+
+                        deferred = $q.defer();
+
+                        successCb = function (result) {
+                            if (angular.equals(result, {})) {
+                                deferred.reject("No users found");
+                            } else {
+                                theUsers = result.result.sort(function (a, b) {
+                                    return a.fullname[0].toString()
+                                        .localeCompare(b.fullname[0].toString());
+                                });
+                                deferred.resolve(theUsers);
+                            }
+                        };
+
+                        failureCb = function () {
+                            deferred.reject("No users found");
+                        };
+
+                        crestResource.getAll(url, successCb, failureCb);
+
+                        return deferred.promise;
+                    },
+                    groups: function ($q, crestResource) {
+                        var url, deferred, successCb, theGroups, failureCb;
+
+                        url = rsUrl + "groups";
+
+                        deferred = $q.defer();
+
+                        successCb = function (result) {
+                            if (angular.equals(result, {})) {
+                                deferred.reject("No groups found");
+                            } else {
+                                theGroups = result.result.sort(function (a, b) {
+                                    return a.name.toString()
+                                        .localeCompare(b.name.toString());
+                                });
+                                deferred.resolve(theGroups);
+                            }
+                        };
+
+                        failureCb = function () {
+                            deferred.reject("No groups found");
+                        };
+
+                        crestResource.getAll(url, successCb, failureCb);
+
+                        return deferred.promise;
+                    }
+                }
             });
     });

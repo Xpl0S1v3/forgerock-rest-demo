@@ -16,5 +16,103 @@
  */
 -->
 <div class="row">
-    <h1>Not implemented yet</h1>
+
+    <div class="col-md-6">
+        <h3>Query Users</h3>
+
+        <form class="form" role="form">
+            Show:
+            <div class="form-group">
+                <label class="checkbox-inline">
+                    <input ng-model="userName"
+                           type="checkbox"> Name
+                </label>
+                <label class="checkbox-inline">
+                    <input ng-model="userMail"
+                           type="checkbox"> Email
+                </label>
+                <label class="checkbox-inline">
+                    <input ng-model="userPhone"
+                           type="checkbox"> Phone
+                </label>
+                <label class="checkbox-inline">
+                    <input ng-model="userAll"
+                           type="checkbox"> All
+                </label>
+            </div>
+        </form>
+
+        <div class="table-responsive">
+
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th ng-show="userName || userAll">Name</th>
+                    <th ng-show="userMail || userAll">Email</th>
+                    <th ng-show="userPhone || userAll">Phone</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr ng-repeat="user in users">
+                    <td ng-show="userName || userAll">{{user.fullname[0]}}</td>
+                    <td ng-show="userMail || userAll">{{user.mail}}</td>
+                    <td ng-show="userPhone || userAll">{{user.phone}}</td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-6">
+        <h3>Query Groups</h3>
+
+        <form class="form" role="form">
+            Show:
+            <div class="form-group">
+                <label class="checkbox-inline">
+                    <input ng-model="groupName"
+                           type="checkbox"> Name
+                </label>
+                <label class="checkbox-inline">
+                    <input ng-model="groupDescription"
+                           type="checkbox"> Description
+                </label>
+                <label class="checkbox-inline">
+                    <input ng-model="groupMembers"
+                           type="checkbox"> Members
+                </label>
+            </div>
+        </form>
+
+        <div class="table-responsive">
+
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th ng-show="groupName">Name</th>
+                    <th ng-show="groupDescription">Description</th>
+                    <th ng-show="groupMembers">Members</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr ng-repeat="group in groups">
+                    <td ng-show="groupName">{{group.name}}</td>
+                    <td ng-show="groupDescription">{{group.description}}</td>
+                    <td ng-show="groupMembers">
+                        <ul class="list-unstyled">
+                            <li ng-repeat="member in group.members">{{member}}</li>
+                        </ul>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+
 </div>
