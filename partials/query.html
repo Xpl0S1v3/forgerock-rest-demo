@@ -117,3 +117,178 @@
     </div>
 
 </div>
+
+<div class="row">
+
+    <div class="col-md-12">
+        <h3>About Querying</h3>
+
+        <p>
+            To query a resource container,
+            perform an HTTP GET and accept a JSON response,
+            including at least
+            a <code>_queryFilter</code> or <code>_queryId</code>
+            parameter.
+        </p>
+
+        <pre>
+GET /users?_queryFilter=true  HTTP/1.1
+Host: example.com
+Accept: application/json
+        </pre>
+
+        <p>
+            Queries allow a number of query string parameters.
+        </p>
+
+        <dl>
+            <dt>
+                <code>_queryFilter=<em>filter-expression</em></code>
+            </dt>
+            <dd>
+                <p>
+                    Query filters request that the resource provider
+                    return entries that match the filter expression.
+                    You must URL-escape the filter expression.
+                </p>
+
+                <p>
+                    A simple filter expression can represent a comparison,
+                    presence, or a literal value.
+                    For comparisons expression use
+                    <code><em>json-pointer</em> <em>comparator</em>
+                        <em>json-value</em></code>,
+                    where the comparator is one of
+                    <code>eq</code> (equals),
+                    <code>co</code> (contains),
+                    <code>sw</code> (starts with),
+                    <code>lt</code> (less than),
+                    <code>le</code> (less than or equal to),
+                    <code>gt</code> (greater than),
+                    or <code>ge</code> (greater than or equal to).
+                    For presence, use
+                    <code><em>json-pointer</em> pr</code>
+                    to match resources where the JSON pointer is present.
+                    Literal values include
+                    <code>true</code> (match anything)
+                    and <code>false</code> (match nothing).
+                </p>
+
+                <p>
+                    Complex expressions employ
+                    <code>and</code>, <code>or</code>,
+                    and <code>!</code> (not),
+                    with parentheses, <code>(<em>expression</em>)</code>,
+                    to group expressions.
+                </p>
+
+                <p>
+                    The following example shows a query filter
+                    that matches resources where
+                    the <code>userName</code> contains <code>jensen</code>
+                    and the <code>manager/displayName</code> field
+                    starts with <code>Sam</code>.
+                </p>
+
+                    <pre>
+                        _queryFilter=(userName+co+"jensen"+and+manager/displayName+sw+"Sam")
+                    </pre>
+            </dd>
+
+            <dt>
+                <code>_queryId</code>
+            </dt>
+            <dd>
+                <p>
+                    Some resource providers have queries
+                    that you can specify by identifier.
+                </p>
+
+                <p>
+                    Some of these specific queries can take their own
+                    query string parameter arguments.
+                </p>
+
+                    <pre>
+                        _queryId=aStoredQuery&amp;storedQueryParam1=someValue
+                    </pre>
+            </dd>
+
+            <dt>
+                <code>_fields=<em>field</em>[,<em>field</em>...]</code>
+            </dt>
+            <dd>
+                <p>
+                    Use <code>_field</code> to request
+                    that only the specified field(s) be returned.
+                </p>
+            </dd>
+
+            <dt>
+                <code>_pagedResultsCookie=<em>string</em></code>
+            </dt>
+            <dd>
+                <p>
+                    The string is an opaque cookie used by the provider
+                    to keep track of the position in the search results.
+                    In the request <code>_pageSize</code> must
+                    also be set and non-zero.
+                    You receive the cookie value from the provider
+                    on the first request,
+                    and then supply the cookie value in subsequent requests
+                    until the server returns a null cookie,
+                    meaning that the final page of results has been returned.
+                </p>
+            </dd>
+
+            <dt>
+                <code>_pagedResultsOffset=<em>integer</em></code>
+            </dt>
+            <dd>
+                <p>
+                    When <code>_pageSize</code> is non-zero,
+                    use this as an index in the result set
+                    indicating the first page to return.
+                    When the value of <code>_pagedResultsOffset</code>
+                    is less than 1,
+                    the server returns the next page after the last page returned.
+                    When the value is greater than or equal to 1,
+                    the server returns the page starting from the specified index.
+                </p>
+            </dd>
+
+            <dt>
+                <code>_pageSize=<em>integer</em></code>
+            </dt>
+            <dd>
+                <p>
+                    Return query results in pages of this size.
+                    After the initial request,
+                    use <em>_pagedResultsCookie</em> to page through the results.
+                </p>
+            </dd>
+
+            <dt>
+                <code>_prettyPrint=true</code>
+            </dt>
+            <dd>
+                <p>
+                    Pretty print the JSON when reading resources
+                    on the command line.
+                </p>
+            </dd>
+
+            <dt>
+                <code>_sortKeys=[+-]<em>field</em>[,[+-]<em>field</em>...]</code>
+            </dt>
+            <dd>
+                <p>
+                    Sort the resources returned based on the specified field(s),
+                    either in <code>+</code> (ascending, default) order,
+                    or in <code>-</code> (descending) order.
+                </p>
+            </dd>
+        </dl>
+    </div>
+
+</div>
