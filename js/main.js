@@ -36,6 +36,11 @@ angular.module('main', ['ngResource', 'ngRoute', 'ui.bootstrap'])
             return CrestResource.get({"_queryFilter": true}, successCb, errorCb);
         };
 
+        CrestResource.prototype.del = function (url, successCb, errorCb) {
+            CrestResource = $resource(url);
+            return CrestResource.remove({}, successCb, errorCb);
+        };
+
         return new CrestResource();
     })
     .config(function ($routeProvider) {
@@ -115,7 +120,115 @@ angular.module('main', ['ngResource', 'ngRoute', 'ui.bootstrap'])
                 templateUrl: 'partials/update.html'
             })
             .when('/delete', {
-                templateUrl: 'partials/delete.html'
+                templateUrl: 'partials/delete.html',
+                controller: function ($scope, $q, crestResource, users, groups) {
+                    $scope.users = users;
+                    $scope.groups = groups;
+                    $scope.deleteUser = function () {
+                        var url, deferred, successCb, failureCb;
+
+                        url = rsUrl + "users/" + $scope.user._id;
+
+                        deferred = $q.defer();
+
+                        successCb = function (result) {
+                            if (angular.equals(result, {})) {
+                                deferred.reject("Delete failed");
+                            } else {
+                                $scope.deletedUser = result;
+                                deferred.resolve(result);
+                            }
+                        };
+
+                        failureCb = function () {
+                            deferred.reject("Delete failed");
+                        };
+
+                        crestResource.del(url, successCb, failureCb);
+
+                        return deferred.promise;
+                    };
+                    $scope.deleteGroup = function () {
+                        var url, deferred, successCb, failureCb;
+
+                        url = rsUrl + "groups/" + $scope.group._id;
+
+                        deferred = $q.defer();
+
+                        successCb = function (result) {
+                            if (angular.equals(result, {})) {
+                                deferred.reject("Delete failed");
+                            } else {
+                                $scope.deletedGroup = result;
+                                deferred.resolve(result);
+                            }
+                        };
+
+                        failureCb = function () {
+                            deferred.reject("Delete failed");
+                        };
+
+                        crestResource.del(url, successCb, failureCb);
+
+                        return deferred.promise;
+                    };
+                },
+                resolve: {
+                    users: function ($q, crestResource) {
+                        var url, deferred, successCb, options, failureCb;
+
+                        url = rsUrl + "users";
+
+                        deferred = $q.defer();
+
+                        successCb = function (result) {
+                            if (angular.equals(result, {})) {
+                                deferred.reject("No users found");
+                            } else {
+                                options = result.result.sort(function (a, b) {
+                                    return a.fullname[0].toString()
+                                        .localeCompare(b.fullname[0].toString());
+                                });
+                                deferred.resolve(options);
+                            }
+                        };
+
+                        failureCb = function () {
+                            deferred.reject("No users found");
+                        };
+
+                        crestResource.getAll(url, successCb, failureCb);
+
+                        return deferred.promise;
+                    },
+                    groups: function ($q, crestResource) {
+                        var url, deferred, successCb, options, failureCb;
+
+                        url = rsUrl + "groups";
+
+                        deferred = $q.defer();
+
+                        successCb = function (result) {
+                            if (angular.equals(result, {})) {
+                                deferred.reject("No groups found");
+                            } else {
+                                options = result.result.sort(function (a, b) {
+                                    return a.name.toString()
+                                        .localeCompare(b.name.toString());
+                                });
+                                deferred.resolve(options);
+                            }
+                        };
+
+                        failureCb = function () {
+                            deferred.reject("No groups found");
+                        };
+
+                        crestResource.getAll(url, successCb, failureCb);
+
+                        return deferred.promise;
+                    }
+                }
             })
             .when('/patch', {
                 templateUrl: 'partials/patch.html'

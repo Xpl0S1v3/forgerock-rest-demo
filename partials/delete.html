@@ -16,5 +16,137 @@
  */
 -->
 <div class="row">
-    <h1>Not implemented yet</h1>
+
+    <!-- TODO: Remove deleted users and groups from sets of users and groups -->
+
+    <div class="col-md-4">
+        <h3>Delete User</h3>
+
+        <form role="form" ng-submit="deleteUser()">
+
+            <div class="form-group form-inline">
+                <label class="sr-only" for="select-user">Select a user</label>
+                <select id="select-user"
+                        class="form-control"
+                        ng-model="user"
+                        ng-options="user.fullname[0] for user in users">
+                    <option value="">Select a user</option>
+                </select>
+
+                <input class="btn btn-default" type="submit" value="delete">
+
+            </div>
+
+        </form>
+
+        <!-- Show some attributes of the deleted user. -->
+        <div class="panel panel-default"
+             ng-show="deletedUser.uid"><!-- Hide the panel if no user is selected. -->
+
+            <div class="panel-heading">
+                <h3 class="panel-title">Deleted: {{deletedUser.fullname[0]}}</h3>
+            </div>
+
+            <div class="panel-body">
+                <dl>
+                    <dt>Office</dt>
+                    <dd>{{deletedUser.location}}, Room: {{deletedUser.room}}</dd>
+
+                    <dt>Email</dt>
+                    <dd><a href="mailto:{{deletedUser.mail}}">{{deletedUser.mail}}</a></dd>
+
+                    <dt>Phone</dt>
+                    <dd>{{deletedUser.phone}}</dd>
+                </dl>
+
+                <!-- Generic output
+                <dl>
+                    <div ng-repeat="(key, value) in deletedUser">
+                        <dt style="text-transform: capitalize">{{key}}</dt>
+                        <dd>{{value}}</dd>
+                    </div>
+                </dl>
+                -->
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-md-4">
+        <h3>Delete Group</h3>
+
+        <form role="form" ng-submit="deleteGroup()">
+
+            <div class="form-group form-inline">
+                <label class="sr-only" for="select-group">Select a group</label>
+                <select id="select-group"
+                        class="form-control"
+                        ng-model="group"
+                        ng-options="group.name for group in groups">
+                    <option value="">Select a group</option>
+                </select>
+
+                <input class="btn btn-default" type="submit" value="delete">
+
+            </div>
+
+        </form>
+
+        <!-- Show some attributes of the deleted group. -->
+        <div class="panel panel-default"
+             ng-show="deletedGroup.name"><!-- Hide the panel if no group is selected. -->
+
+            <div class="panel-heading">
+                <h3 class="panel-title">Deleted: {{deletedGroup.name}}</h3>
+            </div>
+
+            <div class="panel-body">
+                <dl>
+                    <dt>Description</dt>
+                    <dd>{{deletedGroup.description}}</dd>
+
+                    <dt>Members</dt>
+                    <dd>
+                        <ul class="list-unstyled">
+                            <!-- TODO: members are by uid; get fullname instead. -->
+                            <li ng-repeat="member in deletedGroup.members">{{member}}</li>
+                        </ul>
+                    </dd>
+                </dl>
+
+                <!-- Generic output
+                <dl>
+                    <div ng-repeat="(key, value) in deletedGroup">
+                        <dt style="text-transform: capitalize">{{key}}</dt>
+                        <dd>{{value}}</dd>
+                    </div>
+                </dl>
+                -->
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-md-4">
+        <h3>About Deleting</h3>
+
+        <p>
+            To delete a single resource,
+            perform an HTTP DELETE and accept a JSON response.
+        </p>
+
+        <pre>
+DELETE /users/bjensen  HTTP/1.1
+Host: example.com
+Accept: application/json
+        </pre>
+
+        <p>
+            You can use <code>_prettyPrint=true</code>
+            to pretty print the JSON returned when working
+            on the command line.
+        </p>
+
+    </div>
+
 </div>
