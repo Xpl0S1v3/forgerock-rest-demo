@@ -135,6 +135,10 @@ angular.module('main', ['ngResource', 'ngRoute', 'ui.bootstrap'])
                             if (angular.equals(result, {})) {
                                 deferred.reject("Delete failed");
                             } else {
+                                $scope.users = $scope.users.filter(
+                                    function (user) {
+                                        return user._id != result._id;
+                                    });
                                 $scope.deletedUser = result;
                                 deferred.resolve(result);
                             }
@@ -159,6 +163,10 @@ angular.module('main', ['ngResource', 'ngRoute', 'ui.bootstrap'])
                             if (angular.equals(result, {})) {
                                 deferred.reject("Delete failed");
                             } else {
+                                $scope.groups = $scope.groups.filter(
+                                    function (group) {
+                                        return group._id != result._id;
+                                    });
                                 $scope.deletedGroup = result;
                                 deferred.resolve(result);
                             }
