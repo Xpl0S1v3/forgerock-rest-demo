@@ -250,10 +250,12 @@ angular.module('main', ['ngResource', 'ngRoute', 'ui.bootstrap'])
                     $scope.users = users;
                     $scope.userName = true;
                     $scope.userMail = true;
+                    $scope.showUsers = false;
 
                     $scope.groups = groups;
                     $scope.groupName = true;
                     $scope.groupDescription = true;
+                    $scope.showGroups = false;
                 },
                 resolve: {
                     users: function ($q, crestResource) {

@@ -43,7 +43,12 @@
             </div>
         </form>
 
-        <div class="table-responsive">
+        <div class="btn-group">
+            <button type="button" class="btn btn-default" ng-model="showUsers" btn-radio="true">Show Users</button>
+            <button type="button" class="btn btn-default" ng-model="showUsers" btn-radio="false">Hide Users</button>
+        </div>
+
+        <div class="table-responsive" ng-show="showUsers">
 
             <table class="table table-striped">
                 <thead>
@@ -88,7 +93,13 @@
             </div>
         </form>
 
-        <div class="table-responsive">
+
+        <div class="btn-group">
+            <button type="button" class="btn btn-default" ng-model="showGroups" btn-radio="true">Show Groups</button>
+            <button type="button" class="btn btn-default" ng-model="showGroups" btn-radio="false">Hide Groups</button>
+        </div>
+
+        <div class="table-responsive" ng-show="showGroups">
 
             <table class="table table-striped">
                 <thead>
