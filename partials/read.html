@@ -18,7 +18,8 @@
 <div class="row">
 
     <div class="col-md-4">
-        <h3>Read User</h3>
+
+        <h3>Select User</h3>
 
         <form role="form">
             <div class="form-group">
@@ -32,12 +33,32 @@
             </div>
         </form>
 
+        <h3>Read User By ID</h3>
+
+        <form role="form" class="form-inline" ng-submit="readUser()">
+            <div class="form-group form-inline">
+                <input class="form-control"
+                       ng-model="userId"
+                       type="text"
+                       placeholder="Enter user ID">
+            </div>
+            <button class="btn btn-default" type="submit">read</button>
+        </form>
+
+        <div ng-show="userNotFound">
+            <alert type="alert.type"
+                   close="userId = ''; userNotFound = false"
+                    >{{userNotFound}}</alert>
+        </div>
+
         <!-- Show some attributes of the selected user. -->
+        <div ng-show="user.uid"><h3>User</h3></div>
         <div class="panel panel-default"
              ng-show="user.uid"><!-- Hide the panel if no user is selected. -->
 
             <div class="panel-heading">
-                <h3 class="panel-title">{{user.fullname[0]}}</h3>
+                <h3 class="panel-title">{{user.fullname[0]}}
+                    <br><small>id: {{user._id}}</small></h3>
             </div>
 
             <div class="panel-body">
@@ -66,7 +87,8 @@
     </div>
 
     <div class="col-md-4">
-        <h3>Read Group</h3>
+
+        <h3>Select Group</h3>
 
         <form role="form">
             <div class="form-group">
@@ -80,12 +102,32 @@
             </div>
         </form>
 
+        <h3>Read Group By ID</h3>
+
+        <form role="form" class="form-inline" ng-submit="readGroup()">
+            <div class="form-group form-inline">
+                <input class="form-control"
+                       ng-model="groupId"
+                       type="text"
+                       placeholder="Enter group ID">
+            </div>
+            <button class="btn btn-default" type="submit">read</button>
+        </form>
+
+        <div ng-show="groupNotFound">
+            <alert type="alert.type"
+                   close="groupId = ''; groupNotFound = false"
+                    >{{groupNotFound}}</alert>
+        </div>
+
         <!-- Show some attributes of the selected group. -->
+        <div ng-show="group.name"><h3>Group</h3></div>
         <div class="panel panel-default"
              ng-show="group.name"><!-- Hide the panel if no group is selected. -->
 
             <div class="panel-heading">
-                <h3 class="panel-title">{{group.name}}</h3>
+                <h3 class="panel-title">{{group.name}}
+                    <br><small>id: {{group._id}}</small></h3>
             </div>
 
             <div class="panel-body">
@@ -119,13 +161,10 @@
         <h3>About Reading</h3>
 
         <p>
-            TODO: This page actually doesn't read a resource,
-            but instead queries a set of resources.
-        </p>
-
-        <p>
             To retrieve a single resource,
-            perform an HTTP GET and accept a JSON response.
+            perform an HTTP GET on the resource
+            by its case-sensitive identifier (<code>_id</code>)
+            and accept a JSON response.
         </p>
 
         <pre>
@@ -138,6 +177,11 @@ Accept: application/json
             You can use <code>_prettyPrint=true</code>
             to pretty print the JSON when reading resources
             on the command line.
+        </p>
+
+        <p>
+            You can use <code>_fields=<em>field</em>[,<em>field</em>...]</code>
+            to request that only specified fields be returned.
         </p>
 
     </div>

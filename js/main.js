@@ -36,6 +36,11 @@ angular.module('main', ['ngResource', 'ngRoute', 'ui.bootstrap'])
             return CrestResource.get({"_queryFilter": true}, successCb, errorCb);
         };
 
+        CrestResource.prototype.read = function (url, successCb, errorCb) {
+            CrestResource = $resource(url);
+            return CrestResource.get({}, successCb, errorCb);
+        };
+
         CrestResource.prototype.del = function (url, successCb, errorCb) {
             CrestResource = $resource(url);
             return CrestResource.remove({}, successCb, errorCb);
@@ -55,9 +60,69 @@ angular.module('main', ['ngResource', 'ngRoute', 'ui.bootstrap'])
             })
             .when('/read', {
                 templateUrl: 'partials/read.html',
-                controller: function ($scope, users, groups) {
+                controller: function ($scope, $q, crestResource, users, groups) {
                     $scope.users = users;
+                    $scope.readUser = function () {
+                        var url, deferred, successCb, failureCb;
+
+                        url = rsUrl + "users/" + $scope.userId;
+
+                        deferred = $q.defer();
+
+                        successCb = function (result) {
+                            if (angular.equals(result, {})) {
+                                $scope.user = {};
+                                $scope.userNotFound =
+                                    "User " + $scope.userId + " not found";
+                                deferred.reject("Read failed");
+                            } else {
+                                $scope.user = result;
+                                deferred.resolve(result);
+                            }
+                        };
+
+                        failureCb = function () {
+                            $scope.user = {};
+                            $scope.userNotFound =
+                                "User " + $scope.userId + " not found";
+                            deferred.reject("Read failed");
+                        };
+
+                        crestResource.read(url, successCb, failureCb);
+
+                        return deferred.promise;
+                    };
                     $scope.groups = groups;
+                    $scope.readGroup = function () {
+                        var url, deferred, successCb, failureCb;
+
+                        url = rsUrl + "groups/" + $scope.groupId;
+
+                        deferred = $q.defer();
+
+                        successCb = function (result) {
+                            if (angular.equals(result, {})) {
+                                $scope.group = {};
+                                $scope.groupNotFound =
+                                    "Group " + $scope.groupId + " not found";
+                                deferred.reject("Read failed");
+                            } else {
+                                $scope.group = result;
+                                deferred.resolve(result);
+                            }
+                        };
+
+                        failureCb = function () {
+                            $scope.group = {};
+                            $scope.groupNotFound =
+                                "Group " + $scope.groupId + " not found";
+                            deferred.reject("Read failed");
+                        };
+
+                        crestResource.read(url, successCb, failureCb);
+
+                        return deferred.promise;
+                    };
                 },
                 resolve: {
                     users: function ($q, crestResource) {
