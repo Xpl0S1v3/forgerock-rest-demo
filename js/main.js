@@ -36,6 +36,20 @@ angular.module('main', ['ngResource', 'ngRoute', 'ui.bootstrap'])
             return CrestResource.get({"_queryFilter": true}, successCb, errorCb);
         };
 
+        CrestResource.prototype.put = function (url, successCb, errorCb, resource) {
+            CrestResource = $resource(url, null, {
+                "put": {
+                    method: "PUT",
+                    headers: {
+                        "Accept" : "application/json",
+                        "Content-Type" : "application/json",
+                        "If-None-Match" : "*"
+                    }
+                }
+            });
+            return CrestResource.put({}, resource, successCb, errorCb);
+        };
+
         CrestResource.prototype.read = function (url, successCb, errorCb) {
             CrestResource = $resource(url);
             return CrestResource.get({}, successCb, errorCb);
@@ -56,7 +70,52 @@ angular.module('main', ['ngResource', 'ngRoute', 'ui.bootstrap'])
                 templateUrl: 'partials/about.html'
             })
             .when('/create', {
-                templateUrl: 'partials/create.html'
+                templateUrl: 'partials/create.html',
+                controller: function ($scope, $q, crestResource) {
+                    $scope.user = {};
+                    $scope.userCreated = false;
+                    $scope.userCreateFailed = false;
+                    $scope.createUser = function () {
+                        var url, deferred, successCb, failureCb;
+
+                        $scope.user.uid = $scope.user.mail.substring(
+                            0, $scope.user.mail.indexOf('@'));
+                        $scope.user.fullname =
+                            [ $scope.user.cn + " " + $scope.user.sn ];
+
+                        $scope.user.phone = $scope.user.phone || "+1-415-555-1212";
+                        $scope.user.location = "San Francisco";
+                        $scope.user.room = 1234;
+
+                        url = rsUrl + "users/" + $scope.user.uid;
+
+                        deferred = $q.defer();
+
+                        if ($scope.user.userPassword !== $scope.user.confirmPassword) {
+                            $scope.userCreateFailed = "Passwords do not match.";
+                            return deferred.promise;
+                        }
+
+                        successCb = function (result) {
+                            if (angular.equals(result, {})) {
+                                deferred.reject("Create failed");
+                            } else {
+                                $scope.user = result;
+                                $scope.userCreated = true;
+                                deferred.resolve(result);
+                            }
+                        };
+
+                        failureCb = function () {
+                            $scope.userCreateFailed = "Failed to create user";
+                            deferred.reject("Create failed");
+                        };
+
+                        crestResource.put(url, successCb, failureCb, $scope.user);
+
+                        return deferred.promise;
+                    };
+                }
             })
             .when('/read', {
                 templateUrl: 'partials/read.html',
