@@ -71,7 +71,7 @@ angular.module('main', ['ngResource', 'ngRoute', 'ui.bootstrap'])
             })
             .when('/create', {
                 templateUrl: 'partials/create.html',
-                controller: function ($scope, $q, crestResource) {
+                controller: function ($scope, $q, crestResource, users) {
                     $scope.user = {};
                     $scope.userCreated = false;
                     $scope.userCreateFailed = false;
@@ -115,6 +115,70 @@ angular.module('main', ['ngResource', 'ngRoute', 'ui.bootstrap'])
 
                         return deferred.promise;
                     };
+
+                    $scope.users = users;
+                    $scope.groupCreated = false;
+                    $scope.groupCreateFailed = false;
+                    $scope.createGroup = function () {
+                        var url, deferred, successCb, failureCb;
+
+                        url = rsUrl + "groups/" + $scope.group.name;
+
+                        $scope.group.members = [];
+                        angular.forEach($scope.members, function (member) {
+                            this.push(member.uid);
+                        }, $scope.group.members);
+
+                        deferred = $q.defer();
+
+                        successCb = function (result) {
+                            if (angular.equals(result, {})) {
+                                deferred.reject("Create failed");
+                            } else {
+                                $scope.group = result;
+                                $scope.groupCreated = true;
+                                deferred.resolve(result);
+                            }
+                        };
+
+                        failureCb = function () {
+                            $scope.groupCreateFailed = "Failed to create group";
+                            deferred.reject("Create failed");
+                        };
+
+                        crestResource.put(url, successCb, failureCb, $scope.group);
+
+                        return deferred.promise;
+                    };
+                },
+                resolve: {
+                    users: function ($q, crestResource) {
+                        var url, deferred, successCb, options, failureCb;
+
+                        url = rsUrl + "users";
+
+                        deferred = $q.defer();
+
+                        successCb = function (result) {
+                            if (angular.equals(result, {})) {
+                                deferred.reject("No users found");
+                            } else {
+                                options = result.result.sort(function (a, b) {
+                                    return a.fullname[0].toString()
+                                        .localeCompare(b.fullname[0].toString());
+                                });
+                                deferred.resolve(options);
+                            }
+                        };
+
+                        failureCb = function () {
+                            deferred.reject("No users found");
+                        };
+
+                        crestResource.getAll(url, successCb, failureCb);
+
+                        return deferred.promise;
+                    }
                 }
             })
             .when('/read', {

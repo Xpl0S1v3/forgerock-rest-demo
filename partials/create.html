@@ -124,9 +124,79 @@
 
         <h3>Create Group</h3>
 
-        <p>
-            TODO
-        </p>
+        <form role="form" ng-submit="createGroup()">
+
+            <div class="form-group">
+
+                <label>Name (required)
+                    <input class="form-control"
+                           type="text"
+                           size="25"
+                           required="true"
+                           placeholder="Administrators"
+                           ng-model="group.name">
+                </label>
+
+                <label>Description
+                    <textarea class="form-control"
+                              cols="25"
+                              placeholder="About this group"
+                              ng-model="group.description"></textarea>
+                </label>
+
+                <br>
+
+                <label>Members
+                    <label class="sr-only" for="select-user">Select a user</label>
+                    <select id="select-user"
+                            class="form-control"
+                            multiple
+                            ng-model="members"
+                            ng-options="user.fullname[0] for user in users">
+                    </select>
+                </label>
+
+            </div>
+
+            <button class="btn btn-default" type="submit">Submit</button>
+            <button class="btn btn-default" type="reset">Reset</button>
+        </form>
+
+        <div ng-show="groupCreateFailed">
+            <alert type="alert.type" close="groupCreateFailed = false"
+                    >{{groupCreateFailed}}</alert>
+        </div>
+
+        <!-- Show some attributes of the selected user. -->
+        <div ng-show="groupCreated">
+
+            <h3>User</h3>
+
+            <div class="panel panel-default">
+
+                <div class="panel-heading">
+                    <h3 class="panel-title">{{group.name}}
+                        <br><small>id: {{group._id}}</small></h3>
+                </div>
+
+                <div class="panel-body">
+                    <dl>
+                        <dt>Description</dt>
+                        <dd>{{group.description}}</dd>
+
+                        <dt>Members</dt>
+                        <dd>
+                            <ul class="list-unstyled">
+                                <!-- TODO: members are by uid; get fullname instead. -->
+                                <li ng-repeat="member in group.members">{{member}}</li>
+                            </ul>
+                        </dd>
+                    </dl>
+                </div>
+
+            </div>
+
+        </div>
 
     </div>
 
