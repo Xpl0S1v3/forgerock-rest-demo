@@ -79,7 +79,9 @@ angular.module('main', ['ngResource', 'ngRoute', 'ui.bootstrap'])
                         var url, deferred, successCb, failureCb;
 
                         $scope.user.uid = $scope.user.mail.substring(
-                            0, $scope.user.mail.indexOf('@'));
+                            0,
+                            $scope.user.mail.indexOf('@')
+                        );
                         $scope.user.fullname =
                             [ $scope.user.cn + " " + $scope.user.sn ];
 
@@ -313,6 +315,8 @@ angular.module('main', ['ngResource', 'ngRoute', 'ui.bootstrap'])
                     $scope.users = users;
                     $scope.groups = groups;
                     $scope.deleteUser = function () {
+                        /*jslint nomen: true */
+                        // Avoid JSLint errors when using _id, specified by CREST.
                         var url, deferred, successCb, failureCb;
 
                         url = rsUrl + "users/" + $scope.user._id;
@@ -325,8 +329,9 @@ angular.module('main', ['ngResource', 'ngRoute', 'ui.bootstrap'])
                             } else {
                                 $scope.users = $scope.users.filter(
                                     function (user) {
-                                        return user._id != result._id;
-                                    });
+                                        return user._id !== result._id;
+                                    }
+                                );
                                 $scope.deletedUser = result;
                                 deferred.resolve(result);
                             }
@@ -341,6 +346,8 @@ angular.module('main', ['ngResource', 'ngRoute', 'ui.bootstrap'])
                         return deferred.promise;
                     };
                     $scope.deleteGroup = function () {
+                        /*jslint nomen: true */
+                        // Avoid JSLint errors when using _id, specified by CREST.
                         var url, deferred, successCb, failureCb;
 
                         url = rsUrl + "groups/" + $scope.group._id;
@@ -353,8 +360,9 @@ angular.module('main', ['ngResource', 'ngRoute', 'ui.bootstrap'])
                             } else {
                                 $scope.groups = $scope.groups.filter(
                                     function (group) {
-                                        return group._id != result._id;
-                                    });
+                                        return group._id !== result._id;
+                                    }
+                                );
                                 $scope.deletedGroup = result;
                                 deferred.resolve(result);
                             }
