@@ -16,5 +16,261 @@
  */
 -->
 <div class="row">
-    <h1>Not implemented yet</h1>
+<div class="col-md-4">
+
+    <h3>Create User<br><small>By Using an Action</small></h3>
+
+    <form role="form" ng-submit="createUser()">
+
+        <div class="form-group">
+
+            <label>First name (required)
+                <input class="form-control"
+                       type="text"
+                       size="25"
+                       required="true"
+                       placeholder="Bob"
+                       ng-model="user.cn">
+            </label>
+
+            <label>Last name (required)
+                <input class="form-control"
+                       type="text"
+                       size="25"
+                       required="true"
+                       placeholder="Dobbs"
+                       ng-model="user.sn">
+            </label>
+
+            <label>Email (required)
+                <input class="form-control"
+                       type="email"
+                       size="25"
+                       required="true"
+                       placeholder="subgenius@example.com"
+                       ng-model="user.mail">
+            </label>
+
+            <label>Password (required)
+                <input class="form-control"
+                       type="password"
+                       size="25"
+                       required="true"
+                       placeholder="Enter password"
+                       ng-model="user.userPassword">
+            </label>
+
+            <label>Confirm password (required)
+                <input class="form-control"
+                       type="password"
+                       size="25"
+                       required="true"
+                       placeholder="Confirm password"
+                       ng-model="user.confirmPassword">
+            </label>
+
+            <label>Phone
+                <input class="form-control"
+                       type="tel"
+                       size="25"
+                       placeholder="+1-415-555-1212"
+                       ng-model="user.phone">
+            </label>
+
+        </div>
+
+        <button class="btn btn-default" type="submit">Submit</button>
+        <button class="btn btn-default" type="reset">Reset</button>
+    </form>
+
+    <div ng-show="userCreateFailed">
+        <alert type="alert.type" close="userCreateFailed = false"
+                >{{userCreateFailed}}</alert>
+    </div>
+
+    <!-- Show some attributes of the selected user. -->
+    <div ng-show="userCreated">
+
+        <h3>User</h3>
+
+        <div class="panel panel-default">
+
+            <div class="panel-heading">
+                <h3 class="panel-title">{{user.fullname[0]}}
+                    <br><small>id: {{user._id}}</small></h3>
+            </div>
+
+            <div class="panel-body">
+                <dl>
+                    <dt>Office</dt>
+                    <dd>{{user.location}}, Room: {{user.room}}</dd>
+
+                    <dt>Email</dt>
+                    <dd><a href="mailto:{{user.mail}}">{{user.mail}}</a></dd>
+
+                    <dt>Phone</dt>
+                    <dd>{{user.phone}}</dd>
+                </dl>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="col-md-4">
+
+    <h3>Create Group<br><small>By Using an Action</small></h3>
+
+    <form role="form" ng-submit="createGroup()">
+
+        <div class="form-group">
+
+            <label>Name (required)
+                <input class="form-control"
+                       type="text"
+                       size="25"
+                       required="true"
+                       placeholder="Administrators"
+                       ng-model="group.name">
+            </label>
+
+            <label>Description
+                <textarea class="form-control"
+                          cols="25"
+                          placeholder="About this group"
+                          ng-model="group.description"></textarea>
+            </label>
+
+            <br>
+
+            <label>Members
+                <label class="sr-only" for="select-user">Select a user</label>
+                <select id="select-user"
+                        class="form-control"
+                        multiple
+                        ng-model="members"
+                        ng-options="user.fullname[0] for user in users">
+                </select>
+            </label>
+
+        </div>
+
+        <button class="btn btn-default" type="submit">Submit</button>
+        <button class="btn btn-default" type="reset">Reset</button>
+    </form>
+
+    <div ng-show="groupCreateFailed">
+        <alert type="alert.type" close="groupCreateFailed = false"
+                >{{groupCreateFailed}}</alert>
+    </div>
+
+    <!-- Show some attributes of the selected user. -->
+    <div ng-show="groupCreated">
+
+        <h3>Group</h3>
+
+        <div class="panel panel-default">
+
+            <div class="panel-heading">
+                <h3 class="panel-title">{{group.name}}
+                    <br><small>id: {{group._id}}</small></h3>
+            </div>
+
+            <div class="panel-body">
+                <dl>
+                    <dt>Description</dt>
+                    <dd>{{group.description}}</dd>
+
+                    <dt>Members</dt>
+                    <dd>
+                        <ul class="list-unstyled">
+                            <!-- TODO: members are by uid; get fullname instead. -->
+                            <li ng-repeat="member in group.members">{{member}}</li>
+                        </ul>
+                    </dd>
+                </dl>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="col-md-4">
+
+    <h3>About Actions</h3>
+
+    <p>
+        Actions are defined by the resource provider,
+        so the actions you can use depend on the implementation.
+        See the documentation for your resource provider for details.
+    </p>
+
+    <p>
+        In this example using the JSON Resource Servlet
+        and with most Common REST resources providers,
+        you can create a resource by HTTP POST
+        to <code>/<em>container</em>?_action=create</code>.
+        The resource provider creates the <code>_id</code>
+        if the resource does not contain the identifier.
+    </p>
+
+    <p>
+        To create the resource,
+        perform an HTTP POST to the resource
+        with the query string parameters set,
+        and with the JSON resource as a payload.
+        Accept a JSON response.
+    </p>
+
+        <pre>
+POST /users?_action=create  HTTP/1.1
+Host: example.com
+Accept: application/json
+Content-Length: ...
+Content-Type: application/json
+        </pre>
+
+    <p>
+        The payload is something like the following in this case.
+    </p>
+
+        <pre>
+{
+    "cn": "Bob",
+    "sn": "Dobbs",
+    "mail": "subgenius@example.com",
+    "userPassword": "password",
+    "confirmPassword": "password",
+    "uid": "subgenius",
+    "fullname": [
+        "Bob Dobbs"
+    ],
+    "phone": "+1-415-555-1212",
+    "location": "San Francisco",
+    "room": 1234
+}
+        </pre>
+
+    <p>
+        A success response is HTTP 201 Created with the resource as payload.
+    </p>
+
+    <p>
+        You can use <code>_prettyPrint=true</code>
+        to pretty print the JSON when reading resources
+        on the command line.
+    </p>
+
+    <p>
+        You can use <code>_fields=<em>field</em>[,<em>field</em>...]</code>
+        to request that only specified fields be returned.
+    </p>
+
+</div>
+
 </div>

@@ -60,6 +60,19 @@ angular.module('main', ['ngResource', 'ngRoute', 'ui.bootstrap'])
             return CrestResource.remove({}, successCb, errorCb);
         };
 
+        CrestResource.prototype.post = function (url, successCb, errorCb, resource) {
+            CrestResource = $resource(url, {"_action": "create"}, {
+                "post": {
+                    method: "POST",
+                    headers: {
+                        "Accept" : "application/json",
+                        "Content-Type" : "application/json"
+                    }
+                }
+            });
+            return CrestResource.post({}, resource, successCb, errorCb);
+        };
+
         return new CrestResource();
     })
     .config(function ($routeProvider) {
@@ -438,7 +451,114 @@ angular.module('main', ['ngResource', 'ngRoute', 'ui.bootstrap'])
                 templateUrl: 'partials/patch.html'
             })
             .when('/action', {
-                templateUrl: 'partials/action.html'
+                templateUrl: 'partials/action.html',
+                controller: function ($scope, $q, crestResource, users) {
+                    $scope.user = {};
+                    $scope.userCreated = false;
+                    $scope.userCreateFailed = false;
+                    $scope.createUser = function () {
+                        var deferred, successCb, failureCb;
+
+                        $scope.user.uid = $scope.user.mail.substring(
+                            0,
+                            $scope.user.mail.indexOf('@')
+                        );
+                        $scope.user.fullname =
+                            [ $scope.user.cn + " " + $scope.user.sn ];
+
+                        $scope.user.phone = $scope.user.phone || "+1-415-555-1212";
+                        $scope.user.location = "San Francisco";
+                        $scope.user.room = 1234;
+
+                        deferred = $q.defer();
+
+                        if ($scope.user.userPassword !== $scope.user.confirmPassword) {
+                            $scope.userCreateFailed = "Passwords do not match.";
+                            return deferred.promise;
+                        }
+
+                        successCb = function (result) {
+                            if (angular.equals(result, {})) {
+                                deferred.reject("Create failed");
+                            } else {
+                                $scope.user = result;
+                                $scope.userCreated = true;
+                                deferred.resolve(result);
+                            }
+                        };
+
+                        failureCb = function () {
+                            $scope.userCreateFailed = "Failed to create user";
+                            deferred.reject("Create failed");
+                        };
+
+                        crestResource.post(rsUrl + "users", successCb, failureCb, $scope.user);
+
+                        return deferred.promise;
+                    };
+
+                    $scope.users = users;
+                    $scope.groupCreated = false;
+                    $scope.groupCreateFailed = false;
+                    $scope.createGroup = function () {
+                        var deferred, successCb, failureCb;
+
+                        $scope.group.members = [];
+                        angular.forEach($scope.members, function (member) {
+                            this.push(member.uid);
+                        }, $scope.group.members);
+
+                        deferred = $q.defer();
+
+                        successCb = function (result) {
+                            if (angular.equals(result, {})) {
+                                deferred.reject("Create failed");
+                            } else {
+                                $scope.group = result;
+                                $scope.groupCreated = true;
+                                deferred.resolve(result);
+                            }
+                        };
+
+                        failureCb = function () {
+                            $scope.groupCreateFailed = "Failed to create group";
+                            deferred.reject("Create failed");
+                        };
+
+                        crestResource.post(rsUrl + "groups", successCb, failureCb, $scope.group);
+
+                        return deferred.promise;
+                    };
+                },
+                resolve: {
+                    users: function ($q, crestResource) {
+                        var url, deferred, successCb, options, failureCb;
+
+                        url = rsUrl + "users";
+
+                        deferred = $q.defer();
+
+                        successCb = function (result) {
+                            if (angular.equals(result, {})) {
+                                deferred.reject("No users found");
+                            } else {
+                                options = result.result.sort(function (a, b) {
+                                    return a.fullname[0].toString()
+                                        .localeCompare(b.fullname[0].toString());
+                                });
+                                deferred.resolve(options);
+                            }
+                        };
+
+                        failureCb = function () {
+                            deferred.reject("No users found");
+                        };
+
+                        crestResource.getAll(url, successCb, failureCb);
+
+                        return deferred.promise;
+                    }
+                }
             })
             .when('/query', {
                 templateUrl: 'partials/query.html',
