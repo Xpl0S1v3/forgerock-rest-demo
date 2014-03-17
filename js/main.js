@@ -55,6 +55,20 @@ angular.module('main', ['ngResource', 'ngRoute', 'ui.bootstrap'])
             return CrestResource.get({}, successCb, errorCb);
         };
 
+        CrestResource.prototype.update = function (url, successCb, errorCb, resource, version) {
+            CrestResource = $resource(url, null, {
+                "put": {
+                    method: "PUT",
+                    headers: {
+                        "Accept" : "application/json",
+                        "Content-Type" : "application/json",
+                        "If-Match" : version
+                    }
+                }
+            });
+            return CrestResource.update({}, resource, successCb, errorCb);
+        };
+
         CrestResource.prototype.del = function (url, successCb, errorCb) {
             CrestResource = $resource(url);
             return CrestResource.remove({}, successCb, errorCb);
