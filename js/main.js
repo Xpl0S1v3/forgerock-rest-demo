@@ -66,7 +66,7 @@ angular.module('main', ['ngResource', 'ngRoute', 'ui.bootstrap'])
                     }
                 }
             });
-            return CrestResource.update({}, resource, successCb, errorCb);
+            return CrestResource.put({}, resource, successCb, errorCb);
         };
 
         CrestResource.prototype.del = function (url, successCb, errorCb) {
@@ -110,7 +110,7 @@ angular.module('main', ['ngResource', 'ngRoute', 'ui.bootstrap'])
                             $scope.user.mail.indexOf('@')
                         );
                         $scope.user.fullname =
-                            [ $scope.user.cn + " " + $scope.user.sn ];
+                            [ $scope.user.firstname + " " + $scope.user.lastname ];
 
                         $scope.user.phone = $scope.user.phone || "+1-415-555-1212";
                         $scope.user.location = "San Francisco";
@@ -120,7 +120,7 @@ angular.module('main', ['ngResource', 'ngRoute', 'ui.bootstrap'])
 
                         deferred = $q.defer();
 
-                        if ($scope.user.userPassword !== $scope.user.confirmPassword) {
+                        if ($scope.user.userpassword !== $scope.user.confirmPassword) {
                             $scope.userCreateFailed = "Passwords do not match.";
                             return deferred.promise;
                         }
@@ -334,7 +334,137 @@ angular.module('main', ['ngResource', 'ngRoute', 'ui.bootstrap'])
                 }
             })
             .when('/update', {
-                templateUrl: 'partials/update.html'
+                templateUrl: 'partials/update.html',
+                controller: function ($scope, $q, crestResource, users, groups) {
+                    $scope.users = users;
+                    $scope.userUpdated = false;
+                    $scope.userUpdateFailed = false;
+                    $scope.updateUser = function () {
+                        var id, rev, url, deferred, successCb, failureCb;
+
+                        id = $scope.user._id;
+                        rev = $scope.user._rev;
+                        url = rsUrl + "users/" + id;
+
+                        deferred = $q.defer();
+
+                        if ($scope.user.newPassword !== "") {
+                            if ($scope.user.newPassword !== $scope.user.confirmPassword) {
+                                $scope.userUpdateFailed = "Passwords do not match.";
+                                return deferred.promise;
+                            }
+                        } else {
+                            $scope.user.userpassword = $scope.user.newPassword;
+                        }
+
+                        successCb = function (result) {
+                            if (angular.equals(result, {})) {
+                                deferred.reject("Update failed");
+                            } else {
+                                $scope.user = result;
+                                $scope.userUpdated = true;
+                                deferred.resolve(result);
+                            }
+                        };
+
+                        failureCb = function () {
+                            $scope.userUpdateFailed = "Failed to update user";
+                            deferred.reject("Update failed");
+                        };
+
+                        crestResource.update(url, successCb, failureCb, $scope.user, rev);
+
+                        return deferred.promise;
+                    };
+
+                    $scope.groups = groups;
+                    $scope.groupUpdated = false;
+                    $scope.groupUpdateFailed = false;
+                    $scope.updateGroup = function () {
+                        var id, rev, url, deferred, successCb, failureCb;
+
+                        id = $scope.group._id;
+                        rev = $scope.group._rev;
+                        url = rsUrl + "groups/" + id;
+
+                        deferred = $q.defer();
+
+                        successCb = function (result) {
+                            if (angular.equals(result, {})) {
+                                deferred.reject("Update failed");
+                            } else {
+                                $scope.group = result;
+                                $scope.groupUpdated = true;
+                                deferred.resolve(result);
+                            }
+                        };
+
+                        failureCb = function () {
+                            $scope.groupUpdateFailed = "Failed to update group";
+                            deferred.reject("Update failed");
+                        };
+
+                        crestResource.update(url, successCb, failureCb, $scope.group, rev);
+
+                        return deferred.promise;
+                    };
+                },
+                resolve: {
+                    users: function ($q, crestResource) {
+                        var url, deferred, successCb, options, failureCb;
+
+                        url = rsUrl + "users";
+
+                        deferred = $q.defer();
+
+                        successCb = function (result) {
+                            if (angular.equals(result, {})) {
+                                deferred.reject("No users found");
+                            } else {
+                                options = result.result.sort(function (a, b) {
+                                    return a.fullname[0].toString()
+                                        .localeCompare(b.fullname[0].toString());
+                                });
+                                deferred.resolve(options);
+                            }
+                        };
+
+                        failureCb = function () {
+                            deferred.reject("No users found");
+                        };
+
+                        crestResource.getAll(url, successCb, failureCb);
+
+                        return deferred.promise;
+                    },
+                    groups: function ($q, crestResource) {
+                        var url, deferred, successCb, options, failureCb;
+
+                        url = rsUrl + "groups";
+
+                        deferred = $q.defer();
+
+                        successCb = function (result) {
+                            if (angular.equals(result, {})) {
+                                deferred.reject("No groups found");
+                            } else {
+                                options = result.result.sort(function (a, b) {
+                                    return a.name.toString()
+                                        .localeCompare(b.name.toString());
+                                });
+                                deferred.resolve(options);
+                            }
+                        };
+
+                        failureCb = function () {
+                            deferred.reject("No groups found");
+                        };
+
+                        crestResource.getAll(url, successCb, failureCb);
+
+                        return deferred.promise;
+                    }
+                }
             })
             .when('/delete', {
                 templateUrl: 'partials/delete.html',
@@ -486,7 +616,7 @@ angular.module('main', ['ngResource', 'ngRoute', 'ui.bootstrap'])
 
                         deferred = $q.defer();
 
-                        if ($scope.user.userPassword !== $scope.user.confirmPassword) {
+                        if ($scope.user.userpassword !== $scope.user.confirmPassword) {
                             $scope.userCreateFailed = "Passwords do not match.";
                             return deferred.promise;
                         }

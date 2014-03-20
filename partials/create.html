@@ -31,7 +31,7 @@
                            size="25"
                            required="true"
                            placeholder="Bob"
-                           ng-model="user.cn">
+                           ng-model="user.firstname">
                 </label>
 
                 <label>Last name (required)
@@ -40,7 +40,7 @@
                            size="25"
                            required="true"
                            placeholder="Dobbs"
-                           ng-model="user.sn">
+                           ng-model="user.lastname">
                 </label>
 
                 <label>Email (required)
@@ -58,7 +58,7 @@
                            size="25"
                            required="true"
                            placeholder="Enter password"
-                           ng-model="user.userPassword">
+                           ng-model="user.userpassword">
                 </label>
 
                 <label>Confirm password (required)
@@ -147,8 +147,8 @@
                 <br>
 
                 <label>Members
-                    <label class="sr-only" for="select-user">Select a user</label>
-                    <select id="select-user"
+                    <label class="sr-only" for="select-members">Select members</label>
+                    <select id="select-members"
                             class="form-control"
                             multiple
                             ng-model="members"
@@ -167,7 +167,7 @@
                     >{{groupCreateFailed}}</alert>
         </div>
 
-        <!-- Show some attributes of the selected user. -->
+        <!-- Show some attributes of the selected group. -->
         <div ng-show="groupCreated">
 
             <h3>Group</h3>
@@ -228,11 +228,10 @@ If-None-Match: *
 
         <pre>
 {
-    "cn": "Bob",
-    "sn": "Dobbs",
+    "firstname": "Bob",
+    "lastname": "Dobbs",
     "mail": "subgenius@example.com",
-    "userPassword": "password",
-    "confirmPassword": "password",
+    "userpassword": "password",
     "uid": "subgenius",
     "fullname": [
         "Bob Dobbs"
