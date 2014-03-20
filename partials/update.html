@@ -226,7 +226,7 @@
             To update a resource, perform an HTTP PUT including
             the case-sensitive identifier (<code>_id</code>) for the resource
             with the JSON resource as a payload.
-            Use the <code>If-Match: <em>revision</em></code> header
+            Use the <code>If-Match: <em>_rev</em></code> header
             to check that you are actually updating the version you modified.
             Accept a JSON response.
         </p>
@@ -237,7 +237,7 @@ Host: example.com
 Accept: application/json
 Content-Length: ...
 Content-Type: application/json
-If-Match: <em>revision</em>
+If-Match: <em>_rev</em>
         </pre>
 
         <p>
