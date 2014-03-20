@@ -165,13 +165,13 @@
 
                 <br>
 
-                <label>Members -- TODO this is borken
+                <label>Members
                     <label class="sr-only" for="select-members">Select members</label>
                     <select id="select-members"
                             class="form-control"
                             multiple
                             ng-model="group.members"
-                            ng-options="member for member in group.members">
+                            ng-options="user.uid as user.fullname[0] for user in users">
                     </select>
                 </label>
 
