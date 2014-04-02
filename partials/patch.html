@@ -16,5 +16,184 @@
  */
 -->
 <div class="row">
-    <h1>Not implemented yet</h1>
+
+    <div class="col-md-4">
+
+        <h3>Patch User</h3>
+
+        <p>
+            Not implemented yet
+        </p>
+
+    </div>
+
+    <div class="col-md-4">
+
+        <h3>Patch Group</h3>
+
+        <p>
+            Not implemented yet
+        </p>
+
+    </div>
+
+    <div class="col-md-4">
+
+        <h3>About Patching Resources</h3>
+
+        <p>
+            To patch a resource, send an HTTP PATCH request
+            including the patch for the resource as the payload.
+            Optionally set the <code>If-Match</code> header to the revision
+            if the patch should only operate on that version of the resource.
+            Accept a JSON response.
+        </p>
+
+        <pre>
+PATCH /users/subgenius  HTTP/1.1
+Host: example.com
+Accept: application/json
+Content-Length: ...
+Content-Type: application/json
+If-Match: <em>_rev value</em>
+        </pre>
+
+        <p>
+            The following example payload changes Bob's email address.
+        </p>
+
+
+        <pre>
+{
+    "operation": "replace",
+    "field": "/mail",
+    "value": "jrdobbs@example.com"
+}
+        </pre>
+
+        <p>
+            A patch payload specifies patch operations
+            to perform against the fields of the resource.
+            There are four patch operations.
+            How the operations change a field of the resource depends on
+            whether the field is single-valued (an object),
+            or multi-valued (an array).
+        </p>
+
+        <p>
+            Precisely how arrays are handled depends on the resource provider.
+            Some resource providers treat arrays not as lists, but as sets.
+            A list can have duplicate values; a set cannot.
+            When the array is treated as a list,
+            you can specify a field index, as in <code>fullname[0]</code>,
+            to add a single value at the specified position.
+            The only index notation that works for sets is <code>[-]</code>,
+            used when adding a single value to a list or a set.
+        </p>
+
+        <dl>
+            <dt><code>"add"</code></dt>
+            <dd>
+                <p>
+                    Ensures that the field contains the specified value.
+                </p>
+
+                <p>
+                    If the field exists and is an object,
+                    the value is replaced.
+                </p>
+
+                <p>
+                    If the field exists and is an array,
+                    the value is appended to an array treated as a list,
+                    or merged with the values of an array treated as a set.
+                </p>
+            </dd>
+
+            <dt><code>"remove"</code></dt>
+            <dd>
+                <p>
+                    Ensures that the field does not contain the specified value.
+                </p>
+
+                <p>
+                    If no value is specified
+                    in the patch object for the operation,
+                    the whole field is removed.
+                </p>
+
+                <p>
+                    If the field exists and is an object,
+                    the patch value must match the value to remove.
+                    Otherwise the patch does not change the object.
+                </p>
+
+                <p>
+                    If the field exists and is an array,
+                    the specified value is removed.
+                    For a array treated as a list and having duplicate values,
+                    only one value is removed for each specified value.
+                </p>
+            </dd>
+
+            <dt><code>"replace"</code></dt>
+            <dd>
+                <p>
+                    Removes any existing value(s) from the field,
+                    and adds the the specified value(s).
+                </p>
+
+                <p>
+                    This operation does not allow indexed updates for arrays.
+                </p>
+            </dd>
+
+            <dt><code>"increment"</code></dt>
+            <dd>
+                <p>
+                    Increments a specified numeric field,
+                    whether a single number or an array of numbers.
+                </p>
+
+                <p>
+                    Decrements if the provided value is negative.
+                </p>
+
+                <p>
+                    This operation results in an error
+                    if the field is not a number or an array of numbers.
+                </p>
+            </dd>
+        </dl>
+
+        <p>
+            The field is specified by its path.
+            In other words, if the resource contains a nested object,
+            and the patch changes a field of that nested object,
+            you must specify the path to the field as in
+            <code>"field": "/contactInformation/emailAddress"</code>.
+        </p>
+
+        <p>
+            The value matches the type of the field.
+            In other words, when patching an object,
+            provide a single value or an object.
+            When patching an array, provide an array.
+        </p>
+
+        <p>
+            A success response is HTTP 200 OK with the resource as payload.
+        </p>
+
+        <p>
+            You can use <code>_prettyPrint=true</code>
+            to pretty print the JSON in the response.
+        </p>
+
+        <p>
+            You can use <code>_fields=<em>field</em>[,<em>field</em>...]</code>
+            to request that only specified fields be returned.
+        </p>
+
+    </div>
 </div>
