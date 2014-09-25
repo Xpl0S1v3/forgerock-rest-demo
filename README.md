@@ -35,7 +35,8 @@ of the REST APIs exposed in ForgeRock products.
 This demo uses the common REST API in simple ways.
 
 
-* * *
+* * * * *
+
 This work is licensed under the Creative Commons
 Attribution-NonCommercial-NoDerivs 3.0 Unported License.
 To view a copy of this license, visit
