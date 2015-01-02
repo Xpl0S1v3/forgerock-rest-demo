@@ -12,7 +12,7 @@
  * Header, with the fields enclosed by brackets [] replaced by your own identifying
  * information: "Portions Copyrighted [year] [name of copyright owner]".
  *
- * Copyright 2014 ForgeRock AS
+ * Copyright 2014-2015 ForgeRock AS
  */
 -->
 <div class="row">
@@ -150,6 +150,12 @@ Accept: application/json
         </pre>
 
         <p>
+            The server returns the result as a JSON object
+            including a <code>"results"</code> array
+            and other fields described below.
+        </p>
+
+        <p>
             Queries allow a number of query string parameters.
         </p>
 
@@ -163,6 +169,34 @@ Accept: application/json
                     return entries that match the filter expression.
                     You must URL-escape the filter expression.
                 </p>
+
+                <p>
+                    The string representation is summarized as follows.
+                    Continue reading for additional explanation.
+                </p>
+
+                <pre>
+Expr           = OrExpr
+OrExpr         = AndExpr ( 'or' AndExpr ) *
+AndExpr        = NotExpr ( 'and' NotExpr ) *
+NotExpr        = '!' PrimaryExpr | PrimaryExpr
+PrimaryExpr    = '(' Expr ')' | ComparisonExpr | PresenceExpr | LiteralExpr
+ComparisonExpr = Pointer OpName JsonValue
+PresenceExpr   = Pointer 'pr'
+LiteralExpr    = 'true' | 'false'
+Pointer        = JSON pointer
+OpName         = 'eq' |  # equal to
+'co' |  # contains
+'sw' |  # starts with
+'lt' |  # less than
+'le' |  # less than or equal to
+'gt' |  # greater than
+'ge' |  # greater than or equal to
+STRING  # extended operator
+JsonValue      = NUMBER | BOOLEAN | '"' UTF8STRING '"'
+STRING         = ASCII string not containing white-space
+UTF8STRING     = UTF-8 string possibly containing white-space
+                </pre>
 
                 <p>
                     A simple filter expression can represent a comparison,
@@ -243,6 +277,8 @@ Accept: application/json
                 <p>
                     The string is an opaque cookie used by the provider
                     to keep track of the position in the search results.
+                    The server returns the cookie in the JSON response
+                    as the value of <code>"pagedResultsCookie"</code>.
                     In the request <code>_pageSize</code> must
                     also be set and non-zero.
                     You receive the cookie value from the provider
@@ -266,6 +302,14 @@ Accept: application/json
                     the server returns the next page after the last page returned.
                     When the value is greater than or equal to 1,
                     the server returns the page starting from the specified index.
+                </p>
+
+                <p>
+                    When this value is specified and >= zero,
+                    the server calculates <code>"remainingPagedResults"</code>,
+                    and provides the value as part of the response.
+                    The <code>"remainingPagedResults"</code> reflects
+                    an estimate of the number of remaining paged results.
                 </p>
             </dd>
 

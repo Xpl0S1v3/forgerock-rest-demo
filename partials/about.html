@@ -12,7 +12,7 @@
  * Header, with the fields enclosed by brackets [] replaced by your own identifying
  * information: "Portions Copyrighted [year] [name of copyright owner]".
  *
- * Copyright 2014 ForgeRock AS
+ * Copyright 2014-2015 ForgeRock AS
  */
 -->
 <div class="row">
@@ -97,7 +97,25 @@
             <li>Action maps to HTTP POST.</li>
             <li>Query maps to HTTP GET.</li>
         </ul>
-    </div>
+
+        <h3>Parameters</h3>
+
+        <p>
+          Query string parameters are defined for each operation.
+          Common REST query string parameter names
+          all start with an underscore, <code>_</code>.
+          Reserved query string parameters include the following:
+          <code>_action</code>,
+          <code>_fields</code>,
+          <code>_pageSize</code>,
+          <code>_pagedResultsCookie</code>,
+          <code>_pagedResultsOffset</code>,
+          <code>_prettyPrint</code>,
+          <code>_queryFilter</code>,
+          <code>_queryId</code>,
+          <code>_sortKeys</code>
+        </p>
+      </div>
 
     <div class="col-md-4">
         <h3>Extensions</h3>

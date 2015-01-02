@@ -12,7 +12,7 @@
  * Header, with the fields enclosed by brackets [] replaced by your own identifying
  * information: "Portions Copyrighted [year] [name of copyright owner]".
  *
- * Copyright 2014 ForgeRock AS
+ * Copyright 2014-2015 ForgeRock AS
  */
 -->
 <div class="row">
@@ -206,7 +206,27 @@
         <h3>About Creating Resources</h3>
 
         <p>
-            To create a resource, perform an HTTP PUT including
+            There are two ways to create a resource,
+            either with an HTTP POST or with an HTTP PUT.
+        </p>
+
+        <p>
+            To create a resource using POST, perform an HTTP POST
+            with the query string parameter <code>_action=create</code>
+            and the JSON resource as a payload.
+            Accept a JSON response.
+        </p>
+
+        <pre>
+POST /users?_action=create  HTTP/1.1
+Host: example.com
+Accept: application/json
+Content-Length: ...
+Content-Type: application/json
+        </pre>
+
+        <p>
+            To create a resource using PUT, perform an HTTP PUT including
             the case-sensitive identifier (<code>_id</code>) for the resource
             with the JSON resource as a payload.
             Use the <code>If-None-Match: *</code> header.
@@ -223,7 +243,7 @@ If-None-Match: *
         </pre>
 
         <p>
-            The payload is something like the following in this case.
+            The payload is something like the following in either case.
         </p>
 
         <pre>
